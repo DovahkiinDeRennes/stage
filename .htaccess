@@ -1,8 +1,0 @@
-
-RewriteEngine on
-RewriteCond %{HTTPS} off
-RewriteCond %{HTTP:X-Forwarded-SSL} !on
-RewriteCond %{HTTP_HOST} ^fidelilium\.com$ [OR]
-RewriteCond %{HTTP_HOST} ^www\.fidelilium\.com$
-RewriteRule ^/?$ "https\:\/\/fidelilium\.com\/" [R=301,L]
-
