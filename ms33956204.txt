@@ -1,0 +1,5 @@
+﻿{
+  "Description": "Fichier de vérification de la propriété du domaine pour Microsoft 365 : placer dans la racine du site web",
+  "Domain": "fidelilium.com",
+  "Id": "d2e46ce5-6515-4ce0-a0b4-7adb3dcd05c4"
+}

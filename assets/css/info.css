@@ -1,0 +1,149 @@
+html {
+    overflow-x: hidden;
+}
+.division-erreur {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  text-align: center;
+  margin-top: 50px;
+
+}
+.error-text{
+  color:#f0f0f0;
+  text-align: center;
+  margin-bottom: 100px;
+
+}
+.bouton-redirection{
+  flex-direction: row;
+  background-color: #B34B33;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: large;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  
+
+
+}
+.bouton-redirection:hover{
+  background-color: #832c18;
+}
+
+body {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    background-color: #62757C;
+    overflow-x: hidden;
+}
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #62757C;
+  overflow-x: hidden;
+
+}
+
+
+a {
+    text-decoration: none;
+}
+a:visited{
+    color: white;
+    text-decoration: none;
+}
+.card {
+    padding: 2%;
+    margin-top: 2%;
+    border-radius: 10px;
+    border: 2px solid #B1C8BF;
+    background: #D9D9D9;
+    box-shadow: 0px 10px 6px 0px rgba(0, 0, 0, 0.25);
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    text-align: center;
+}
+
+img {
+    width: 50%;
+    border-radius: 10px;
+}
+
+h3 {
+    font-size: xx-large;
+}
+.button {
+    margin-top: 5%;
+    background-color: #62757c; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte du bouton */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+.button:hover {
+    background-color: #B34B33; /* Couleur de fond du bouton lorsqu'il est survolé */
+  }
+
+  footer {
+    margin-top: 100px;
+    background-color: #b1c8be;
+    padding: 30px;
+    color: #000000;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    text-align: center;
+    width: 100%;
+  }
+  footer .gauche-foot {
+    display: flex;
+  }
+  footer .droite-foot {
+    margin-left: 10 px;
+    display: flex;
+  }
+  p.charte {
+    margin-right: 10px;
+  }
+  
+  footer img {
+    width: 50px;
+  }
+  
+  footer a:visited {
+    color: #b34b32;
+  }
+  @media screen and (max-width: 480px) {
+    body {
+        overflow-x: hidden;
+    }
+.card {
+    width: 90vw;
+}
+header {
+    width: 100vw;
+    background-color: white;
+}
+header a {
+    color: #B34B33;
+}
+header a:visited {
+    color: #B34B33;
+}
+}

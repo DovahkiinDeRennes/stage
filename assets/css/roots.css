@@ -1,0 +1,25 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Titillium Web', sans-serif;
+    color: #666;
+    font-weight: 300;
+    line-height: 1.65em;
+    overflow-x: hidden;
+    background-color: #eee;
+}
+
+
+a {
+    color: #b34b32;
+    text-decoration: none;
+}
+p {
+    font-size: larger;
+    text-align: justify;
+}
+
+.margB65{
+    margin-bottom: 65px;
+}
+

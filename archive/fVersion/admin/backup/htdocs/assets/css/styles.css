@@ -1,0 +1,223 @@
+html {
+    overflow-x: hidden;
+}
+body{
+    margin:0px;
+    padding: 0px;
+    font-family: 'Titillium Web', sans-serif;
+    color: #666;
+    font-weight: 300;
+    line-height: 1.65em;
+    overflow-x: hidden;
+}
+a {
+    color: #b34b32;
+}
+p {
+    font-size: larger;
+}
+/* Header */
+div.header {
+    display: flex;
+    justify-content: center;
+
+}
+div.header img{
+    top: 50%;
+    left: 50%;
+    width: 500px;
+}
+div.header input {
+    cursor: pointer;
+    background-color: #62757c;
+    color: white;
+    padding: 1.5%;
+    border-radius: 3px;
+    border: none;
+}
+div.header input:hover {
+    background-color: #b34b32;
+    padding: 1.5%;
+    border-radius: 3px;
+}
+/* Icone Attaque */
+.bandeau-attaque {
+    display: none;
+}
+.attaque {
+    margin-top: 15%;
+    margin-right: 5%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    border: 0;
+    width: max-content;
+    z-index: 9;
+}
+
+.texte_attaque {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    width: fit-content;
+}
+
+.attaque:hover .texte_attaque {
+    opacity: 1;
+}
+
+.icone_attaque {
+    overflow: hidden;
+    width: 150px;
+}
+
+.icone_attaque img {
+    width: 80%;
+}
+/* bloc 1 */
+div.bloc-1 {
+    margin-top: 50px;
+    padding: 10%;
+    color: white;
+    background: #62757c;
+}
+div.bloc-1 h2{
+    text-align: center;
+    font-size: 2em;
+    line-height: 1.35em;
+}
+h2, h3 {
+    font-weight: 400;
+    line-height: 1.65em;
+}
+div.bloc-1 input.linkedin {
+    font-size: larger;
+    cursor: pointer;
+    background-color: #62757c;
+    color: white;
+    padding: 1.5%;
+    padding-inline: 20px;
+    border-radius: 3px;
+    border: solid;
+    border-width: 1.75px;
+}
+div.bloc-1 input.linkedin:hover {
+    transition: 0.3s;
+    background-color: #ffffff3b;
+    padding: 3%;
+}
+div.bloc-1 input.linkedin:before {
+    transition: 0.3s;
+    background-color: #ffffff3b;
+    padding: 0.5%;
+}
+div.text-1 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 59%;
+}
+div.paragraphe-gauche {
+    color: rgba(255, 255, 255, 0.70);
+}
+.paragraphe-1 {
+    margin: 25px;
+}
+/* Bloc 2 */
+div.bloc-2 {
+    font-size: 120%;
+    margin: 5%;
+}
+
+/* image séparation */
+span.image.fit img.séparation {
+    width:70%;
+}
+/* Bloc 3 */
+.bloc-3 {
+    margin: 5%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.bloc-3 .groupe {
+    flex-direction: column;
+    align-items: flex-start;
+    display: flex;
+    width: 30%;
+}
+img.image-cybermalveillance {
+    width: 100%;
+}
+p.p-block-3 {
+    font-size: x-large;
+}
+/* block 4 */
+div.bloc-4 {
+    font-size: 120%;
+    margin: 0%;
+}
+div.valeurs {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    align-items: stretch;
+    justify-content: center;
+}
+.image.fit img {
+    width: 100%;
+}
+.image img {
+    border-radius: 4px;
+    display: block;
+}
+.valeur img {
+    max-width: 350px;
+    width: 100%;
+}
+.valeur p{
+    height: 79.17px;
+    max-width: 370px;
+    vertical-align: baseline;
+}
+/* footer */
+@media screen and (max-width: 750px) {
+    div.header img{
+        max-width: 75%;
+    }
+    .icone_attaque {
+        width: 20vw;
+    }
+    .bloc-3 .groupe {
+        width: 100%;
+    }
+    div.text-1 {
+        width: 100%;
+    }
+
+  }
+
+  @media screen and (max-width: 480px) {
+    .attaque {
+        display: none;
+
+    }
+    .bandeau-attaque {
+        display: contents;
+        background-color: rgb(197, 50, 50);
+        width: 100vw;
+    }
+    .bandeau-attaque a {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-color: #b34b32;
+        color: white;
+    }
+    .bandeau-attaque img {
+        width: 20vw;
+
+    }
+}

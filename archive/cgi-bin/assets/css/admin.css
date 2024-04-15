@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic");
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+@import url("fontawesome-all.min.css");
+
+body {
+    background-color: #f5f5f5; /* Couleur de fond de la page */
+    margin: 0;
+  }
+  
+  form {
+    background-color: #ffffff; /* Couleur de fond du formulaire */
+    border-radius: 10px; /* Coins arrondis */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Ombre de boîte noire */
+    width: 300px;
+    text-align: center;
+  }
+  
+  input {
+    cursor: pointer;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  form input {
+    width: 100%;
+  }
+  
+  button {
+    background-color: #62757c; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte du bouton */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #B34B33; /* Couleur de fond du bouton lorsqu'il est survolé */
+  }
+
+  input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff; /* Couleur de fond du champ de fichier */
+  }
+  
+  /* Optionnel : Styles pour le texte du champ de fichier */
+  .input-file-label {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  input[type="file"]::file-selector-button {
+  border-radius: 4px;
+  padding: 0 16px;
+  height: 40px;
+  cursor: pointer;
+  background-color: #62757c;
+  color: white;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+  margin-right: 16px;
+  transition: background-color 200ms;
+}
+input[type="file"]::file-selector-button:hover {
+    background-color: #B34B33;
+  }
+
+  table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  thead {
+    background-color: #62757c; /* Couleur de fond de l'en-tête du tableau */
+    color: white; /* Couleur du texte de l'en-tête du tableau */
+    border-radius: 10px;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tbody tr:hover {
+    background-color: #f5f5f5; /* Couleur de fond lorsqu'une ligne est survolée */
+  }
+  
+  /* Optionnel : Style pour la dernière colonne du tableau (Date) */
+  td:last-child {
+    white-space: nowrap; /* Empêche le texte de se casser sur plusieurs lignes */
+  }
+  a#openBtn {
+    color: #62757c;
+  }
+  @media screen and (max-width: 950px) {
+    .card {
+      display: block;
+    }
+    .card img {
+      width: 100%;
+    }
+
+  }

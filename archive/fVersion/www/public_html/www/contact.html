@@ -1,0 +1,94 @@
+<html lang="fr">
+    <head>
+		<title>Page de contact</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="icon" type="image/x-icon" href="images/favicon.html">
+		<link rel="icon" href="images/Fidelilium_Logo_Simple.png">
+		<link rel="stylesheet" href="assets/css/contact.css" />
+    <link rel="stylesheet" href="assets/css/navbar.css" />
+		<link rel="stylesheet" href="assets/css/fontawesome-free-6.1.2-web/css/all.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.html" /></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
+       
+  </head>
+  <body>
+  <div class="all">
+    <!-- Début de la navbar -->     
+    <div class="navbar">
+    <nav>
+			<a href="index.html"><img srcset="images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;"></a>
+			<div class="onglets">
+			  <a class="link" href="index.html"><p class="link">Accueil</p></a>
+			  <a class="link" href="contact.html"><p class="link" id="page-actuel">Nous contacter</p></a>
+			</div>
+		  </nav>
+    </div>
+    <!-- Fin de la navbar -->
+    <!-- Formulaire -->
+      <div class="container">
+      <form class="contact-form" action="traitement.php" method="POST">
+      <h1>Contactez-nous</h1>
+      <div class="separation"></div>
+      <div class="corps-formulaire">
+        <!-- Haut du formulaire -->
+        <div class="haut">
+          <div class="groupe">
+            <label>Nom<label style="color: #b34b32 ; font-weight: 400;">*</label></label>
+            <input type="text" name="prénom" placeholder="Saisissez ici..."  required/>
+            <i class="fas fa-user"></i>
+            </div>
+            <div class="groupe">
+              <label>Prénom<label style="color: #b34b32 ; font-weight: 400;">*</label></label>
+              <input type="text" name="nom" placeholder="Saisissez ici..." required/>
+              <i class="fas fa-user"></i>
+            </div>   
+            <div class="groupe">
+            <label>Adresse e-mail<label style="color: #b34b32 ; font-weight: 400;">*</label></label>
+            <input type="email" name="email"placeholder="Saisissez ici..." required />
+            <i class="fas fa-envelope"></i>
+            </div>
+            <div class="groupe">
+            <label>Téléphone</label>
+            <input type="text" name="téléphone" placeholder="Saisissez ici..." />
+            <i class="fas fa-mobile"></i>
+            </div>
+            <div class="groupe">
+            <label>Société<label style="color: #b34b32 ; font-weight: 400;">*</label></label>
+            <input type="text" name="société" placeholder="Saisissez ici..." required />
+            <i class="fas fa-building"></i>
+            </div>
+            <div class="groupe">
+            <label>Fonction</label>
+            <input type="text" name="fonction"placeholder="Saisissez ici..." />
+            <i class="fas fa-briefcase"></i>
+      </div>
+      <!-- Fin du haut du formulaire -->
+      <!-- Début du bas du formulaire -->
+        </div>                 
+        <div class="bas">
+          <div class="groupe" id="message">
+            <label>Object<label style="color: #b34b32 ; font-weight: 400;">*</label></label>
+            <input type="text" name="objet" placeholder="Saisissez ici..." required />
+            <i class="fas fa-inbox"></i>
+          </div>
+          <div class="groupe" id="message">
+            <label>Message<label style="color: #b34b32 ; font-weight: 400;">*</label></label>
+            <textarea name="message"placeholder="Saisissez ici..." required></textarea>
+            <i class="fas fa-message"></i>
+          </div>
+        </div>
+      </div>
+      <!-- Fin du bas du formulaire -->
+      <!-- Pied de page -->
+      <div class="groupe">
+      <div class="pied-formulaire">
+        <button type="submit" name="ok">Envoyer le message</button>
+      </div>
+      <!-- Fin de pied de page -->
+    </form>
+  </div>
+  </div>
+  <!-- Fin du formulaire -->
+  </body>
+</html>

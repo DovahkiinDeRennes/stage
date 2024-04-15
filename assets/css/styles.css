@@ -1,0 +1,237 @@
+ /* html {
+     overflow-x: hidden; 
+} */
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Titillium Web', sans-serif;
+    color: #666;
+    font-weight: 300;
+    line-height: 1.65em;
+    overflow-x: hidden;
+
+}
+
+main{
+    margin: 180px
+}
+a {
+    color: #b34b32;
+    text-decoration: none;
+}
+p {
+    font-size: larger;
+    text-align: justify;
+}
+
+
+/* bloc 1 */
+div.bloc-1 {
+    margin-top: 50px;
+     padding: 3%;
+
+    background: #62757c; 
+}
+
+div.bloc-1 h2{
+    text-align: center;
+    font-size: 2em;
+    color: aliceblue;
+    line-height: 1.35em;
+    padding-bottom: 50px;
+}
+h2, h3 {
+    font-weight: 400;
+    margin-right: 17%;
+    margin-left: 17%;
+    margin-top: 5%;
+} 
+
+div.text-1 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 59%;
+}
+div.paragraphe-gauche {
+    color: rgba(255, 255, 255, 0.70);
+}
+.paragraphe-1 {
+    margin: 25px;
+} 
+
+.caroussel-actualites{
+    background: #62757c; 
+
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding-top: 3%;
+    padding-bottom: 7%;
+
+}
+
+.caroussel-actualites h2{
+    color: aliceblue;
+    text-align: center;
+    padding-bottom: 2%;
+    font-size: xx-large;
+}
+/* Bloc 2 */
+div.bloc-2 {
+    font-size: 120%;
+}
+.division{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+.text-essi{
+    flex: 5/6;
+
+}
+
+.img-essi{
+    flex: 1/6;
+    width: 100%;
+    display: inline-block;
+   
+}
+
+
+/* image séparation */
+span.image.fit img.séparation {
+    width:70%;
+}
+/* Bloc 3 */
+.bloc-3{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.image-cybermalveillance{
+    width: 80%;
+
+}
+.paragraphe{
+    margin-right: 20%;
+    text-align: justify;
+    font-size: larger;
+    line-height: 1.5em;
+    margin-bottom: 20px;
+
+}
+
+/* block 4 */
+ div.bloc-4 {
+    font-size: 120%;
+    margin: 0%;
+}
+div .valeurs {
+    display: flex;
+    box-sizing: border-box;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.image img {
+    border-radius: 4px;
+    display: block;
+}
+.valeur img {
+    max-width: 350px;
+    width: 100%;
+}
+.valeurs p{
+    max-width: 370px;
+    vertical-align: baseline;
+    padding-right: 10%;
+    padding-left: 10%;
+    height: 50%;
+
+}
+
+.card h2, h3 {
+    margin-right: 1% ;
+    margin-left: 1% ;
+    text-align: center;
+}
+
+
+@media screen and (max-width: 1114px) {
+    div .valeurs{
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    body{
+        overflow-x: hidden;
+    }
+    .image-cybermalveillance{
+        
+        margin-left: 35px;
+    }
+    
+    .bloc-3  {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .groupe-gauche{
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+
+    }
+    div.text-1 {
+        width: 100%;
+    }
+    
+
+  }
+
+  @media screen and (max-width: 480px) {
+     body{
+        overflow-x: hidden;
+    }
+    main{
+        margin: 5%
+    }
+
+    .division{
+        display: flex;
+        flex-direction: column;
+
+    }
+    .valeurs{
+        display: flex;
+        flex-direction: column;
+    }
+    .bloc-3{
+        display: flex;
+        flex-direction: column;
+    }
+    .paragraphe{
+        text-align: justify;
+        margin-right: auto; 
+        margin-left: auto;  
+    }
+
+
+      .test{
+          text-align: justify;
+          margin-right: auto;
+          margin-left: auto;
+      }
+    
+}

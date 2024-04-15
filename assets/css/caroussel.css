@@ -1,0 +1,139 @@
+.carousel-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    transition: .5s ease-in-out;
+
+
+}
+
+.carousel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    transition: transform 0.5s ease;
+
+}
+
+
+
+.carousel-item {
+
+    width: 20%;
+    border: solid black 1px;
+    border-radius: 10px;
+    border: 2px solid #b1c8bf;
+    background: #d9d9d9;
+    box-shadow: 0px 10px 6px 0px rgba(0, 0, 0, 0.25);
+    width: 315px;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    padding: 10px;
+    color: black!important;
+    height: 500px;
+
+  
+}
+
+.carousel-item {
+
+    transition: opacity 3s ease; /* Transition de 0.5 seconde pour l'opacité */
+}
+
+.carousel-item.active {
+    opacity: 1;
+}
+
+.carousel-item img {
+
+    height: auto;
+    width: 100%; 
+    border-radius: 10px 10px 0 0;
+}
+
+.carousel-item h3, .carousel-item p{
+    color: black;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.pagination button {
+    margin: 50px 8px; 
+    width: 10px; 
+    height: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%; 
+    position: relative; 
+    font-size: 0;
+    
+}
+
+.pagination button::before {
+    content: '';
+    position: absolute; 
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%; 
+    opacity: 0.5;
+}
+
+.pagination button.active::before {
+    background-color: #333;
+    opacity: 1;
+}
+    
+.pagination button span {
+    visibility: hidden;
+}
+
+
+
+@media screen and (max-width: 450px) {
+    .pagination button {
+        margin: 5px 5px; 
+    }
+    .carousel-item{
+        width: 300px;
+        height: 500px;
+        font-size: smaller;
+    }
+    button{
+        position: relative;
+    }
+    .prev{
+        display:none
+    }
+    .next{
+        display: none;
+    }
+}

@@ -1,0 +1,235 @@
+/* Variables */
+:root {
+    --menu-width: 350px;
+    --scene-width: 1000px;
+    --scene-height: 400px;
+
+    --white-color: #fff;
+    --gray-color: #eee;
+  }
+  
+  /* Keyframes */
+  @keyframes slidein {
+    0% {
+      top: calc(-1 * var(--scene-height));
+      opacity: 0;
+    }
+    
+    100% {
+      opacity: 1;
+      top: 0px;
+    }
+  }
+  
+  @keyframes slideout {
+    0% {
+      top: 0;
+      opacity: 1;
+    }
+    
+    100% {
+      top: calc(-1 * var(--scene-height));
+      opacity: 0;
+    }
+  }
+  
+  /* Body */
+  body {
+    background: var(--gray-color);
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+p{
+    margin: 30px;
+    text-align: justify;
+}
+
+.button-actu{
+    color: #eee;
+    background-color: #b34b32;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+}
+  
+  /* Scene */
+  #scene {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: var(--scene-width);
+    height: var(--scene-height);
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: var(--white-color);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    overflow: hidden;
+    border-radius: 12px;
+
+
+  }
+  
+  /* Left Zone */
+  #left-zone {
+    background: var(--white-color);
+    height: 75%;
+    flex-grow: 0;
+    display: flex;
+    width: var(--menu-width);
+    align-items: center;
+    justify-content: left;
+  }
+  
+  /* List */
+  .list {
+    display: flex;
+    list-style: none;
+    align-content: stretch;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* List Items */
+  .item {
+    input[type="radio"] {
+      display: none;
+    }
+  
+    input[type="radio"] ~ label {
+      display: block;
+      opacity: 0.5;
+      height: 50px;
+      text-align: justify;
+      line-height: 50px;
+      cursor: pointer;
+      margin-left:1em;
+    }
+  
+    input[type="radio"]:hover ~ label {
+      opacity: 0.75;
+    }
+  
+    input[type="radio"]:checked ~ label {
+      opacity: 1;
+    }
+    
+    .content {
+      position: absolute;
+      left: var(--menu-width);
+      top: calc(-1 * var(--scene-height));
+      width: calc(var(--scene-width) - var(--menu-width));
+      height: var(--scene-height);
+      display: none;
+    }
+  
+    input[type="radio"]:checked ~ .content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      animation: slidein 0.75s ease-out forwards;
+    }
+  
+    input[type="radio"] ~ .content {
+      animation: slideout 0.75s ease-out forwards;
+    }
+  }
+  
+  /* Middle Border */
+  #middle-border {
+    background-color: var(--gray-color);
+    height: 75%;
+    flex-grow: 1;
+    max-width: 2px;
+    z-index: 0;
+  }
+  
+  /* Right Zone */
+  #right-zone {
+    background: var(--white-color);
+    height: 100%;
+    flex-grow: 3;
+  }
+  
+ 
+  @media screen and (max-width: 768px) {
+    #left-zone {
+      background: var(--white-color);
+      height: 75%;
+      flex-grow: 0;
+      display: flex;
+      width: var(--menu-width);
+      align-items: center;
+      justify-content: left;
+      overflow-wrap: anywhere;
+    }
+    #scene{
+      height: auto;
+      width: auto;
+      padding: 5%;
+      border: none;
+      margin: 2%;
+    }
+    .carousel-wrapper {
+      display: flex;
+      flex-direction: column; /* Met les éléments en colonne */
+    }
+  
+    .item {
+      .content {
+        position: relative; /* Retirez la position absolue */
+        left: 0;
+        top: 0;
+        width: auto;
+        height: auto;
+        display: none;
+      }
+      h1{
+        display: none;
+      }
+    }
+    .content {
+      display: none;
+      position: relative;
+      width: auto;
+      height: auto;
+    }
+  
+    .content.show {
+      display: block;
+      order: 2;
+    }
+  
+    .item {
+      order: 1;
+    }
+  
+    input[type="radio"]:checked ~ .content {
+      display: block;
+    }
+  
+    input[type="radio"]:checked ~ label {
+      order: 2;
+    }
+  }
+
+
+
+@media screen and (max-width: 768px) {
+
+
+
+  input[type="radio"] ~ label {
+  margin-left: 10px;
+  }
+}
