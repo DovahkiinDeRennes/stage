@@ -26,7 +26,7 @@
 <div class="sous-titre">
     <h1>Actualités</h1>
 </div>
-    <main>
+    <main>s
 
         <center>
         <div class="gallerie-actualites">
