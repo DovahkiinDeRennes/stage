@@ -1,4 +1,3 @@
-
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
@@ -25,4 +24,4 @@ include(__DIR__ . '/../../core/connection.php');
 </html>
 
 
-
+test
