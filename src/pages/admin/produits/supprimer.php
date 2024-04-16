@@ -1,6 +1,6 @@
 <?php
-include(__DIR__ . '/../../admin/check_login.php');
-include(__DIR__ . '/../../Core/connection.php');
+include(__DIR__ . '/../../../../admin/check_login.php');
+include(__DIR__ . '/../../core/connection.php');
 $id = $_GET['id'];
 $query = "SELECT * FROM produits WHERE id= $id";
 $result = $db->query($query);

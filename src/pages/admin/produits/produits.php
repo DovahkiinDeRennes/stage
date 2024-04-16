@@ -1,6 +1,6 @@
 <?php
-include(__DIR__ . '/../../admin/check_login.php');
-include(__DIR__ . '/../../Core/connection.php');
+include(__DIR__ . '/../../../../admin/check_login.php');
+include(__DIR__ . '/../../core/connection.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -16,9 +16,9 @@ include(__DIR__ . '/../../Core/connection.php');
 <body>
 <?php include(__DIR__ . '/../../admin/navbar.php'); ?>
     <center>
-<h1>Admin : Services</h1>
+<h1>Admin : Produits</h1>
     <a href="ajouter.php"><input type="button" value="Ajouter un article"></a>
-    <?php include(__DIR__ . '/../../admin/afficher_services.php'); ?>
+    <?php include(__DIR__ . '/../../admin/afficher_produits.php'); ?>
 
 </center>
 </body>

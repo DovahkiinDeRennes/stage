@@ -1,6 +1,6 @@
 <?php
 include(__DIR__ . '/../admin/check_login.php');
-include(__DIR__ . '/../Core/connection.php');
+include(__DIR__ . '/../src/pages/core/connection.php');
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +14,7 @@ include(__DIR__ . '/../Core/connection.php');
     <link rel="stylesheet" href="/assets/css/fontawesome-free-6.1.2-web/css/all.css" />
 </head>
 <body>
-    <?php include(__DIR__ . '/../admin/navbar.php');
+    <?php include(__DIR__ . '/../src/pages/admin/navbar.php');
             $req = mysqli_query($db, "SELECT * FROM compte");
             $row = mysqli_fetch_assoc($req) ?>
     <center>

@@ -1,6 +1,6 @@
 <?php
-include(__DIR__ . '/../../admin/check_login.php');
-include(__DIR__ . '/../../Core/connection.php');
+include(__DIR__ . '/../../../../admin/check_login.php');
+include(__DIR__ . '/../../core/connection.php');
 
 // On récupère l'ID dans le lien
 $id = $_GET['id'];

@@ -22,7 +22,7 @@ include(__DIR__ . '/../assets/php/connection.php');
             <button type="submit">Se connecter</button>
             <?php // Vérifie si le formulaire de connexion a été soumis
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        include(__DIR__ . '/../Core/connection.php');
+        include(__DIR__ . '/../core/connection.php');
         $req = mysqli_query($db, "SELECT * FROM compte_passerelle");
         $row = mysqli_fetch_assoc($req);
         $username = $row['utilisateur'];

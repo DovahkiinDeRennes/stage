@@ -1,6 +1,6 @@
 <?php
-include(__DIR__ . '/../../admin/check_login.php');
-include(__DIR__ . '/../../Core/connection.php');
+include(__DIR__ . '/../../../../admin/check_login.php');
+include(__DIR__ . '/../../core/connection.php');
 
 if (isset($_POST['ok'])) {
     $titre = mysqli_real_escape_string($db, $_POST['titre']);

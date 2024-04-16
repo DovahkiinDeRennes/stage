@@ -1,5 +1,5 @@
 <?php
-include(__DIR__ . '/../../check_login.php');
+include(__DIR__ . '/../../../../admin/check_login.php');
 
     ?>
 <!DOCTYPE html>
@@ -16,14 +16,13 @@ include(__DIR__ . '/../../check_login.php');
 
 <body>
     <?php
-
-    include(__DIR__ . '/../../Core/connection.php');
+    include(__DIR__ . '/../../core/connection.php');
     
 
     // On récupère l'ID dans le lien
     $id = $_GET['id'];
     // Requête pour afficher les infos d'un produit
-    $req = mysqli_query($db, "SELECT * FROM services WHERE id = $id");
+    $req = mysqli_query($db, "SELECT * FROM produits WHERE id = $id");
     $row = mysqli_fetch_assoc($req);
 
     // Vérifier que le bouton Modifier a bien été cliqué
@@ -61,7 +60,7 @@ while ($row = $result->fetch_assoc()) {
             $allowed_exs = array("jpg", "jpeg", "png");
 
             if (in_array($img_ex_lc, $allowed_exs)) {
-                $new_img_name = uniqid("IMG-", true) . 'services' . $img_ex_lc;
+                $new_img_name = uniqid("IMG-", true) . 'produits' . $img_ex_lc;
                 $img_upload_path = __DIR__ . '/../../../../images/servicesetproduits/' . $new_img_name;
                 move_uploaded_file($tmp_name, $img_upload_path);
             } else {
@@ -74,10 +73,10 @@ while ($row = $result->fetch_assoc()) {
         }
 
         // Requête de modification
-        $update_query = "UPDATE services SET titre = '$titre' , description = '$texte' , image_url = '$new_img_name' , alt_text = '$alt' , categorie = '$categorie' WHERE id = $id";
+        $update_query = "UPDATE produits SET titre = '$titre' , description = '$texte' , image_url = '$new_img_name' , alt_text = '$alt' , categorie = '$categorie' WHERE id = $id";
         $req = mysqli_query($db, $update_query);
         if ($req) {
-            echo "<script>window.location.href = 'services.php';</script>";
+            echo "<script>window.location.href = 'produits.php';</script>";
         } else {
             // Sinon, produit non modifié
             $message = "Produit non modifié";
@@ -88,7 +87,7 @@ while ($row = $result->fetch_assoc()) {
     <?php include(__DIR__ . '/../../admin/navbar.php'); ?>
 
     <div class="form">
-        <a href="services.php" class="back_btn"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14"
+        <a href="produits.php" class="back_btn"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14"
                                                      viewBox="0 0 448 512">
                 <path
                     d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />

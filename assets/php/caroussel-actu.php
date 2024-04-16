@@ -1,5 +1,5 @@
 <?php
-include('src/fideliliumAdmin/Core/connection.php');
+include('src/pages/core/connection.php');
 
 $query = "SELECT * FROM actualite ORDER BY date DESC LIMIT 4";
 $result = $db->query($query);

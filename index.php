@@ -105,13 +105,13 @@
 	<!-- Troisieme bloc -->
 	<div class="bloc-3">
 		<div class="groupe-gauche" data-aos="fade-right">
-			<a href="http://cybermalveillance.gouv.fr">
+			<a href="https://cybermalveillance.gouv.fr">
 				<img src="images/Bloc_ReferenceSurLaPlateformeCybermalveillance_RVB.jpg" loading="lazy" alt="Logo cybermalveillance.gouv.fr" class="image-cybermalveillance">
 			</a>
 		</div>
 		<div class="cybermalveillance">
 		<div class="groupe-droite" data-aos="fade-up">
-			<div class="paragraphe"><a href="http://Cybermalveillance.gouv.fr">
+			<div class="paragraphe"><a href="https://Cybermalveillance.gouv.fr">
 					<span>Cybermalveillance.gouv.fr</span></a>
 				est le dispositif national d'assistance aux victimes d'actes de cybermalveillance,
 				de sensibilisation des publics aux risques numériques et d'observation de la menace en France.

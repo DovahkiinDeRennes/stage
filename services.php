@@ -1,4 +1,4 @@
-<?php include './src/fideliliumAdmin/Core/connection.php';
+<?php include './src/pages/core/connection.php';
 // include 'assets/php/menu-service.php';
  ?>
 <!DOCTYPE html>
@@ -29,7 +29,7 @@
             <h1>Services</h1>
             </div>
             <div class="gallerie-services">
-                <?php include 'src/fideliliumAdmin/admin/afficher_services.php'; ?>
+                <?php include 'src/pages/admin/afficher_services.php'; ?>
 
             </div>
         </section >

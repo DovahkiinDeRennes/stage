@@ -1,7 +1,7 @@
 
 <?php
-include(__DIR__ . '/../../admin/check_login.php');
-include(__DIR__ . '/../../Core/connection.php');
+include(__DIR__ . '/../../../../admin/check_login.php');
+include(__DIR__ . '/../../core/connection.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr">

@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/header.css" />
-    <link rel="stylesheet" href="assets/css/actualites.css" />
-    <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="stylesheet" href="assets/css/roots.css" />
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="/assets/css/header.css" />
+    <link rel="stylesheet" href="/assets/css/actualites.css" />
+    <link rel="stylesheet" href="/assets/css/footer.css" />
+    <link rel="stylesheet" href="/assets/css/roots.css" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
 
 
 
-    <link rel="icon" href="images/Fidelilium_Logo_Simple.png">
+    <link rel="icon" href="/images/Fidelilium_Logo_Simple.png">
     <script src="/assets/js/jquery.min.js" defer></script>
     <script src="/assets/js/seeMore.js" defer></script>
     <link rel="stylesheet" href="assets/css/fontawesome-free-6.1.2-web/css/all.css" />
@@ -32,8 +32,8 @@
         <div class="gallerie-actualites">
         <?php
             session_start();
-            include(__DIR__ . '/src/fideliliumAdmin/Core/connection.php');
-            include (__DIR__ . '/src/fideliliumAdmin/admin/afficher_actualites.php'); ?>
+            include(__DIR__ . '/src/pages/core/connection.php');
+            include (__DIR__ . '/src/pages/admin/afficher_actualites.php'); ?>
         </center>
     </main>
 </section>

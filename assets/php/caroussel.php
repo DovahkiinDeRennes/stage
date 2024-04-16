@@ -2,7 +2,7 @@
 
 
 include('getWithTypes.php');
-include('src/fideliliumAdmin/Core/connection.php');
+include('src/pages/core/connection.php');
 
 // Obtenez les produits avec la clé 'type'
 $produits = getProduitsWithType($db);

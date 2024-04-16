@@ -1,6 +1,6 @@
 <?php
-include(__DIR__ . '/../../admin/check_login.php');
-include(__DIR__ . '/../../Core/connection.php');
+include(__DIR__ . '/../../../../admin/check_login.php');
+include(__DIR__ . '/../../core/connection.php');
 
 $query = "SELECT id, libelle FROM categorie";
 $result = mysqli_query($db, $query);

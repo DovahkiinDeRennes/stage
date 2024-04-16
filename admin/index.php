@@ -27,28 +27,28 @@
 <div class="menuburger">
 			<div id="mySidenav" class="sidenav">
 				<a id="closeBtn" href="#" class="close">×</a>
-				<a href="index.html" data-aos="fade-right" data-aos-duration="1000"><img
-						srcset="images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;"></a>
+				<a href="/admin/index.php" data-aos="fade-right" data-aos-duration="1000"><img
+						srcset="/images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;"></a>
 				<ul>
-					<li><a href="index.html" id="page-actuelle-menu">Accueil</a></li>
-					<li><a href="contact.php">Contact</a></li>
-					<li><a href="actualites.php">Actualités</a></li>
+					<li><a href="/index.php" id="page-actuelle-menu">Accueil</a></li>
+					<li><a href="/contact.php">Contact</a></li>
+					<li><a href="/actualites.php">Actualités</a></li>
 				</ul>
 			</div>
 	
 			<a href="#" id="openBtn" class="burger-icon">
 				<i class="fa-solid fa-bars fa-2xl"></i>
 			</a>
-			<a href="index.html" data-aos="fade-right" data-aos-duration="1000"><img
-					srcset="images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;"></a>
+			<a href="index.php" data-aos="fade-right" data-aos-duration="1000"><img
+					srcset="/images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;"></a>
 		</div>
 		<div class="navbar">
 		<nav>
-			  <a href="index.html" data-aos="fade-right" data-aos-duration="1000"><img srcset="images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;"></a>
+			  <a href="/admin/index.php" data-aos="fade-right" data-aos-duration="1000"><img srcset="/images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;"></a>
 			  <div class="onglets" data-aos="fade-left" data-aos-duration="1000">
-			  <a class="link" href="index.html"><p class="link"  id="page-actuel">Accueil</p></a>
-			  <a class="link" href="contact.php"><p class="link">Contact</p></a>
-			  <a class="link" href="actualites.php"><p class="link">Actualités</p></a>
+			  <a class="link" href="/index.php"><p class="link"  id="page-actuel">Accueil</p></a>
+			  <a class="link" href="/contact.php"><p class="link">Contact</p></a>
+			  <a class="link" href="/actualites.php"><p class="link">Actualités</p></a>
 			</div>
 		  </nav>
 		</div>
@@ -63,7 +63,7 @@
                     <button type="submit">Se connecter</button>
                    <?php // Vérifie si le formulaire de connexion a été soumis
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        include(__DIR__ . '/../Core/connection.php');
+        include(__DIR__ . '/../src/pages/core/connection.php');
         $req = mysqli_query($db, "SELECT * FROM compte");
         $row = mysqli_fetch_assoc($req);
         $username = $row['utilisateur'];

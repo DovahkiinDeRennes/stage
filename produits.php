@@ -1,4 +1,4 @@
-<?php include './src/fideliliumAdmin/Core/connection.php'; ?>
+<?php include './src/pages/core/connection.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -28,7 +28,7 @@
             <h1>Produits</h1>
             </div>
             <div class="gallerie-services">
-                <?php include 'src/fideliliumAdmin/admin/afficher_produits.php'; ?>
+                <?php include 'src/pages/admin/afficher_produits.php'; ?>
                 
 
             </div>
