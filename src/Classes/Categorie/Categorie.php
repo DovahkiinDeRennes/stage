@@ -1,9 +1,9 @@
 <?php
 
-class Categorie
+class categorie
 {
     public $id;
-    public $titre;
+    public $libelle;
 
     private $db;
 
@@ -20,22 +20,22 @@ class Categorie
         return $result->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function insert($titre)
+    public function insert($libelle)
     {
-        $this->titre = FormValidation::sanitizeText($titre);
+        $this->libelle = FormValidation::sanitizeText($libelle);
 
-        $reqAdd = "INSERT INTO categories (titre) VALUES (:titre)";
+        $reqAdd = "INSERT INTO categories (libelle) VALUES (:libelle)";
         $prepareAdd = $this->db->prepare($reqAdd);
-        return $prepareAdd->execute(array('titre' => $this->titre));
+        return $prepareAdd->execute(array('libelle' => $this->libelle));
     }
 
-    public function update($titre, $id)
+    public function update($libelle, $id)
     {
-        $this->titre = FormValidation::sanitizeText($titre);
+        $this->libelle = FormValidation::sanitizeText($libelle);
 
-        $reqUpdate = "UPDATE categories SET titre = :titre WHERE id = :id";
+        $reqUpdate = "UPDATE categories SET libelle = :libelle WHERE id = :id";
         $prepareUpdate = $this->db->prepare($reqUpdate);
-        return $prepareUpdate->execute(array('titre' => $this->titre, 'id' => $id));
+        return $prepareUpdate->execute(array('libelle' => $this->libelle, 'id' => $id));
     }
 
     public function delete($id)

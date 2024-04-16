@@ -14,14 +14,13 @@ include(__DIR__ . '/../../core/connection.php');
 </head>
 <body>
 <?php include(__DIR__ . '/../../admin/navbar.php'); ?>
-    <center>
+
 <h1>Admin : categories</h1>
     <a href="ajouter.php"><input type="button" value="Ajouter une categorie"></a>
     <?php include(__DIR__ . '/../../admin/afficher_categories.php'); ?>
 
-</center>
+
 </body>
 </html>
 
 
-test
