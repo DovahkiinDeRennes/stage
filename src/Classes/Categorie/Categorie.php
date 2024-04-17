@@ -1,45 +1,62 @@
 <?php
 
-class categorie
-{
-    public $id;
-    public $libelle;
 
+
+
+include(__DIR__ . '/../../pages/core/connection.php');
+
+class Categorie
+{
     private $db;
 
-    public function __construct()
+    public function __construct($db)
     {
-        $connection = new connection();
-        $this->db = $connection->connect();
+        $this->db = $db;
     }
 
     public function getAllCategories()
     {
-        $req = "SELECT * FROM categorie";
-        $result = $this->db->query($req);
-        return $result->fetchAll(\PDO::FETCH_ASSOC);
+        $query = "SELECT * FROM categorie";
+        $statement = $this->db->query($query);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function insert($libelle)
     {
-        $reqAdd = "INSERT INTO categorie (libelle) VALUES (:libelle)";
-        $prepareAdd = $this->db->prepare($reqAdd);
-        return $prepareAdd->execute(array(':libelle' => $libelle));
+        $libelle = isset($_POST["libelle"]) ? $_POST["libelle"] : '';
+
+        if (!empty($libelle)) {
+
+            $query = "INSERT INTO categorie (libelle) VALUES (?)";
+            $statement = mysqli_prepare($this->db, $query);
+
+
+            mysqli_stmt_bind_param($statement, 's', $libelle);
+
+
+            $success = mysqli_stmt_execute($statement);
+
+            if ($success) {
+
+                header('Location: categories.php');
+                exit;
+            }
+        }
     }
 
-    public function update($libelle, $id)
-    {
-        $this->libelle = FormValidation::sanitizeText($libelle);
 
-        $reqUpdate = "UPDATE categorie SET libelle = :libelle WHERE id = :id";
-        $prepareUpdate = $this->db->prepare($reqUpdate);
-        return $prepareUpdate->execute(array('libelle' => $this->libelle, 'id' => $id));
+
+    public function update($id, $libelle)
+    {
+        $query = "UPDATE categorie SET libelle = ? WHERE id = ?";
+        $statement = $this->db->prepare($query);
+        return $statement->execute(array($libelle, $id));
     }
 
     public function delete($id)
     {
-        $req = "DELETE FROM categorie WHERE id = :id";
-        $prepareSup = $this->db->prepare($req);
-        return $prepareSup->execute(array('id' => $id));
+        $query = "DELETE FROM categorie WHERE id = ?";
+        $statement = $this->db->prepare($query);
+        return $statement->execute(array($id));
     }
 }

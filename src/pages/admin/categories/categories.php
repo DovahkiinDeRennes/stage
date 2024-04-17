@@ -20,12 +20,7 @@ include(__DIR__ . '/../../core/connection.php');
     <?php include(__DIR__ . '/../../admin/afficher_categories.php'); ?>
 
 
-<h2>Ajouter une catégorie</h2>
-<form action="categories.php" method="post">
-    <label for="libelle">libelle :</label>
-    <input type="text" id="libelle" name="libelle" required>
-    <Button type="submit" name="ok">Envoyer</Button>
-</form>
+
 
 </body>
 </html>
