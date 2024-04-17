@@ -15,12 +15,21 @@ include(__DIR__ . '/../../core/connection.php');
 <body>
 <?php include(__DIR__ . '/../../admin/navbar.php'); ?>
 
-<h1>Admin : categories</h1>
-    <a href="ajouter.php"><input type="button" value="Ajouter une categorie"></a>
+<h1> categories</h1>
+    <a href="ajouter_categories.php"><input type="button" value="Ajouter une categorie"></a>
     <?php include(__DIR__ . '/../../admin/afficher_categories.php'); ?>
 
 
+<h2>Ajouter une catégorie</h2>
+<form action="categories.php" method="post">
+    <label for="libelle">libelle :</label>
+    <input type="text" id="libelle" name="libelle" required>
+    <Button type="submit" name="ok">Envoyer</Button>
+</form>
+
 </body>
 </html>
+
+
 
 
