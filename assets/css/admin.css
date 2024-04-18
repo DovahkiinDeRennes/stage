@@ -61,6 +61,16 @@ body {
     border-radius: 5px;
     background-color: #ffffff; /* Couleur de fond du champ de fichier */
   }
+
+select{
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #ffffff; /* Couleur de fond du champ de fichier */
+}
   
   /* Optionnel : Styles pour le texte du champ de fichier */
   .input-file-label {
@@ -123,6 +133,18 @@ a.admin_action_special {
   margin-right: 15px;
   margin-left: 15px;
 }
+
+.enLigne
+{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+
+
+
+
 iframe {
   width: 90%;
 }

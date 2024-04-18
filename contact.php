@@ -1,5 +1,5 @@
 <?php
-include (__DIR__ . '/assets/php/connection.php');
+include (__DIR__ . './src/pages/core/connection.php');
 
 if (isset($_POST['ok'])) {
     if (isset($_POST["ma_checkbox"])) {

@@ -1,6 +1,6 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
-include(__DIR__ . '/../../check_login.php');
+
 
     ?>
 <!DOCTYPE html>
@@ -32,7 +32,7 @@ include(__DIR__ . '/../../check_login.php');
         $titre = mysqli_real_escape_string($db, $_POST['titre']);
         $texte = mysqli_real_escape_string($db, $_POST['texte']);
         $alt = mysqli_real_escape_string($db, $_POST['alt_text']);
-        $categorie = mysqli_real_escape_string($db, $_POST['categorie']);
+
 
         // Vérifier si un fichier a été uploadé
         if ($_FILES['image']['error'] == 0) {
@@ -75,7 +75,7 @@ while ($row = $result->fetch_assoc()) {
         }
 
         // Requête de modification
-        $update_query = "UPDATE services SET titre = '$titre' , description = '$texte' , image_url = '$new_img_name' , alt_text = '$alt' , categorie = '$categorie' WHERE id = $id";
+        $update_query = "UPDATE services SET titre = '$titre' , description = '$texte' , image_url = '$new_img_name' , alt_text = '$alt' WHERE id = $id";
         $req = mysqli_query($db, $update_query);
         if ($req) {
             echo "<script>window.location.href = 'services.php';</script>";
@@ -116,8 +116,7 @@ while ($row = $result->fetch_assoc()) {
                 <input type="file" name="image"><br>
                 <input type="hidden" name="image" value="<?= $row['image_url'] ?>"> <br>
                 <label>Catégorie</label><br>
-                <input type="text" name="categorie" placeholder="Catégorie" value="<?= $row['categorie'] ?>"><br>
-                <input type="submit" value="Modifier" name="ok"><br>
+                <Button type="submit" name="ok">Envoyer</Button>
             </form>
         </center>
     </div>

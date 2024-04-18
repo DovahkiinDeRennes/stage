@@ -2,7 +2,7 @@
 
 function getProduitsWithType($db)
 {
-    $query = "SELECT *, 'produits' AS type FROM produits ORDER BY categorie ASC";
+    $query = "SELECT *, 'produits' AS type FROM produits ORDER BY ordre ASC";
     $result = $db->query($query);
     $produits = array();
     while ($row = $result->fetch_assoc()) {
@@ -13,7 +13,7 @@ function getProduitsWithType($db)
 
 function getServicesWithType($db)
 {
-    $query = "SELECT *, 'services' AS type FROM services ORDER BY categorie ASC";
+    $query = "SELECT *, 'services' AS type FROM services ORDER BY ordre ASC";
     $result = $db->query($query);
     $services = array();
     while ($row = $result->fetch_assoc()) {

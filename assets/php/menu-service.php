@@ -7,7 +7,7 @@ function getMenu($db){
     }
 
     // Exécution de la requête SQL pour obtenir les catégories avec le décompte des services
-    $query = "SELECT categorie, COUNT(*) AS count FROM services GROUP BY categorie";
+    $query = "SELECT ordre, COUNT(*) AS count FROM services GROUP BY ordre";
     $result = $db->query($query);
     if (!$result) {
         die("Erreur lors de l'exécution de la requête: " . $db->error);
@@ -16,7 +16,7 @@ function getMenu($db){
     // Tableau pour stocker les catégories et le nombre de services dans chaque catégorie
     $categories_count = array();
     while ($row = $result->fetch_assoc()){
-        $categories_count[$row['categorie']] = $row['count'];
+        $categories_count[$row['ordre']] = $row['count'];
     }
     
     // Retourner le tableau de catégories avec le nombre de services dans chaque catégorie

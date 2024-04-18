@@ -17,7 +17,28 @@ include(__DIR__ . '/../../../../admin/check_login.php');
 <body>
     <?php
     include(__DIR__ . '/../../core/connection.php');
-    
+
+
+    $query = "SELECT id, libelle FROM categorie";
+    $result = mysqli_query($db, $query);
+
+    // Vérifier si la requête s'est bien déroulée et si des résultats ont été renvoyés
+    if ($result && mysqli_num_rows($result) > 0) {
+        $categories = array(); // Initialisez un tableau vide pour stocker les catégories récupérées
+
+        // Parcourir les résultats et stocker les catégories dans le tableau
+        while ($row = mysqli_fetch_assoc($result)) {
+            $categories[] = array(
+                'id' => $row['id'],
+                'libelle' => $row['libelle']
+            );
+        }
+
+    } else {
+        // Gestion de l'erreur de requête
+        echo "Erreur de requête : " . mysqli_error($db);
+    }
+
 
     // On récupère l'ID dans le lien
     $id = $_GET['id'];
@@ -30,7 +51,7 @@ include(__DIR__ . '/../../../../admin/check_login.php');
         $titre = mysqli_real_escape_string($db, $_POST['titre']);
         $texte = mysqli_real_escape_string($db, $_POST['texte']);
         $alt = mysqli_real_escape_string($db, $_POST['alt_text']);
-        $categorie = mysqli_real_escape_string($db, $_POST['categorie']);
+
 
         // Vérifier si un fichier a été uploadé
         if ($_FILES['image']['error'] == 0) {
@@ -72,9 +93,16 @@ while ($row = $result->fetch_assoc()) {
             $new_img_name = $row['image_url'];
         }
 
-        // Requête de modification
-        $update_query = "UPDATE produits SET titre = '$titre' , description = '$texte' , image_url = '$new_img_name' , alt_text = '$alt' , categorie = '$categorie' WHERE id = $id";
-        $req = mysqli_query($db, $update_query);
+        foreach ($categories as $categorie) {
+            $categorie_id = $categorie['id']; // Récupérer l'ID de la catégorie
+            // Vérifier si la catégorie est sélectionnée
+            if ($categorie_id == $_POST['categories']) {
+                // Exécuter votre requête SQL pour mettre à jour le produit avec la catégorie sélectionnée
+                $update_query = "UPDATE produits SET titre = '$titre', description = '$texte', image_url = '$new_img_name', alt_text = '$alt', date = NOW(), categories = '$categorie_id' WHERE id = $id";
+                $req = mysqli_query($db, $update_query);
+                break; // Sortir de la boucle une fois que la catégorie sélectionnée a été trouvée et le produit mis à jour
+            }
+        }
         if ($req) {
             echo "<script>window.location.href = 'produits.php';</script>";
         } else {
@@ -113,8 +141,15 @@ while ($row = $result->fetch_assoc()) {
                 <label>Nouvelle image</label><br>
                 <input type="file" name="image"><br>
                 <input type="hidden" name="image" value="<?= $row['image_url'] ?>"> <br>
-                <label>Catégorie</label><br>
-                <input type="text" name="categorie" placeholder="Catégorie" value="<?= $row['categorie'] ?>"><br>
+                <select name="categories">
+                    <?php
+                    // Afficher les catégories dans la liste déroulante
+                    foreach ($categories as $categorie) {
+                        echo "<option value=\"" . $categorie['id'] . "\">" . $categorie['libelle'] . "</option>";
+                    }
+                    ?>
+                </select>
+
                 <input type="submit" value="Modifier" name="ok"><br>
             </form>
         </center>

@@ -10,7 +10,7 @@ $row = mysqli_fetch_assoc($req);
 
 // Vérifier que le bouton Modifier a bien été cliqué
 if(isset($_POST['ok'])) {
-    if(!empty($_POST['nom']) && !empty($_POST['prénom']) && !empty($_POST['email']) && !empty($_POST['société']) && !empty($_POST['objet']) && !empty($_POST['message'])) {
+    if(!empty($_POST['nom']) && !empty($_POST['prénom']) && !empty($_POST['email']) && !empty($_POST['objet']) && !empty($_POST['message'])) {
         $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
           $msg = "adresse e-mail non valide";
@@ -114,9 +114,9 @@ if(isset($_POST['ok'])) {
                             <i class="fas fa-mobile"></i>
                         </div>
                         <div class="groupe">
-                            <label>Société<label class="requis">*</label></label>
+                            <label>Société<label class="requis"></label></label>
                             <input type="text" name="société" placeholder="Saisissez ici..."
-                                value="<?= $row['societe'] ?>" require />
+                                value="<?= $row['societe'] ?>"  />
                             <i class="fas fa-building"></i>
                         </div>
                         <div class="groupe">
