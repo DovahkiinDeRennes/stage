@@ -45,12 +45,14 @@ class Categorie
     }
 
 
+    function update($db, $id, $libelle) {
+        $id = mysqli_real_escape_string($db, $id);
+        $libelle = mysqli_real_escape_string($db, $libelle);
 
-    public function update($id, $libelle)
-    {
-        $query = "UPDATE categorie SET libelle = ? WHERE id = ?";
-        $statement = $this->db->prepare($query);
-        return $statement->execute(array($libelle, $id));
+        $update_query = "UPDATE categorie SET libelle = '$libelle' WHERE id = $id";
+        $req = mysqli_query($db, $update_query);
+
+        return $req;
     }
 
     public function delete($id)
@@ -58,5 +60,6 @@ class Categorie
         $query = "DELETE FROM categorie WHERE id = ?";
         $statement = $this->db->prepare($query);
         return $statement->execute(array($id));
+
     }
 }

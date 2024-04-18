@@ -2,6 +2,9 @@
 include(__DIR__ . '/../../core/connection.php');
 include '../../../classes/Categorie/categorie.php';
 
+
+
+
 if(isset($_POST['ok'])) {
     $libelle = isset($_POST["libelle"]) ? $_POST["libelle"] : '';
 

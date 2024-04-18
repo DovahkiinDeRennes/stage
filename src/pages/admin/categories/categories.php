@@ -1,6 +1,7 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -16,15 +17,12 @@ include(__DIR__ . '/../../core/connection.php');
 <?php include(__DIR__ . '/../../admin/navbar.php'); ?>
 
 <h1> categories</h1>
-    <a href="ajouter_categories.php"><input type="button" value="Ajouter une categorie"></a>
-    <?php include(__DIR__ . '/../../admin/afficher_categories.php'); ?>
+<a href="ajouter.php"><input type="button" value="Ajouter une categorie"></a>
+<?php include(__DIR__ . '/../../admin/afficher_categories.php'); ?>
+
 
 
 
 
 </body>
 </html>
-
-
-
-
