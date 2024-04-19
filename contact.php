@@ -1,8 +1,12 @@
 <?php
-include (__DIR__ . './src/pages/core/connection.php');
+
+include (__DIR__ . '/src/pages/core/connection.php');
+
 
 if (isset($_POST['ok'])) {
+
     if (isset($_POST["ma_checkbox"])) {
+
         $conditions = "Oui";
 
         if (!empty($_POST['nom']) && !empty($_POST['prénom']) && !empty($_POST['email']) && !empty($_POST['objet']) && !empty($_POST['message'])) {

@@ -23,6 +23,10 @@ include(__DIR__ . '/../../core/connection.php');
 
 
 
-
+<script>
+    function confirmDelete() {
+        return confirm("Êtes-vous sûr de vouloir supprimer cette catégorie ?");
+    }
+</script>
 </body>
 </html>

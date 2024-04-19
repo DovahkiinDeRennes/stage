@@ -16,16 +16,30 @@ class Categorie
 
     public function getAllCategories()
     {
+        $categories = array();
+
+
         $query = "SELECT * FROM categorie";
-        $statement = $this->db->query($query);
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        $result = mysqli_query($this->db, $query);
+
+
+        if ($result) {
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $categories[] = $row;
+            }
+
+
+            mysqli_free_result($result);
+        }
+
+        return $categories;
     }
 
     public function insert($libelle)
     {
-        $libelle = isset($_POST["libelle"]) ? $_POST["libelle"] : '';
 
-        if (!empty($libelle)) {
+        if (isset($libelle) && !empty($libelle)) {
 
             $query = "INSERT INTO categorie (libelle) VALUES (?)";
             $statement = mysqli_prepare($this->db, $query);
@@ -35,6 +49,7 @@ class Categorie
 
 
             $success = mysqli_stmt_execute($statement);
+
 
             if ($success) {
 
@@ -46,20 +61,37 @@ class Categorie
 
 
     function update($db, $id, $libelle) {
-        $id = mysqli_real_escape_string($db, $id);
-        $libelle = mysqli_real_escape_string($db, $libelle);
 
-        $update_query = "UPDATE categorie SET libelle = '$libelle' WHERE id = $id";
-        $req = mysqli_query($db, $update_query);
+        $query = "UPDATE categorie SET libelle = ? WHERE id = ?";
 
-        return $req;
+
+        $statement = mysqli_prepare($db, $query);
+
+
+        mysqli_stmt_bind_param($statement, 'si', $libelle, $id);
+
+
+        $success = mysqli_stmt_execute($statement);
+
+        return $success;
     }
 
     public function delete($id)
     {
-        $query = "DELETE FROM categorie WHERE id = ?";
-        $statement = $this->db->prepare($query);
-        return $statement->execute(array($id));
 
+        $id = mysqli_real_escape_string($this->db, $id);
+
+
+        $query = "DELETE FROM categorie WHERE id = '$id'";
+
+
+        $result = mysqli_query($this->db, $query);
+
+
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
