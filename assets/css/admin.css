@@ -50,6 +50,7 @@ body {
   
   button:hover {
     background-color: #B34B33; /* Couleur de fond du bouton lorsqu'il est survolé */
+
   }
 
   input[type="file"] {

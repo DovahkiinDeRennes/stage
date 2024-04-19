@@ -26,4 +26,5 @@ if ($row_check_services['count'] > 0) {
         echo "Une erreur s'est produite lors de la suppression de la catégorie '".$row['libelle']."'. Veuillez réessayer plus tard.<br>";
         echo "Error deleting record: " . $db->error;
     }
+
 }

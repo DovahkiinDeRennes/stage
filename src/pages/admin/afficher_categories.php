@@ -29,7 +29,7 @@ while ($row = $result->fetch_assoc()) {
 
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
     } else {
-echo    "<a href='supprimer.php?id=" . $row['id'] . "'><input type='button' value='supprimer une categorie'></a>";
+echo "<a onclick='return confirmDelete();' href='supprimer.php?id=" . $row['id'] . "'><input type='button' value='Supprimer une catégorie'></a>";
 
        echo "<a href='modifier.php?id=" . $row['id'] . "'><input type='button'value='modifier une categorie'></a>";
 
