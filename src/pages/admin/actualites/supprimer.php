@@ -5,7 +5,7 @@ $id = $_GET['id'];
 $query = "SELECT * FROM actualite WHERE id= $id";
 $result = $db->query($query);
 while ($row = $result->fetch_assoc()) {
-    $image_path = __DIR__ . '/../../images/actualites/' . $row['image'];
+    $image_path = __DIR__ . '/../../../../images/actualites/' . $row['image'];
     // Vérifier si le fichier existe avant de le supprimer
     if (file_exists($image_path)) {
         unlink($image_path); // Supprimer le fichier
@@ -19,7 +19,7 @@ while ($row = $result->fetch_assoc()) {
         header("Location: actualites_creation.php");
         }
 
-    $images_directory = __DIR__ . '/../../images/actualites/';
+    $images_directory = __DIR__ . '/../../../../images/actualites/';
     $images = scandir($images_directory);
 
 }
