@@ -1,6 +1,7 @@
 <?php
+include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
-include '../../../classes/Categorie/categorie.php';
+include './../../../Classes/Categorie/Categorie.php';
 
 
 
@@ -8,10 +9,10 @@ include '../../../classes/Categorie/categorie.php';
 if(isset($_POST['ok'])) {
     $libelle = isset($_POST["libelle"]) ? $_POST["libelle"] : '';
 
-    // Instancier la classe Categorie avec la connexion à la base de données
+
     $categorie = new Categorie($db);
 
-    // Appeler la méthode insert avec le libellé
+
     $categorie->insert($libelle);
 }
 ?>

@@ -1,7 +1,13 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
-include '../../../classes/Categorie/categorie.php';
+include './../../../Classes/Categorie/Categorie.php';
+
+
+// Récupération des informations de la catégorie à modifier
+$id = mysqli_real_escape_string($db, $_GET['id']);
+$req = mysqli_query($db, "SELECT * FROM categorie WHERE id = $id");
+$row = mysqli_fetch_assoc($req);
 
 if (isset($_POST['ok'])) {
     $id = $_GET['id'];
@@ -23,10 +29,7 @@ if (isset($_POST['ok'])) {
     }
 }
 
-// Récupération des informations de la catégorie à modifier
-$id = mysqli_real_escape_string($db, $_GET['id']);
-$req = mysqli_query($db, "SELECT * FROM categorie WHERE id = $id");
-$row = mysqli_fetch_assoc($req);
+
 ?>
 
 <form action="" method="POST" enctype="multipart/form-data">
