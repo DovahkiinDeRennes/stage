@@ -15,11 +15,9 @@ include(__DIR__ . '/../../core/connection.php');
 </head>
 <body>
 <?php include(__DIR__ . '/../../admin/navbar.php'); ?>
-    <center>
 <h1>Admin : Produits</h1>
     <a href="ajouter.php"><input type="button" value="Ajouter un article"></a>
     <?php include(__DIR__ . '/../../admin/afficher_produits.php'); ?>
 
-</center>
 </body>
 </html>

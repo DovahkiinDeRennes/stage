@@ -1,4 +1,7 @@
 <?php
+
+
+
 $query = "SELECT produits.*, categorie.libelle AS libelle 
 FROM produits 
 LEFT JOIN categorie ON produits.categories = categorie.id 
