@@ -14,7 +14,7 @@ class Categorie
 
     public function getAllCategories()
     {
-        $categories = array();
+        $categories  = array();
 
 
         $query = "SELECT * FROM categorie";
@@ -76,19 +76,30 @@ class Categorie
 
     public function delete($id)
     {
+        // Utilisation d'une requête préparée pour la suppression
+        $query = "DELETE FROM services WHERE id = ?";
+        $stmt = mysqli_prepare($this->db, $query);
 
-        $id = mysqli_real_escape_string($this->db, $id);
+        if ($stmt) {
+            // Liaison du paramètre ID
+            mysqli_stmt_bind_param($stmt, "i", $id);
 
+            // Exécution de la requête
+            $result = mysqli_stmt_execute($stmt);
 
-        $query = "DELETE FROM categorie WHERE id = '$id'";
-
-
-        $result = mysqli_query($this->db, $query);
-
-
-        if ($result) {
-            return true;
+            if ($result) {
+                // La suppression a réussi
+                mysqli_stmt_close($stmt);
+                return true;
+            } else {
+                // Gestion des erreurs en cas d'échec de la suppression
+                // Vous pouvez utiliser mysqli_stmt_error() pour obtenir des informations sur l'erreur
+                mysqli_stmt_close($stmt);
+                return false;
+            }
         } else {
+            // Gestion des erreurs en cas d'échec de la préparation de la requête
+            // Vous pouvez utiliser mysqli_error() pour obtenir des informations sur l'erreur
             return false;
         }
     }

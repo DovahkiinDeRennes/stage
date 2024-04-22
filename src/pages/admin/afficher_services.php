@@ -1,30 +1,31 @@
 <?php
-$query = "SELECT services.*, categorie.libelle AS libelle 
-FROM services 
-LEFT JOIN categorie ON services.categories = categorie.id 
-ORDER BY categorie.ordre ASC, services.ordre ASC ";
-$result = $db->query($query);
+include(__DIR__ . '/../core/connection.php');
+include(__DIR__ . '/../../classes/service.php');
 
-$currentCategory = null;
 
-while ($row = $result->fetch_assoc()) {
-    if ($currentCategory !== $row['libelle']) {
-        // Fermer la div précédente (si elle existe)
-        if ($currentCategory !== null) {
+$service = new service($db);
+
+$sercies = $service->getAllServices();
+
+$currentSercice = null;
+
+foreach ($sercies as $row) {
+    if ($currentSercice !== $row['libelle']) {
+        // Fermer la div précedente (si elle existe)
+        if ($currentSercice !== null) {
             echo "</div>";
         }
 
-        // Afficher l'en-tête de la nouvelle catégorie
         echo "<h2>" . htmlspecialchars($row['libelle']) . "</h2>";
-        $currentCategory = $row['libelle'];
-
-        // Ouvrir une nouvelle div pour la catégorie
+        $currentSercice = $row['libelle'];
         echo "<div class='categorie'>";
+
     }
 
     echo "<a href='/info.php?id=" . $row['id'] . "&amp;titre=" . $row['titre'] . "&amp;direction=services'><div class='card'>";
     echo "<img src='/images/servicesetproduits/" . $row['image_url'] . "' alt='" . $row['alt_text'] . "'>";
     echo "<h3>" . $row['titre'] . "</h3>";
+
 
     $description = $row['description'];
     if (strlen($description) > 80) {
@@ -47,12 +48,11 @@ while ($row = $result->fetch_assoc()) {
         echo "<a href='#' class='change-order-link' data-direction='down' data-service-id='$serviceId'><button>&#9654;</button></a>";
         echo "</div>";
     }
+
 }
 
-// Fermer la dernière div
-if ($currentCategory !== null) {
+
+
+if ($currentSercice !== null) {
     echo "</div>";
 }
-
-$result->close();
-?>
