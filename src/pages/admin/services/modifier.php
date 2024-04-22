@@ -1,6 +1,6 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
-
+include(__DIR__ . '/../../../classes/service.php');
 
     ?>
 <!DOCTYPE html>
@@ -27,99 +27,56 @@ include(__DIR__ . '/../../../../admin/check_login.php');
     $req = mysqli_query($db, "SELECT * FROM services WHERE id = $id");
     $row = mysqli_fetch_assoc($req);
 
-    // Vérifier que le bouton Modifier a bien été cliqué
-    if (isset($_POST['ok'])) {
-        $titre = mysqli_real_escape_string($db, $_POST['titre']);
-        $texte = mysqli_real_escape_string($db, $_POST['texte']);
-        $alt = mysqli_real_escape_string($db, $_POST['alt_text']);
 
+    $query = "SELECT id, libelle FROM categorie";
+    $result = mysqli_query($db, $query);
 
-        // Vérifier si un fichier a été uploadé
-        if ($_FILES['image']['error'] == 0) {
-            $id = $_GET['id'];
-$query = "SELECT * FROM services WHERE id= $id";
-$result = $db->query($query);
-while ($row = $result->fetch_assoc()) {
-    $image_path = __DIR__ . '/../../../../images/servicesetproduits/' . $row['image_url'];
-    echo $image_path;
-    // Vérifier si le fichier existe avant de le supprimer
-    if (file_exists($image_path)) {
-        unlink($image_path); // Supprimer le fichier
-
+    if ($result && mysqli_num_rows($result) > 0) {
+        $categories = array();
+        while ($rowCat = mysqli_fetch_assoc($result)) {
+            $categories[] = array(
+                'id' => $rowCat['id'],
+                'libelle' => $rowCat['libelle']
+            );
+        }
     } else {
-        echo "L'image n'existe pas ou a déjà été supprimée.";
+        echo "Erreur de requête : " . mysqli_error($db);
     }
 
-    $images_directory = __DIR__ . '/../../../../images/servicesetproduits/';
-    $images = scandir($images_directory);
 
-}
-            $img_name = $_FILES['image']['name'];
-            $img_size = $_FILES['image']['size'];
-            $tmp_name = $_FILES['image']['tmp_name'];
-            $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
-            $img_ex_lc = strtolower($img_ex);
-            $allowed_exs = array("jpg", "jpeg", "png");
+    // Vérifier que le bouton Modifier a bien été cliqué
+    if (isset($_POST['ok'])) {
+        $titre = isset($_POST['titre']) ? $_POST['titre'] : '';
+        $texte = isset($_POST['texte']) ? $_POST['texte'] : '';
+        $alt = isset($_POST['alt_text']) ? $_POST['alt_text'] : '';
+        $categories = isset($_POST['categories']) ? $_POST['categories'] : '';
 
-            if (in_array($img_ex_lc, $allowed_exs)) {
-                $new_img_name = uniqid("IMG-", true) . 'services' . $img_ex_lc;
-                $img_upload_path = __DIR__ . '/../../../../images/servicesetproduits/' . $new_img_name;
-                move_uploaded_file($tmp_name, $img_upload_path);
+        $img_name = $_FILES['image']['name'];
+        $tmp_name = $_FILES['image']['tmp_name'];
+        $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+        $img_ex_lc = strtolower($img_ex);
+        $allowed_exs = array("jpg", "jpeg", "png");
+
+        $id = $_GET['id'];
+        $service = new Service($db);
+
+        if (in_array($img_ex_lc, $allowed_exs)) {
+            $new_img_name = uniqid("IMG-", true) . 'services' . $img_ex_lc;
+            $img_upload_path = __DIR__ . '/../../../../images/servicesetproduits/' . $new_img_name;
+            if (move_uploaded_file($tmp_name, $img_upload_path)) {
+                // Appel de la fonction update pour mettre à jour les données dans la base de données
+                $service->update($id, $titre, $texte, $new_img_name, $alt, $categories);
+
             } else {
-                echo "Invalid file type. Allowed types: jpg, jpeg, png.";
-                exit();
+                echo "Erreur lors du téléchargement de l'image.";
             }
         } else {
-            // No new image uploaded, use the existing one
-            $new_img_name = $row['image_url'];
+            echo "Extension de fichier non autorisée. Veuillez télécharger une image au format JPG, JPEG ou PNG.";
         }
-
-        // Requête de modification
-        $update_query = "UPDATE services SET titre = '$titre' , description = '$texte' , image_url = '$new_img_name' , alt_text = '$alt' WHERE id = $id";
-        $req = mysqli_query($db, $update_query);
-        if ($req) {
-            echo "<script>window.location.href = 'services.php';</script>";
-        } else {
-            // Sinon, produit non modifié
-            $message = "Produit non modifié";
-        }
+        $new_img_name = $row['image_url'];
+        $service->update($id, $titre, $texte, $new_img_name, $alt, $categories);
     }
 
     ?>
     <?php include(__DIR__ . '/../../admin/navbar.php'); ?>
-
-    <div class="form">
-        <a href="services.php" class="back_btn"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14"
-                                                     viewBox="0 0 448 512">
-                <path
-                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
-                </svg> Retour</a>
-        <center>
-            <h2>Modifier le service : <?= $row['titre'] ?> </h2>
-            <p class="erreur_message">
-                <?php
-                if (isset($message)) {
-                    echo $message;
-                }
-                ?>
-            </p>
-            <form action="" method="POST" enctype="multipart/form-data">
-                <label>Titre</label><br>
-                <input type="text" name="titre" value="<?= $row['titre'] ?>"><br>
-                <label>Description</label><br>
-                <textarea name="texte"><?= htmlspecialchars($row['description']) ?></textarea><br>
-                <label>Image actuelle</label><br>
-                <img src="/../../images/servicesetproduits/<?= $row['image_url'] ?>" width="150px"><br>
-                <input type="text" name="alt_text" value="<?= $row['alt_text'] ?>"
-                    placeholder="ALT texte d'image SEO"><br>
-                <label>Nouvelle image</label><br>
-                <input type="file" name="image"><br>
-                <input type="hidden" name="image" value="<?= $row['image_url'] ?>"> <br>
-                <label>Catégorie</label><br>
-                <Button type="submit" name="ok">Envoyer</Button>
-            </form>
-        </center>
-    </div>
-</body>
-
-</html>
+    <?php include(__DIR__ . '/formulaireModifier.php'); ?>
