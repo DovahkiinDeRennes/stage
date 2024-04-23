@@ -4,8 +4,6 @@ class service
 {
     private $db;
 
-    private $new_img_name;
-
     public function __construct($db)
     {
         $this->db = $db;
