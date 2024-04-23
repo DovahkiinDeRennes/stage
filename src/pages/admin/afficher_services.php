@@ -1,4 +1,5 @@
 <?php
+
 include(__DIR__ . '/../core/connection.php');
 include(__DIR__ . '/../../classes/service.php');
 
@@ -46,6 +47,7 @@ foreach ($sercies as $row) {
         // Afficher les liens avec les boutons pour changer l'ordre
         echo "<a href='#' class='change-order-link' data-direction='up' data-service-id='$serviceId'><button>&#9664</button></a>";
         echo "<a href='#' class='change-order-link' data-direction='down' data-service-id='$serviceId'><button>&#9654;</button></a>";
+        echo "<a onclick='return confirmDelete();' href='supprimer.php?id=" . $row['id'] . "'><input type='button' value='Supprimer un service'></a>";
         echo "</div>";
     }
 

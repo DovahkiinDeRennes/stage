@@ -1,8 +1,14 @@
 <?php
 
+include(__DIR__ . '/../pages/core/connection.php');
 class produit
 {
+    private $db;
 
+    public function __construct($db)
+    {
+        $this->db = $db;
+    }
     public function insert($titre, $texte, $image_url, $alt_text, $categories)
     {
         // Récupérer le nombre total de produits pour la catégorie donnée
