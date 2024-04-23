@@ -64,7 +64,7 @@
                     <li><a class="link" href="/src/pages/admin/produits/produits.php">
                             <p class="link">Produits</p>
                         </a></li>
-                    <li><a class="link" href="/src/pages/admin/actualites/actualites_creation.php">
+                    <li><a class="link" href="/src/pages/admin/actualites/actualites.php">
                             <p class="link">Actualités</p>
                              </a></li>
                                                                                    
@@ -100,7 +100,7 @@
                     <a class="link" href="/src/pages/admin/produits/produits.php">
                         <p class="link">Produits</p>
                     </a>
-                    <a class="link" href="/src/pages/admin/actualites/actualites_creation.php">
+                    <a class="link" href="/src/pages/admin/actualites/actualites.php">
                         <p class="link">Actualités</p>
                     </a>
                        <a class="link" href="/src/pages/admin/categories/categories.php">

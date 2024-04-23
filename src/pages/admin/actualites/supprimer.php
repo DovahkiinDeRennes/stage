@@ -1,31 +1,45 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
-$id = $_GET['id'];
-$query = "SELECT * FROM actualite WHERE id= $id";
-$result = $db->query($query);
-while ($row = $result->fetch_assoc()) {
-    $image_path = __DIR__ . '/../../../../images/actualites/' . $row['image'];
-    // Vérifier si le fichier existe avant de le supprimer
-    if (file_exists($image_path)) {
-        unlink($image_path); // Supprimer le fichier
-        // Ajoutez ici toute autre logique nécessaire, comme mettre à jour la base de données, etc.
+include(__DIR__ . '/../../../classes/actualite.php');
 
+$id = $_GET['id'];
+
+
+$actualite = new actualite($db);
+
+
+if ($actualite->delete($id)) {
+
+    $result = mysqli_query($db, "SELECT image FROM actualite WHERE id = $id");
+    $row = mysqli_fetch_assoc($result);
+    $image_name = $row['image'];
+
+
+    $image_path = __DIR__ . '/../../../../images/actualites/' . $image_name;
+
+
+    if (file_exists($image_path)) {
+        unlink($image_path);
     } else {
         echo "L'image n'existe pas ou a déjà été supprimée.";
     }
-    // Affichage des images existantes avec une option de suppression
-    if (mysqli_query($db, "DELETE FROM actualite WHERE id = $id")) {
-        header("Location: actualites_creation.php");
-        }
+
+
+    header("Location: actualites.php");
+
 
     $images_directory = __DIR__ . '/../../../../images/actualites/';
     $images = scandir($images_directory);
-
+    echo "Images restantes :";
+    foreach ($images as $image) {
+        if (!in_array($image, array(".", ".."))) {
+            echo "<img src='/../../../../images/actualites/$image' width='100px'>";
+        }
+    }
+} else {
+    echo "Erreur lors de la suppression de l'actualité.";
 }
-
-
-
-
-
 ?>
+
+
