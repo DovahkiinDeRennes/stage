@@ -1,7 +1,7 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
-include './../../../Classes/Categorie.php';
+include './../../../classes/Categorie.php';
 
 
 $id = $_GET['id'];

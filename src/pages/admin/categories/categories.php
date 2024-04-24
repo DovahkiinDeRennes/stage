@@ -19,14 +19,5 @@ include(__DIR__ . '/../../core/connection.php');
 <h1> categories</h1>
 <a href="ajouter.php"><input type="button" value="Ajouter une categorie"></a>
 <?php include(__DIR__ . '/../../admin/afficher_categories.php'); ?>
-
-
-
-
-<script>
-    function confirmDelete() {
-        return confirm("Êtes-vous sûr de vouloir supprimer cette catégorie ?");
-    }
-</script>
 </body>
 </html>

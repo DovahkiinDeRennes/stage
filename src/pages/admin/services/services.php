@@ -24,11 +24,5 @@ include(__DIR__ . '/../../core/connection.php');
 
 </center>
 
-<script>
-    function confirmDelete() {
-        return confirm("Êtes-vous sûr de vouloir supprimer ce service ?");
-    }
-</script>
-
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
-include './../../../Classes/Categorie.php';
+include './../../../classes/Categorie.php';
 
 
 // Récupération des informations de la catégorie à modifier
@@ -29,11 +29,7 @@ if (isset($_POST['ok'])) {
     }
 }
 
-
+include(__DIR__ . '/formulaireModifier.php');
 ?>
 
-<form action="" method="POST" enctype="multipart/form-data">
-    <label>Libellé</label><br>
-    <input type="text" name="libelle" value="<?= $row['libelle'] ?>"><br>
-    <input type="submit" value="Modifier" name="ok"><br>
-</form>
+

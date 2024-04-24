@@ -27,7 +27,7 @@ if (isset($_POST['ok'])) {
         $allowed_exs = array("jpg", "jpeg", "png" ,"mp4");
 
         if (in_array($img_ex_lc, $allowed_exs)) {
-            $new_img_name = uniqid("IMG-", true) . 'actualites' . $img_ex_lc;
+            $new_img_name = uniqid("IMG-", true) . 'actualites.' . $img_ex_lc;
             $img_upload_path = __DIR__ . '/../../../../images/actualites/' . $new_img_name;
             move_uploaded_file($tmp_name, $img_upload_path);
             $ytb_url = "non";

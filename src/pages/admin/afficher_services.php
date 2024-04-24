@@ -6,19 +6,19 @@ include(__DIR__ . '/../../classes/service.php');
 
 $service = new service($db);
 
-$sercies = $service->getAllServices();
+$services = $service->getAllServices();
 
-$currentSercice = null;
+$currentService = null;
 
-foreach ($sercies as $row) {
-    if ($currentSercice !== $row['libelle']) {
+foreach ($services as $row) {
+    if ($currentService !== $row['libelle']) {
         // Fermer la div précedente (si elle existe)
-        if ($currentSercice !== null) {
+        if ($currentService !== null) {
             echo "</div>";
         }
 
         echo "<h2>" . htmlspecialchars($row['libelle']) . "</h2>";
-        $currentSercice = $row['libelle'];
+        $currentService = $row['libelle'];
         echo "<div class='categorie'>";
 
     }
@@ -47,7 +47,7 @@ foreach ($sercies as $row) {
         // Afficher les liens avec les boutons pour changer l'ordre
         echo "<a href='#' class='change-order-link' data-direction='up' data-service-id='$serviceId'><button>&#9664</button></a>";
         echo "<a href='#' class='change-order-link' data-direction='down' data-service-id='$serviceId'><button>&#9654;</button></a>";
-        echo "<a onclick='return confirmDelete();' href='supprimer.php?id=" . $row['id'] . "'><input type='button' value='Supprimer un service'></a>";
+        echo "<a onclick='return confirmDelete();' href='supprimer.php?id=" . $row['id'] . "'></a>";
         echo "</div>";
     }
 
@@ -55,6 +55,6 @@ foreach ($sercies as $row) {
 
 
 
-if ($currentSercice !== null) {
+if ($currentService !== null) {
     echo "</div>";
 }
