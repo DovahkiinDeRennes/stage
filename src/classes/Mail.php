@@ -3,21 +3,19 @@ include (__DIR__ . '/../pages/core/connection.php');
 class Mail
 {
     private $db;
-    function update($db, $id, $libelle) {
+    function update($id, $prenom, $nom, $fonction, $adresse, $mail, $societe, $message, $sujet, $libelle) {
 
-        $query = "UPDATE contact SET libelle = ? WHERE id = ?";
-
+        $query = "UPDATE contact SET prenom = ?, nom = ?, fonction = ?, adresse = ?, mail = ?, societe = ?, message = ?, sujet = ?, libelle = ? WHERE id = ?";
 
         $statement = mysqli_prepare($db, $query);
 
-
-        mysqli_stmt_bind_param($statement, 'si', $libelle, $id);
-
+        mysqli_stmt_bind_param($statement, $prenom, $nom, $fonction, $adresse, $mail, $societe, $message, $sujet, $libelle, $id);
 
         $success = mysqli_stmt_execute($statement);
 
         return $success;
     }
+
     public function delete($id)
     {
         // Utilisation d'une requête préparée pour la suppression
