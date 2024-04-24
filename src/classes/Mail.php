@@ -3,19 +3,92 @@ include (__DIR__ . '/../pages/core/connection.php');
 class Mail
 {
     private $db;
-    function update($id, $prenom, $nom, $fonction, $adresse, $mail, $societe, $message, $sujet, $libelle) {
 
-        $query = "UPDATE contact SET prenom = ?, nom = ?, fonction = ?, adresse = ?, mail = ?, societe = ?, message = ?, sujet = ?, libelle = ? WHERE id = ?";
-
-        $statement = mysqli_prepare($db, $query);
-
-        mysqli_stmt_bind_param($statement, $prenom, $nom, $fonction, $adresse, $mail, $societe, $message, $sujet, $libelle, $id);
-
-        $success = mysqli_stmt_execute($statement);
-
-        return $success;
+    public function __construct($db)
+    {
+        $this->db = $db;
     }
 
+    function getAllMails()
+    {
+        $mails = array();
+        $query = "SELECT * FROM contact";
+        $result = mysqli_query($this->db, $query);
+
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $mails[] = $row;
+            }
+            mysqli_free_result($result);
+
+        }
+        return $mails;
+    }
+
+
+    public function insert($nom, $prenom, $email, $tel, $societe, $fonction, $objet, $message, $conditions)
+    {
+        $query = "INSERT INTO contact (nom, prenom, mail, tel, societe, fonction, object, message, date, conditions) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?)";
+        $statement = mysqli_prepare($this->db, $query);
+        mysqli_stmt_bind_param($statement, 'sssssssss', $nom, $prenom, $email, $tel, $societe, $fonction, $objet, $message, $conditions);
+        $success = mysqli_stmt_execute($statement);
+
+        if ($success) {
+            // Insertion réussie, afficher une alerte SweetAlert pour informer l'utilisateur
+            $msg = "Votre message a bien été envoyé, Vous allez être redirigé !";
+            $statut = "success";
+            echo "<script>Swal.fire({
+            title: '$msg', icon: '$statut', confirmButtonText: 'Confirmer'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.location.href='index.php';
+            }
+        });
+        </script>";
+        } else {
+            // Gérer les erreurs d'insertion
+            $msg = "Erreur lors de l'insertion : " . mysqli_error($this->db);
+            $statut = "error";
+            echo "<script>Swal.fire({
+            title: '$msg', icon: '$statut', confirmButtonText: 'Confirmer'
+        });
+        </script>";
+        }
+    }
+
+
+
+    public function update($id, $prenom, $nom, $fonction, $tel, $mail, $societe, $message, $objet) {
+        $query = "UPDATE contact SET nom = ?, prenom = ?, mail = ?, tel = ?, societe = ?, fonction = ?, object = ?, message = ? WHERE id = ?";
+        $statement = mysqli_prepare($this->db, $query);
+        mysqli_stmt_bind_param($statement, 'ssssssssi', $prenom, $nom, $fonction, $tel, $mail, $societe, $message, $objet, $id);
+        $success = mysqli_stmt_execute($statement);
+
+        if ($success) {
+            // Mise à jour réussie, afficher une alerte SweetAlert pour informer l'utilisateur
+            $msg = "La mise à jour a été effectuée avec succès !";
+            $statut = "success";
+        } else {
+            // Gérer les erreurs de mise à jour
+            $msg = "Erreur lors de la mise à jour : " . mysqli_error($this->db);
+            $statut = "error";
+        }
+
+        // Afficher l'alerte SweetAlert
+        echo "<script>Swal.fire({
+            title: '$msg', 
+            icon: '$statut', 
+            confirmButtonText: 'Confirmer'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Rediriger vers la page d'accueil après la confirmation
+                window.location.href = 'index.php';
+            }
+        });
+        </script>";
+
+        return $success; // Retourne true si la mise à jour a réussi, sinon false
+    }
     public function delete($id)
     {
         // Utilisation d'une requête préparée pour la suppression
