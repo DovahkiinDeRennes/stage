@@ -1,7 +1,8 @@
 <?php
-
+include (__DIR__ . '/../pages/core/connection.php');
 class Mail
 {
+    private $db;
     function update($db, $id, $libelle) {
 
         $query = "UPDATE contact SET libelle = ? WHERE id = ?";
