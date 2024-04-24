@@ -22,8 +22,10 @@ include(__DIR__ . '/../../core/connection.php');
     <?php
 
 // // Récupérer les données de la base de données
-include(__DIR__ . '/../../admin/afficher_actualites.php'); ?>
-    
+
+include(__DIR__ . '/../../admin/afficher_actualites.php');
+
+        ?>
 </center>
 </body>
 </html>

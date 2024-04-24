@@ -33,6 +33,7 @@
         <?php
             session_start();
             include(__DIR__ . '/src/pages/core/connection.php');
+
             include (__DIR__ . '/src/pages/admin/afficher_actualites.php'); ?>
         </center>
     </main>

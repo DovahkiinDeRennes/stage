@@ -26,7 +26,7 @@ foreach ($actualites as $row) {
 
     // Ajouter le contenu en fonction du type
     if ($row['image'] !== "non") {
-        echo '<img src="/images/actualites/'.$row['image'].'" loading="lazy" alt="' . $row['alt_text'] . '" class="image-actualites">';
+        echo '<img width="560" height="315" src="/images/actualites/'.$row['image'].'" loading="lazy" alt="' . $row['alt_text'] . '" class="image-actualites">';
     } elseif ($row['ytb_url'] !== "non") {
         $url = $row['ytb_url'];
         $videoID = getYouTubeVideoID($url);

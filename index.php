@@ -93,7 +93,7 @@
 		<div class="division ">
 			<p class="text-essi " data-aos="fade-right">Fidelilium est une société fondée par deux détenteurs du titre d'expert en sécurité des systèmes d'information de l'ANSSI (Agence Nationale de Sécurité des Systèmes d'Information). Ils cumulent à eux deux plus de 40 ans d’expérience dans la défense des systèmes d’information. Forts d’un riche réseau professionnel, ils ont à cœur de mettre à la disposition de leurs clients, les services d’experts reconnus du milieu de la cybersécurité et du numérique.</p>
 			<a href="https://cyber.gouv.fr/formation-essi-expert-en-securite-des-systemes-dinformation" target="_blank">
-				<img class="img-essi" src="images\logoEssi.png" alt="logo Essi"></a>
+				<img class="img-essi" src="images/logoEssi.png" alt="logo Essi"></a>
 		</div>
 
 
@@ -112,11 +112,13 @@
 		<div class="cybermalveillance">
 		<div class="groupe-droite" data-aos="fade-up">
 			<div class="paragraphe"><a href="https://Cybermalveillance.gouv.fr">
-					<span>Cybermalveillance.gouv.fr</span></a>
-				est le dispositif national d'assistance aux victimes d'actes de cybermalveillance,
+					</a>
+                <p>
+                    <a href="https://cybermalveillance.gouv.fr"><span>Cybermalveillance.gouv.fr </span></a>est le dispositif national d'assistance aux victimes d'actes de cybermalveillance,
 				de sensibilisation des publics aux risques numériques et d'observation de la menace en France.
 				Ses publics sont les particuliers, les entreprises et les collectivités territoriales.
-			</div>
+                </p>
+            </div>
 		</div>
 	</div>
 	</div>

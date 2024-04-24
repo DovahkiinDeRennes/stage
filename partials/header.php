@@ -26,20 +26,20 @@
         <a href="/index.php" data-aos="fade-right" data-aos-duration="1000"><img src="/images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;" alt="Logo de fidelilium"></a>
         <div class="onglets" data-aos="fade-left" data-aos-duration="1000">
 
-            <a class="link" href="/index.php">
-                <p class="link" id="page-actuel">Accueil</p>
+            <a class="link " href="/index.php">
+                <p class="link navHeader" id="page-actuel">Accueil</p>
             </a>
-            <a class="link" href="/actualites.php">
-                <p class="link">Actualités</p>
+            <a class="link " href="/actualites.php">
+                <p class="link navHeader">Actualités</p>
             </a>
-            <a class="link" href="/services.php">
-                <p class="link">Services</p>
+            <a class="link " href="/services.php">
+                <p class="link navHeader">Services</p>
             </a>
-            <a class="link" href="/produits.php">
-                <p class="link">Produits</p>
+            <a class="link " href="/produits.php">
+                <p class="link navHeader">Produits</p>
             </a>
-            <a class="link" href="/contact.php">
-                <p class="link">Contact</p>
+            <a class="link " href="/contact.php">
+                <p class="link navHeader">Contact</p>
             </a>
         </div>
 

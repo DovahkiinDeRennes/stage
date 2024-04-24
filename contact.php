@@ -59,7 +59,7 @@ if (isset($_POST['ok'])) {
 		<link rel="stylesheet" href="assets/css/contact.css" />
     <link rel="stylesheet" href="assets/css/navbar.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
-
+        <link rel="stylesheet" href="assets/css/header.css" />
 		<link rel="stylesheet" href="assets/css/fontawesome-free-6.1.2-web/css/all.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.html" /></noscript>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -70,38 +70,9 @@ if (isset($_POST['ok'])) {
        
   </head>
   <body>
-  <div class="all">
-  <div class="menuburger">
-			<div id="mySidenav" class="sidenav">
-				<a id="closeBtn" href="#" class="close">×</a>
-				<a href="index.php" data-aos="fade-right" data-aos-duration="1000"><img
-						srcset="images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;" alt="Logo de fidelilium"></a>
-				<ul>
-					<li><a href="index.php">Accueil</a></li>
-					<li><a href="actualites.php">Actualités</a></li>
-					<li><a href="services.php">Services</a></li>
-					<li><a href="contact.php" id="page-actuelle-menu">Contact</a></li>
-				</ul>
-			</div>
-	
-			<a href="#" id="openBtn" class="burger-icon">
-				<i class="fa-solid fa-bars fa-2xl"></i>
-			</a>
-			<a href="index.php" data-aos="fade-right" data-aos-duration="1000"><img
-					srcset="images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;" alt="Logo de fidelilium"></a>
-		</div>
-		<div class="navbar">
-		<nav>
-			  <a href="index.php" data-aos="fade-right" data-aos-duration="1000"><img srcset="images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;" alt="Logo de fidelilium"></a>
-			  <div class="onglets" data-aos="fade-left" data-aos-duration="1000">
-			  <a class="link" href="index.php"><p class="link">Accueil</p></a>
-			  <a class="link" href="actualites.php"><p class="link">Actualités</p></a>
-			  <a class="link" href="services.php"><p class="link">Services</p></a>
-        <a class="link" href="produits.php"><p class="link">Produits</p></a>
-			  <a class="link" href="contact.php"><p class="link" id="page-actuel">Contact</p></a>
-			</div>
-		  </nav>
-		</div>
+
+
+  <?php require_once 'partials/header.php' ?>
     <!-- Fin de la navbar -->
     <!-- Formulaire -->
       <div class="container" data-aos="zoom-in-up" data-aos-duration="2000">

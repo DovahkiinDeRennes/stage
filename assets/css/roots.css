@@ -6,7 +6,7 @@ body{
     font-weight: 300;
     line-height: 1.65em;
     overflow-x: hidden;
-    background-color: #eee;
+    background-color: #ffffff;
 }
 
 
@@ -23,3 +23,6 @@ p {
     margin-bottom: 65px;
 }
 
+.margR30{
+    margin-right: 30px;
+}
