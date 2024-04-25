@@ -3,20 +3,32 @@ include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
 include(__DIR__ . '/../../../classes/Categorie.php');
 
+// Récupération de l'ID de la catégorie à modifier
+$id = $_GET['id'] ?? null;
+if (!$id) {
+    // Gérer le cas où l'ID n'est pas fourni
+    echo "ID de catégorie manquant";
+    exit();
+}
+
 // Récupération des informations de la catégorie à modifier
-$id = $_GET['id'];
-$req = $db->prepare("SELECT * FROM categorie WHERE id = ?");
-$req->execute([$id]);
-$row = $req->fetch(PDO::FETCH_ASSOC);
+$stmt = $db->prepare("SELECT * FROM categorie WHERE id = ?");
+$stmt->execute([$id]);
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (isset($_POST['ok'])) {
-    $id = $_POST['id'];
-    $libelle = $_POST['libelle'];
+    $libelle = $_POST['libelle'] ?? null;
 
-    // Créez une instance de la classe Categorie
+    if (!$libelle) {
+        // Gérer le cas où le libellé n'est pas fourni
+        echo "Libellé manquant";
+        exit();
+    }
+
+    // Créer une instance de la classe Categorie
     $categorie = new Categorie($db);
 
-    // Appelez la méthode update() pour mettre à jour la catégorie
+    // Appeler la méthode update() pour mettre à jour le libellé de la catégorie
     $result = $categorie->update($id, $libelle);
 
     if ($result) {
@@ -25,10 +37,8 @@ if (isset($_POST['ok'])) {
         exit();
     } else {
         // En cas d'erreur lors de la mise à jour
-        $message = "CATEGORIE non modifié";
+        $message = "Catégorie non modifiée";
     }
 }
 
 include(__DIR__ . '/formulaireModifier.php');
-
-
