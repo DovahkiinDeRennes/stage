@@ -1,27 +1,27 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
-include './../../../classes/Categorie.php';
-
+include(__DIR__ . '/../../../classes/Categorie.php');
 
 // Récupération des informations de la catégorie à modifier
-$id = mysqli_real_escape_string($db, $_GET['id']);
-$req = mysqli_query($db, "SELECT * FROM categorie WHERE id = $id");
-$row = mysqli_fetch_assoc($req);
+$id = $_GET['id'];
+$req = $db->prepare("SELECT * FROM categorie WHERE id = ?");
+$req->execute([$id]);
+$row = $req->fetch(PDO::FETCH_ASSOC);
 
 if (isset($_POST['ok'])) {
-    $id = $_GET['id'];
+    $id = $_POST['id'];
     $libelle = $_POST['libelle'];
 
     // Créez une instance de la classe Categorie
     $categorie = new Categorie($db);
 
     // Appelez la méthode update() pour mettre à jour la catégorie
-    $result = $categorie->update($db, $id, $libelle);
+    $result = $categorie->update($id, $libelle);
 
     if ($result) {
         // Redirection après la mise à jour
-        header("Location:categories.php");
+        header("Location: categories.php");
         exit();
     } else {
         // En cas d'erreur lors de la mise à jour
@@ -30,6 +30,5 @@ if (isset($_POST['ok'])) {
 }
 
 include(__DIR__ . '/formulaireModifier.php');
-?>
 
 

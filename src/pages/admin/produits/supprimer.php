@@ -2,26 +2,45 @@
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
 include(__DIR__ . '/../../../classes/produit.php');
-$id = $_GET['id'];
-$query = "SELECT * FROM produits WHERE id= $id";
-$result = $db->query($query);
-while ($row = $result->fetch_assoc()) {
-    $image_path = __DIR__ . '/../../../../images/servicesetproduits/' . $row['image_url'];
+
+// Valider et filtrer l'ID du produit
+$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+
+if (!$id) {
+    echo "ID de produit invalide";
+    exit;
+}
+
+// Requête pour récupérer les informations du produit
+$query = "SELECT * FROM produits WHERE id = ?";
+$stmt = $db->prepare($query);
+$stmt->execute([$id]);
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$row) {
+    echo "Produit non trouvé";
+    exit;
+}
+
+$image_url = $row['image_url'];
+$image_path = __DIR__ . '/../../../../images/servicesetproduits/' . $image_url;
+
+if (!file_exists($image_path)) {
+    echo "L'image n'existe pas ou a déjà été supprimée.";
+    exit;
+}
+
+if (unlink($image_path)) {
     $produit = new produit($db);
-    // Vérifier si le fichier existe avant de le supprimer
-    if (file_exists($image_path)) {
-        unlink($image_path); // Supprimer le fichier
-        // Ajoutez ici toute autre logique nécessaire, comme mettre à jour la base de données, etc.
-        if ($produit->delete($id)) {
-            header("Location: produits.php");
-            }
+    if ($produit->delete($id)) {
+        header("Location: produits.php");
+        exit;
     } else {
-        echo "L'image n'existe pas ou a déjà été supprimée.";
+        echo "Erreur lors de la suppression du produit.";
+        exit;
     }
-    // Affichage des images existantes avec une option de suppression
-
-    $images_directory = __DIR__ . '/../../../../images/servicesetproduits/';
-    $images = scandir($images_directory);
-
+} else {
+    echo "Erreur lors de la suppression de l'image.";
+    exit;
 }
 ?>

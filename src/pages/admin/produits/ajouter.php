@@ -3,30 +3,17 @@ include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
 include(__DIR__ . '/../../../classes/produit.php');
 
+// Récupération des catégories depuis la base de données
 $query = "SELECT id, libelle FROM categorie";
-$result = mysqli_query($db, $query);
-// Vérifier si la requête s'est bien déroulée et si des résultats ont été renvoyés
-if ($result && mysqli_num_rows($result) > 0) {
-    $categories = array(); // Initialisez un tableau vide pour stocker les catégories récupérées
-
-    // Parcourir les résultats et stocker les catégories dans le tableau
-    while ($row = mysqli_fetch_assoc($result)) {
-        $categories[] = array(
-            'id' => $row['id'],
-            'libelle' => $row['libelle']
-        );
-    }
-
-} else {
-    // Gestion de l'erreur de requête
-    echo "Erreur de requête : " . mysqli_error($db);
-}
+$stmt = $db->prepare($query);
+$stmt->execute();
+$categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if(isset($_POST['ok'])) {
-    $titre = isset($_POST['titre']) ? $_POST['titre'] : '';
-    $texte = isset($_POST['texte']) ? $_POST['texte'] : '';
-    $alt = isset($_POST['alt_text']) ? $_POST['alt_text'] : '';
-    $categories = isset($_POST['categories']) ? $_POST['categories'] : '';
+    $titre =  $_POST['titre'] ?? '';
+    $texte =$_POST['texte'] ?? '';
+    $alt =  $_POST['alt_text'] ?? '';
+    $categories =  $_POST['categories'] ?? '';
 
     $img_name = $_FILES['image']['name'];
     $img_size = $_FILES['image']['size'];
@@ -44,17 +31,14 @@ if(isset($_POST['ok'])) {
             $produit = new produit($db);
             $produit->insert($titre, $texte, $new_img_name, $alt, $categories);
 
-        } else {
-
-            $message ="Il vous faut une image pour ajouter un service.";
+            // Redirection après l'ajout
             header("Location: ajouter.php");
-
-
+            exit();
+        } else {
+            $message = "Il vous faut une image pour ajouter un service.";
         }
     } else {
-        $message ="Extension de fichier non autorisée. Veuillez télécharger une image au format JPG, JPEG ou PNG.";
-        header("Location: ajouter.php");
-
+        $message = "Extension de fichier non autorisée. Veuillez télécharger une image au format JPG, JPEG ou PNG.";
     }
 }
 

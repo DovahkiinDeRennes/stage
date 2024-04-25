@@ -14,7 +14,7 @@ function getYouTubeVideoID($url) {
 }
 
 // Instanciation de la classe d'actualite
-$actualite = new actualite($db);
+$actualite = new Actualite($db);
 
 // Récupérer toutes les actualités
 $actualites = $actualite->getAllActualites();
@@ -57,4 +57,5 @@ foreach ($actualites as $row) {
     }
     echo '<img src="/images/fidelilium_line.png" class="line">';
 }
-$db->close();
+$db = null;
+?>

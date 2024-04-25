@@ -6,17 +6,14 @@ include './../../../classes/Categorie.php';
 
 
 
-if(isset($_POST['ok'])) {
-    $libelle = isset($_POST["libelle"]) ? $_POST["libelle"] : '';
-
+if (isset($_POST['ok'])) {
+    $libelle = $_POST["libelle"] ?? '';
 
     $categorie = new Categorie($db);
-
 
     $categorie->insert($libelle);
 }
 
 include(__DIR__ . '/formulaireAjouter.php');
 ?>
-
 

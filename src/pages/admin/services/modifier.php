@@ -11,31 +11,25 @@ include(__DIR__ . '/../../core/connection.php');
 // On récupère l'ID dans le lien
 $id = $_GET['id'];
 // Requête pour afficher les infos d'un produit
-$req = mysqli_query($db, "SELECT * FROM services WHERE id = $id");
-$row = mysqli_fetch_assoc($req);
+$stmt = $db->prepare("SELECT * FROM services WHERE id = ?");
+$stmt->execute([$id]);
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 $query = "SELECT id, libelle FROM categorie";
-$result = mysqli_query($db, $query);
+$stmt = $db->query($query);
+$categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-if ($result && mysqli_num_rows($result) > 0) {
-    $categories = array();
-    while ($rowCat = mysqli_fetch_assoc($result)) {
-        $categories[] = array(
-            'id' => $rowCat['id'],
-            'libelle' => $rowCat['libelle']
-        );
-    }
-} else {
-    echo "Erreur de requête : " . mysqli_error($db);
+if (!$categories) {
+    echo "Erreur de requête : " . $db->errorInfo()[2];
+    exit; // Arrêter l'exécution du script en cas d'erreur
 }
-
 
 // Vérifier que le bouton Modifier a bien été cliqué
 if (isset($_POST['ok'])) {
-    $titre = isset($_POST['titre']) ? $_POST['titre'] : '';
-    $texte = isset($_POST['texte']) ? $_POST['texte'] : '';
-    $alt = isset($_POST['alt_text']) ? $_POST['alt_text'] : '';
-    $categories = isset($_POST['categories']) ? $_POST['categories'] : '';
+    $titre = $_POST['titre'] ?? '';
+    $texte = $_POST['texte'] ?? '';
+    $alt = $_POST['alt_text'] ?? '';
+    $categories = $_POST['categories'] ?? '';
 
     // Récupération du nom de l'image actuelle
     $image_url = $row['image_url'];
@@ -85,7 +79,7 @@ if (isset($_POST['ok'])) {
         // Si aucune nouvelle image n'a été envoyée, conservez le nom de l'image actuelle
         $new_img_name = $image_url;
         $service = new Service($db);
-       $result = $service->update($id, $titre, $texte, $new_img_name, $alt, $categories);
+        $result = $service->update($id, $titre, $texte, $new_img_name, $alt, $categories);
         if ($result) {
             echo "<script>window.location.href = 'services.php';</script>";
         } else {
