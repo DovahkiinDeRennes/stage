@@ -3,20 +3,6 @@ include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../../classes/service.php');
 
 ?>
-
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier</title>
-    <link rel="stylesheet" href="/assets/css/navbar.css">
-    <link rel="stylesheet" href="/assets/css/admin.css" />
-</head>
-
-<body>
 <?php
 
 include(__DIR__ . '/../../core/connection.php');
@@ -81,7 +67,14 @@ if (isset($_POST['ok'])) {
             if (move_uploaded_file($tmp_name, $img_upload_path)) {
                 // Mise à jour des données dans la base de données avec le nouveau nom de l'image
                 $service = new Service($db);
-                $service->update($id, $titre, $texte, $new_img_name, $alt, $categories);
+                $result = $service->update($id, $titre, $texte, $new_img_name, $alt, $categories);
+                if ($result) {
+                    echo "<script>window.location.href = 'services.php';</script>";
+                } else {
+                    // Sinon, produit non modifié
+                    $message = "Produit non modifié";
+                }
+
             } else {
                 echo "Erreur lors du téléchargement de l'image.";
             }
@@ -92,12 +85,15 @@ if (isset($_POST['ok'])) {
         // Si aucune nouvelle image n'a été envoyée, conservez le nom de l'image actuelle
         $new_img_name = $image_url;
         $service = new Service($db);
-        $service->update($id, $titre, $texte, $new_img_name, $alt, $categories);
+       $result = $service->update($id, $titre, $texte, $new_img_name, $alt, $categories);
+        if ($result) {
+            echo "<script>window.location.href = 'services.php';</script>";
+        } else {
+            // Sinon, produit non modifié
+            $message = "Produit non modifié";
+        }
     }
 
-    // Redirection vers la page des services après la mise à jour
-    header("Location: services.php");
-    exit();
 }
 ?>
 <?php include(__DIR__ . '/../../admin/navbar.php'); ?>

@@ -28,21 +28,28 @@ class Mail
 
     public function insert($nom, $prenom, $email, $tel, $societe, $fonction, $objet, $message, $conditions)
     {
-        $query = "INSERT INTO contact (nom, prenom, mail, tel, societe, fonction, object, message, date, conditions) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?)";
+
+
+        $query = "INSERT INTO contact (nom, prenom, mail, tel, societe, fonction, `object`, message, conditions, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
         $statement = mysqli_prepare($this->db, $query);
         mysqli_stmt_bind_param($statement, 'sssssssss', $nom, $prenom, $email, $tel, $societe, $fonction, $objet, $message, $conditions);
         $success = mysqli_stmt_execute($statement);
+
+
 
         if ($success) {
             // Insertion réussie, afficher une alerte SweetAlert pour informer l'utilisateur
             $msg = "Votre message a bien été envoyé, Vous allez être redirigé !";
             $statut = "success";
+
+
             echo "<script>Swal.fire({
             title: '$msg', icon: '$statut', confirmButtonText: 'Confirmer'
         }).then((result) => {
             if (result.isConfirmed) {
                 document.location.href='index.php';
             }
+            
         });
         </script>";
         } else {
@@ -61,7 +68,7 @@ class Mail
     public function update($id, $prenom, $nom, $fonction, $tel, $mail, $societe, $message, $objet) {
         $query = "UPDATE contact SET nom = ?, prenom = ?, mail = ?, tel = ?, societe = ?, fonction = ?, object = ?, message = ? WHERE id = ?";
         $statement = mysqli_prepare($this->db, $query);
-        mysqli_stmt_bind_param($statement, 'ssssssssi', $prenom, $nom, $fonction, $tel, $mail, $societe, $message, $objet, $id);
+        mysqli_stmt_bind_param($statement, 'sssssssss', $prenom, $nom, $fonction, $tel, $mail, $societe, $message, $objet, $id);
         $success = mysqli_stmt_execute($statement);
 
         if ($success) {

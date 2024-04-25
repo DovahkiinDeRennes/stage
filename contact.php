@@ -110,7 +110,7 @@ include (__DIR__ . '/src/pages/admin/mail/ajouter.php');
       </script>";
 
       }
-      if (isset($msg) && $statut == "error") {
+      if (isset($msg) && $statut == "/error") {
           echo "<script>Swal.fire({
           title: '$msg', icon: '$statut', confirmButtonText: 'Confirmer',});
       </script>";

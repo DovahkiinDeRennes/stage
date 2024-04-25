@@ -69,7 +69,13 @@ if (isset($_POST['ok'])) {
             if (move_uploaded_file($tmp_name, $img_upload_path)) {
                 // Mise à jour des données dans la base de données avec le nouveau nom de l'image
                 $produit = new Produit($db);
-                $produit->update($id, $titre, $texte, $new_img_name, $alt, $categories);
+              $result =  $produit->update($id, $titre, $texte, $new_img_name, $alt, $categories);
+                if ($result) {
+                    echo "<script>window.location.href = 'produits.php';</script>";
+                } else {
+                    // Sinon, produit non modifié
+                    $message = "Produit non modifié";
+                }
             } else {
                 echo "Erreur lors du téléchargement de l'image.";
             }
@@ -80,12 +86,15 @@ if (isset($_POST['ok'])) {
         // Si aucune nouvelle image n'a été envoyée, conservez le nom de l'image actuelle
         $new_img_name = $image_url;
         $produit = new Produit($db);
-        $produit->update($id, $titre, $texte, $new_img_name, $alt, $categories);
-    }
+        $result = $produit->update($id, $titre, $texte, $new_img_name, $alt, $categories);
 
-    // Redirection vers la page des services après la mise à jour
-    header("Location: produits.php");
-    exit();
+        if ($result) {
+            echo "<script>window.location.href = 'produits.php';</script>";
+        } else {
+            // Sinon, produit non modifié
+            $message = "Produit non modifié";
+        }
+    }
 }
 include(__DIR__ . '/formulaireModifier.php');
 ?>

@@ -48,7 +48,7 @@ class service
         $success = mysqli_stmt_execute($statement);
 
         if ($success) {
-            header('Location: services.php');
+            header('Location:services.php');
             exit;
         } else {
             // Gérer les erreurs d'insertion
@@ -63,15 +63,10 @@ class service
         mysqli_stmt_bind_param($statement, 'ssssii', $titre, $texte, $new_img_name, $alt, $categories, $id);
         $success = mysqli_stmt_execute($statement);
 
-        if ($success) {
 
-            header('Location: services.php');
-            exit;
-        } else {
 
-            echo "Erreur lors de la mise à jour du service : " . mysqli_error($this->db);
-            return false;
-        }
+        return $success;
+
     }
 
 

@@ -1,5 +1,19 @@
 <?php include(__DIR__ . '/../../admin/navbar.php'); ?>
 
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier</title>
+    <link rel="stylesheet" href="/assets/css/navbar.css">
+    <link rel="stylesheet" href="/assets/css/admin.css" />
+</head>
+
+<body>
+
 <div class="form">
     <a href="services.php" class="back_btn"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14"
                                                  viewBox="0 0 448 512">

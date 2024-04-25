@@ -55,13 +55,7 @@ if(isset($_POST['ok'])) {
         $message ="Extension de fichier non autorisée. Veuillez télécharger une image au format JPG, JPEG ou PNG.";
         header("Location: ajouter.php");
 
-
-
-
     }
-
-
-
 }
 
 include(__DIR__ . '/formulaireAjouter.php');

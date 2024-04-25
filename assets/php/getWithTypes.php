@@ -3,21 +3,16 @@
 function getProduitsWithType($db)
 {
     $query = "SELECT *, 'produits' AS type FROM produits ORDER BY ordre ASC";
-    $result = $db->query($query);
-    $produits = array();
-    while ($row = $result->fetch_assoc()) {
-        $produits[] = $row;
-    }
+    $stmt = $db->query($query);
+    $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $produits;
 }
 
 function getServicesWithType($db)
 {
     $query = "SELECT *, 'services' AS type FROM services ORDER BY ordre ASC";
-    $result = $db->query($query);
-    $services = array();
-    while ($row = $result->fetch_assoc()) {
-        $services[] = $row;
-    }
+    $stmt = $db->query($query);
+    $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $services;
 }
+?>
