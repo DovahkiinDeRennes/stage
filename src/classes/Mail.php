@@ -60,9 +60,9 @@ class Mail
         }
     }
 
-    public function update($nom, $prenom, $mail, $tel, $societe, $fonction, $objet, $message, $id)
+    public function update($id, $nom, $prenom, $mail, $tel, $societe, $fonction, $objet, $message)
     {
-        $query = "UPDATE contact SET nom = ?, prenom = ?, mail = ?, tel = ?, societe = ?, fonction = ?, `object` = ?, message = ? WHERE id = ?";
+        $query = "UPDATE contact SET nom = ?, prenom = ?, mail = ?, tel = ?, societe = ?, fonction = ?, `object` = ?, message = ?, date = NOW() WHERE id = ?";
         $stmt = $this->db->prepare($query);
         $success = $stmt->execute([$nom, $prenom, $mail, $tel, $societe, $fonction, $objet, $message, $id]);
 

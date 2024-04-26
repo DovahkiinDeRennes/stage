@@ -11,7 +11,9 @@ if ($id !== null) {
     $stmt = $db->prepare("SELECT * FROM contact WHERE id = :id");
     $stmt->execute(['id' => $id]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    var_dump($row);
+    //var_dump($id);
+    //var_dump($stmt);
+
 }
 
 // Vérifier que le bouton Modifier a bien été cliqué
@@ -24,17 +26,16 @@ if(isset($_POST['ok'])) {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $msg = "Adresse e-mail non valide";
             $statut = "error";
-        } else {
+        }
             $nom = $_POST['nom'] ?? '';
             $prenom = $_POST['prenom'] ?? '';
             $telephone = $_POST['telephone'] ?? '';
             $societe = $_POST['societe'] ?? '';
             $fonction = $_POST['fonction'] ?? '';
             $objet = $_POST['objet'] ?? '';
+
+
             $message = htmlspecialchars($_POST['message']) ?? '';
-
-
-
 
 
             // Requête de modification
@@ -48,13 +49,12 @@ if(isset($_POST['ok'])) {
             // Si la requête a été effectuée avec succès, redirection
             $msg = "Votre message a bien été envoyé, Vous allez être redirigé !";
             $statut = "success";
-        }
-    } else {
+        }else {
         // Sinon, produit non modifié
         $msg = "* Tous les champs doivent être complétés !";
         $statut = "error";
+
     }
-}
+    }
 
 include(__DIR__ . '/formulaireModifier.php');
-?>
