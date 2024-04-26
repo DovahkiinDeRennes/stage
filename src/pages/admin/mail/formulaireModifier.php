@@ -51,7 +51,7 @@
                         </div>
                         <div class="groupe">
                             <label>Prénom<label class="requis">*</label></label>
-                            <input type="text" name="prénom" placeholder="Saisissez ici..."
+                            <input type="text" name="prenom" placeholder="Saisissez ici..."
                                 value="<?= $row['prenom'] ?>" require />
                             <i class="fas fa-user"></i>
                         </div>
@@ -63,13 +63,13 @@
                         </div>
                         <div class="groupe">
                             <label>Téléphone</label>
-                            <input type="text" name="téléphone" placeholder="Saisissez ici..."
+                            <input type="text" name="telephone" placeholder="Saisissez ici..."
                                 value="<?= $row['tel'] ?>" />
                             <i class="fas fa-mobile"></i>
                         </div>
                         <div class="groupe">
                             <label>Société<label class="requis"></label></label>
-                            <input type="text" name="société" placeholder="Saisissez ici..."
+                            <input type="text" name="societe" placeholder="Saisissez ici..."
                                 value="<?= $row['societe'] ?>"  />
                             <i class="fas fa-building"></i>
                         </div>
@@ -91,8 +91,8 @@
                         </div>
                         <div class="groupe" id="message">
                             <label>Message<label class="requis">*</label></label>
-                            <textarea name="message" placeholder="Saisissez ici..."
-                                require><?= $row['message'] ?></textarea>
+                            <input type="text" name="message" placeholder="Saisissez ici..." value="<?= $row['message'] ?>"
+                                require>
                             <i class="fas fa-message"></i>
                         </div>
                     </div>

@@ -14,7 +14,7 @@ if (isset($_POST['ok'])) {
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $msg = "Adresse e-mail non valide";
                 $statut = "error";
-            } else {
+            }
 
                 $nom = $_POST['nom'] ?? '';
                 $prenom = $_POST["prénom"] ?? '';
@@ -36,7 +36,7 @@ if (isset($_POST['ok'])) {
 
                 $msg = "Votre message a bien été envoyé, Vous allez être redirigé !";
                 $statut = "success";
-            }
+
         } else {
             $msg = "* Tous les champs doivent être complétés !";
             $statut = "error";

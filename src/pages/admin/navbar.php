@@ -11,10 +11,10 @@
         echo '<div class="menuburger">
         <div id="mySidenav" class="sidenav">
             <a id="closeBtn" href="#" class="close">×</a>
-            <a href="../../../admin/index.php" data-aos="fade-right" data-aos-duration="1000"><img
+            <a href="/index.php" data-aos="fade-right" data-aos-duration="1000"><img
                     srcset="/images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;" alt="Logo de fidelilium"></a>
             <ul>
-                <li><a href="../../../admin/index.php" id="page-actuelle-menu">Accueil</a></li>
+                <li><a href="/index.php" id="page-actuelle-menu">Accueil</a></li>
                 <li><a href="/actualites.php">Actualités</a></li>
                 <li><a href="/services.php">Services</a></li>
                 <li><a href="/produits.php">Produits</a></li>

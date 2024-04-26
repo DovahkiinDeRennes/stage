@@ -14,7 +14,7 @@ class Mail
     function getAllMails()
     {
         $mails = array();
-        $query = "SELECT * FROM contact";
+        $query = "SELECT * FROM contact ORDER BY DATE DESC";
         $stmt = $this->db->query($query);
 
         if ($stmt) {
@@ -60,11 +60,11 @@ class Mail
         }
     }
 
-    public function update($id, $prenom, $nom, $fonction, $tel, $mail, $societe, $message, $objet)
+    public function update($nom, $prenom, $mail, $tel, $societe, $fonction, $objet, $message, $id)
     {
-        $query = "UPDATE contact SET nom = ?, prenom = ?, mail = ?, tel = ?, societe = ?, fonction = ?, object = ?, message = ? WHERE id = ?";
+        $query = "UPDATE contact SET nom = ?, prenom = ?, mail = ?, tel = ?, societe = ?, fonction = ?, `object` = ?, message = ? WHERE id = ?";
         $stmt = $this->db->prepare($query);
-        $success = $stmt->execute([$prenom, $nom, $mail, $tel, $societe, $fonction, $objet, $message, $id]);
+        $success = $stmt->execute([$nom, $prenom, $mail, $tel, $societe, $fonction, $objet, $message, $id]);
 
         if ($success) {
             // Mise à jour réussie, afficher une alerte SweetAlert pour informer l'utilisateur

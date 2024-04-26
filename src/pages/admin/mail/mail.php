@@ -38,6 +38,7 @@ $mails = $mail->getAllMails();
             <th>Object</th>
             <th>Message</th>
             <th>Date</th>
+
         </tr>
         </thead>
         <tbody>
