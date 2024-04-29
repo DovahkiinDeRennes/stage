@@ -64,7 +64,12 @@
                     <li><a class="link" href="/src/pages/admin/actualites/actualites.php">
                             <p class="link">Actualités</p>
                         </a></li>
-                    <li><a class="link" href="/admin/logout.php">
+                       <li> 
+                        <p class="link">Catégories</p>
+                       <a class="link" href="/src/pages/admin/categories/categories.php">
+                    </a></li>
+                    <li>
+                    <a class="link" href="/admin/logout.php">
                             <p class="link">Se deconnecter</p>
                         </a></li>
                 </ul>
