@@ -32,7 +32,7 @@ if(isset($_POST['ok'])) {
             $produit->insert($titre, $texte, $new_img_name, $alt, $categories);
 
             // Redirection après l'ajout
-            header("Location: ajouter.php");
+            header("Location: produits.php");
             exit();
         } else {
             $message = "Il vous faut une image pour ajouter un service.";

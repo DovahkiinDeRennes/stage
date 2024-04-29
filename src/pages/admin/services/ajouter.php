@@ -52,7 +52,7 @@ if(isset($_POST['ok'])) {
     $success = $service->insert($titre, $texte, $new_img_name, $alt, $categories_id);
 
     if ($success) {
-        header("Location: ajouter.php?success=Service ajouté avec succès.");
+        header("Location: services.php?success=Service ajouté avec succès.");
         exit;
     } else {
         $message = "Erreur lors de l'ajout du service.";
