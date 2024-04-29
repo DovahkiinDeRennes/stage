@@ -16,9 +16,10 @@ include(__DIR__ . '/../../core/connection.php');
 </head>
 <body>
 <?php include(__DIR__ . '/../../admin/navbar.php'); ?>
-
+<center>
 <h1> categories</h1>
 <a href="ajouter.php"><input type="button" value="Ajouter une categorie"></a>
+</center>
 <?php include(__DIR__ . '/../../admin/afficher_categories.php'); ?>
 </body>
 </html>

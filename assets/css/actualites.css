@@ -77,8 +77,8 @@ h3 {
     width: 50%;
 }
 .card img{
-    width: 60%;
-height: 70%;
+    width: 500px;
+height: 350px;
     border-radius: 10px;
 }
 .card .groupe.droite {
@@ -123,8 +123,8 @@ img.line {
 
 }
 .video-ytb{
-    width: 60%;
-    height: 70%;
+    width: 500px;
+    height: 350px;
     border-radius: 10px;
 }
 
