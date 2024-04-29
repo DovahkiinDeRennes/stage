@@ -37,6 +37,7 @@
           <a class="link" href="/services.php"><p class="link">Services</p></a>
           <a class="link" href="/produits.php"><p class="link">Produits</p></a>
           <a class="link" href="/contact.php"><p class="link">Contact</p></a>
+          
         </div>
       </nav>
     </div>';
@@ -93,6 +94,9 @@
                     </a>
                     <a class="link" href="/src/pages/admin/actualites/actualites.php">
                         <p class="link">Actualités</p>
+                    </a>
+                      <a class="link" href="/src/pages/admin/categories/categories.php">
+                        <p class="link">Catégories</p>
                     </a>
                     <a class="link" href="/admin/logout.php">
                         <p class="link">Se deconnecter</p>
