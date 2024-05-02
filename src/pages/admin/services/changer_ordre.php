@@ -5,47 +5,59 @@ include(__DIR__ . '/../../core/connection.php');
 
 if(isset($_GET['service_id'], $_GET['direction'])) {
 
-    $service_id = mysqli_real_escape_string($db, $_GET['service_id']);
-    $direction = mysqli_real_escape_string($db, $_GET['direction']);
+    $service_id = htmlspecialchars($_GET['service_id']);
+    $direction = htmlspecialchars($_GET['direction']);
 
-    // Obtenir la catégorie du service
-    $query = "SELECT categories FROM services WHERE id = '$service_id'";
-    $result = mysqli_query($db, $query);
-    $row = mysqli_fetch_assoc($result);
+    // Obtenir la catégorie et l'ordre actuel du service
+    $query = "SELECT categories, ordre FROM services WHERE id = ?";
+    $stmt = $db->prepare($query);
+    $stmt->execute([$service_id]);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $categorie_id = $row['categories'];
-
-    // Obtenir l'ordre actuel du service
-    $query = "SELECT ordre FROM services WHERE id = '$service_id'";
-    $result = mysqli_query($db, $query);
-    $row = mysqli_fetch_assoc($result);
     $ancien_ordre = $row['ordre'];
 
-    // Compter le nombre de services dans la même catégorie
-    $query = "SELECT COUNT(*) AS count FROM services WHERE categories = '$categorie_id'";
-    $result = mysqli_query($db, $query);
-    $row = mysqli_fetch_assoc($result);
-    $nombre_de_services = $row['count'];
 
-    // Calculer le nouvel ordre en fonction de la direction
-    $nouvel_ordre = ($direction === 'up') ? max($ancien_ordre - 1, 1) : min($ancien_ordre + 1, $nombre_de_services);
+    if ($direction === 'gauche') {
+        // Obtenir l'ID du service qui a l'ordre précédent si le service monte
+        $query = ($direction === 'gauche') ? "SELECT id FROM services WHERE ordre = ? AND categories = ? AND id != ?" : "SELECT id FROM services WHERE ordre = ? AND categories = ? AND id != ? ORDER BY ordre DESC";
+        $stmt = $db->prepare($query);
+        $stmt->execute([$ancien_ordre - 1, $categorie_id, $service_id]);
+        $service_id_precedent = $stmt->fetchColumn();
 
-    // Vérifier si le nouvel ordre est déjà utilisé par un autre service
-    $query = "SELECT id FROM services WHERE ordre = '$nouvel_ordre' AND categories = '$categorie_id' AND id != '$service_id'";
-    $result = mysqli_query($db, $query);
-    $existing_service_id = mysqli_fetch_assoc($result)['id'];
+        if ($service_id_precedent) {
+            // Mettre à jour l'ordre des services
+            $query = "UPDATE services SET ordre = ? WHERE id = ?";
+            $stmt = $db->prepare($query);
+            $stmt->execute([$ancien_ordre, $service_id_precedent]);
 
-    if ($existing_service_id) {
-        // Décaler les numéros d'ordre des services en dessous du nouvel ordre
-        $query = "UPDATE services SET ordre = ordre + 1 WHERE ordre >= '$nouvel_ordre' AND categories = '$categorie_id' AND id != '$service_id'";
+            // Mettre à jour l'ordre du service déplacé
+            $query = "UPDATE services SET ordre = ? WHERE id = ?";
+            $stmt = $db->prepare($query);
+            $stmt->execute([$ancien_ordre - 1, $service_id]);
+        }
 
-        mysqli_query($db, $query);
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+        exit;
     }
 
-    // Mettre à jour l'ordre du service déplacé
-    $query = "UPDATE services SET ordre = '$nouvel_ordre' WHERE id = '$service_id'";
-    mysqli_query($db, $query);
+    if ($direction === 'droite') {
+        // Obtenir l'ID du service qui a l'ordre suivant si le service descend
+        $query = ($direction === 'droite') ? "SELECT id FROM services WHERE ordre = ? AND categories = ? AND id != ?" : "SELECT id FROM services WHERE ordre = ? AND categories = ? AND id != ? ORDER BY ordre ASC";
+        $stmt = $db->prepare($query);
+        $stmt->execute([$ancien_ordre + 1, $categorie_id, $service_id]);
+        $service_id_suivant = $stmt->fetchColumn();
+if ($service_id_suivant) {
+    // Mettre à jour l'ordre des services
+    $query = "UPDATE services SET ordre = ? WHERE id = ?";
+    $stmt = $db->prepare($query);
+    $stmt->execute([$ancien_ordre, $service_id_suivant]);
 
-    header("Location: " . $_SERVER['HTTP_REFERER']);
-    exit;
+    // Mettre à jour l'ordre du service déplacé
+    $query = "UPDATE services SET ordre = ? WHERE id = ?";
+    $stmt = $db->prepare($query);
+    $stmt->execute([$ancien_ordre + 1, $service_id]);
 }
-?>
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+        exit;
+    }
+}
