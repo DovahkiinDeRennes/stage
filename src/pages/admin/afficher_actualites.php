@@ -41,7 +41,7 @@ foreach ($actualites as $row) {
     echo '<div>';
     echo '<h3>' . $row['titre'] . '</h3>';
     echo '</div>';
-    echo '<p class="p-block-3 text-content">' . nl2br(htmlspecialchars($row['texte'])) . '</p>';
+    echo '<p id = "texte" class="p-block-3 text-content">' . nl2br(htmlspecialchars($row['texte'])) . '</p>';
     echo '<div class="readmore-btn">Lire plus</div>';
     echo '</div>';
     echo '</div>';
@@ -59,3 +59,5 @@ foreach ($actualites as $row) {
 }
 $db = null;
 ?>
+
+

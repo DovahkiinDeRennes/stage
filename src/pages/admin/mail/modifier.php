@@ -38,6 +38,9 @@ if(isset($_POST['ok'])) {
             $message = htmlspecialchars($_POST['message']) ?? '';
 
 
+
+
+
             // Requête de modification
             $mail = new Mail($db);
             $mail->update($id, $nom, $prenom, $email, $telephone, $societe, $fonction, $objet, $message);

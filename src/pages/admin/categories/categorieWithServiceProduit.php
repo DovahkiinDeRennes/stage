@@ -1,43 +1,38 @@
 <?php
 include(__DIR__ . '/../../core/connection.php');
 
-// Vérifie si un ID de catégorie est passé dans l'URL
-if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-    $id = $_GET['id'];
+require_once __DIR__ . '/../../../classes/service.php';
 
-    // Récupération des produits associés à la catégorie
-    $query_products = "SELECT produits.id, produits.titre FROM produits 
-                        INNER JOIN categorie AS cat_produits ON produits.categories = cat_produits.id 
-                        WHERE cat_produits.id = :id";
-    $stmt_products = $db->prepare($query_products);
-    $stmt_products->bindParam(':id', $id, PDO::PARAM_INT); // Utilisation de $id ici
-    $stmt_products->execute();
-    $products = $stmt_products->fetchAll(PDO::FETCH_ASSOC);
+$service = new Service($db);
 
-    // Récupération des services associés à la catégorie
-    $query_services = "SELECT services.id, services.titre FROM services 
-                        INNER JOIN categorie AS cat_services ON services.categories = cat_services.id 
-                        WHERE cat_services.id = :id";
-    $stmt_services = $db->prepare($query_services);
-    $stmt_services->bindParam(':id', $id, PDO::PARAM_INT); // Utilisation de $id ici
-    $stmt_services->execute();
-    $services = $stmt_services->fetchAll(PDO::FETCH_ASSOC);
+// Vérifie si une catégorie a été sélectionnée
+if (isset($_GET['categorie_id'])) {
+    $categorie_id = htmlspecialchars($_GET['categorie_id']);
+    echo "Catégorie sélectionnée : " . $categorie_id;
+    // ...
 
-    // Affichage des produits et services
-    echo "<h2>Produits :</h2>";
-    echo "<ul>";
-    foreach ($products as $product) {
-        echo "<li>{$product['titre']}</li>";
+
+    // Récupère les services pour la catégorie spécifiée
+    $query = "SELECT * FROM services WHERE categories = :categorie_id";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam(':categorie_id', $categorie_id, PDO::PARAM_INT);
+    $stmt->execute();
+    $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Affiche les services correspondant à la catégorie sélectionnée
+    foreach ($services as $service => $row) {
+        echo "<br><tr><td><a href='/info.php?id=" . $row['id'] . "&amp;titre=" . htmlspecialchars($row['titre']) . "'>" . htmlspecialchars($row['titre']) . "</a></td></tr><br>";
     }
-    echo "</ul>";
-
-    echo "<h2>Services :</h2>";
-    echo "<ul>";
-    foreach ($services as $service) {
-        echo "<li>{$service['titre']}</li>";
-    }
-    echo "</ul>";
 } else {
-    echo "Sélectionnez une catégorie pour afficher les produits et services associés.";
+    // Si aucun paramètre 'categorie_id' n'est défini dans l'URL, affiche tous les services
+    $query = "SELECT * FROM services";
+    $stmt = $db->prepare($query);
+    $stmt->execute();
+    $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Affiche tous les services
+    foreach ($services as $service => $row) {
+        echo "<tr><td><a href='/info.php?id=" . $row['id'] . "&amp;titre=" . htmlspecialchars($row['titre']) . "'>" . htmlspecialchars($row['titre']) . "</a></td></tr>";
+    }
 }
 ?>

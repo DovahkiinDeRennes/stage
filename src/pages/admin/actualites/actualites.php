@@ -15,10 +15,12 @@ include(__DIR__ . '/../../core/connection.php');
     <script src="/assets/js/confirmDelete.js"></script>
 </head>
 <body>
+
 <?php include(__DIR__ . '/../../admin/navbar.php'); ?>
     <center>
 <h1>Admin : Actualités</h1>
     <a href="ajouter.php"><input type="button" value="Ajouter un article"></a>
+
     <?php
 
 // // Récupérer les données de la base de données
@@ -28,4 +30,8 @@ include(__DIR__ . '/../../admin/afficher_actualites.php');
         ?>
 </center>
 </body>
+
+
+
+
 </html>
