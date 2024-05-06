@@ -48,8 +48,15 @@ if (isset($_POST['ok'])) {
 
     // Vérifier s'il y a une URL YouTube
     if (!empty($_POST['lien-ytb'])) {
+        $image_path = __DIR__ . '/../../../../images/actualites/' . $row['image'];
+        if (file_exists($image_path)) {
+            unlink($image_path); // Supprimer le fichier
+        }
+
         $ytb_url = $_POST['lien-ytb'];
         $new_img_name = "non";
+
+
     } else {
         $ytb_url = "non";
     }

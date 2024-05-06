@@ -16,7 +16,9 @@ if ($row) {
     // Vérifier si le fichier existe avant de le supprimer
     if (file_exists($image_path)) {
         unlink($image_path); // Supprimer le fichier
-
+    }else {
+        echo "L'image n'existe pas ou a déjà été supprimée.";
+    }
         // Supprimer l'actualité de la base de données
         $actualite = new actualite($db);
         if ($actualite->delete($id)) {
@@ -25,9 +27,7 @@ if ($row) {
         } else {
             echo "Erreur lors de la suppression de l'actualité dans la base de données.";
         }
-    } else {
-        echo "L'image n'existe pas ou a déjà été supprimée.";
-    }
+
 } else {
     echo "Aucune actualité trouvée avec l'identifiant $id.";
 }

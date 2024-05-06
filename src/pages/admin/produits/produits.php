@@ -12,6 +12,7 @@ include(__DIR__ . '/../../core/connection.php');
     <link rel="stylesheet" href="/assets/css/navbar.css" /> 
     <link rel="stylesheet" href="/assets/css/admin.css" /> 
     <link rel="stylesheet" href="/assets/css/fontawesome-free-6.1.2-web/css/all.css" />
+    <script src="/assets/js/autoload.js"></script>
     <script src="/assets/js/confirmDelete.js"></script>
 </head>
 <body>
