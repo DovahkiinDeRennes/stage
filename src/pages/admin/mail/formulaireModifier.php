@@ -1,4 +1,7 @@
 
+<?php
+
+?>
 <!DOCTYPE html>
 
 <!DOCTYPE html>
@@ -110,7 +113,7 @@
 
                 if(isset($msg) && $statut == "success")
                 {
-                    echo "<script>Swal.fire({
+                    echo "<script nonce=\"{$nonce3}\">Swal.fire({
     title: '$msg', icon: '$statut', confirmButtonText: 'Confirmer',
   }).then((result) => {
     if (result.isConfirmed) {
@@ -121,7 +124,7 @@
                 }
                 if(isset($msg) && $statut == "error")
                 {
-                    echo "<script>Swal.fire({
+                    echo "<script nonce=\"{$nonce4}\">Swal.fire({
     title: '$msg', icon: '$statut', confirmButtonText: 'Confirmer',});
 </script>";
 
