@@ -7,22 +7,29 @@ require_once __DIR__ . '/../../../classes/produit.php';
 
 $service = new Service($db);
 
+
+
 // Vérifie si une catégorie a été sélectionnée
 if (isset($_GET['categorie_id'])) {
     $categorie_id = htmlspecialchars($_GET['categorie_id']);
-    echo "Catégorie sélectionnée : " . $categorie_id;
-    // ...
 
-
-    // Récupère les services pour la catégorie spécifiée
     $query = "SELECT * FROM services WHERE categories = :categorie_id";
     $stmt = $db->prepare($query);
     $stmt->bindParam(':categorie_id', $categorie_id, PDO::PARAM_INT);
     $stmt->execute();
     $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    $nombreElement = count($services);
+
+    echo "Catégorie sélectionnée (Services) : " . $nombreElement;
+    // ...
+
+
+    // Récupère les services pour la catégorie spécifiée
+
+
     // Affiche les services correspondant à la catégorie sélectionnée
-    foreach ($services as $service => $row) {
+    foreach ($services as  $row) {
         echo "<br><tr><td><a href='/info.php?id=" . $row['id'] . "&amp;titre=" . htmlspecialchars($row['titre']) . "'>" . htmlspecialchars($row['titre']) . "</a></td></tr><br>";
     }
 } else {
@@ -33,7 +40,7 @@ if (isset($_GET['categorie_id'])) {
     $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Affiche tous les services
-    foreach ($services as $service => $row) {
+    foreach ($services as  $row) {
         echo "<tr><td><a href='/info.php?id=" . $row['id'] . "&amp;titre=" . htmlspecialchars($row['titre']) . "'>" . htmlspecialchars($row['titre']) . "</a></td></tr>";
     }
 }
@@ -42,19 +49,24 @@ $produit = new produit($db);
 // Vérifie si une catégorie a été sélectionnée
 if (isset($_GET['categorie_id'])) {
     $categorie_id = htmlspecialchars($_GET['categorie_id']);
-    echo "Catégorie sélectionnée : " . $categorie_id;
-    // ...
 
-
-    // Récupère les services pour la catégorie spécifiée
     $query = "SELECT * FROM produits WHERE categories = :categorie_id";
     $stmt = $db->prepare($query);
     $stmt->bindParam(':categorie_id', $categorie_id, PDO::PARAM_INT);
     $stmt->execute();
-    $produit = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $nombreElement = count($produits);
+
+    echo "Catégorie sélectionnée (Produits) : " . $nombreElement;
+    // ...
+
+
+    // Récupère les services pour la catégorie spécifiée
+
 
     // Affiche les services correspondant à la catégorie sélectionnée
-    foreach ($produit as $produit => $row) {
+    foreach ($produits as  $row) {
         echo "<br><tr><td><a href='/info.php?id=" . $row['id'] . "&amp;titre=" . htmlspecialchars($row['titre']) . "'>" . htmlspecialchars($row['titre']) . "</a></td></tr><br>";
     }
 } else {
@@ -62,10 +74,10 @@ if (isset($_GET['categorie_id'])) {
     $query = "SELECT * FROM produits";
     $stmt = $db->prepare($query);
     $stmt->execute();
-    $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Affiche tous les services
-    foreach ($produit as $produit => $row) {
+    foreach ($produits as  $row) {
         echo "<tr><td><a href='/info.php?id=" . $row['id'] . "&amp;titre=" . htmlspecialchars($row['titre']) . "'>" . htmlspecialchars($row['titre']) . "</a></td></tr>";
     }
 }
