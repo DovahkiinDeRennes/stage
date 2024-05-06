@@ -76,9 +76,9 @@ h3 {
 .card .groupe.gauche {
     width: 50%;
 }
-.card img{
-    width: 500px;
-height: 350px;
+.imgActu{
+    max-width: 60%; /* La largeur maximale de l'image est égale à la largeur de son conteneur */
+    height: 70%;
     border-radius: 10px;
 }
 .card .groupe.droite {
@@ -123,8 +123,8 @@ img.line {
 
 }
 .video-ytb{
-    width: 500px;
-    height: 350px;
+    max-width: 60%; /* La largeur maximale de l'image est égale à la largeur de son conteneur */
+    height: 100%;
     border-radius: 10px;
 }
 

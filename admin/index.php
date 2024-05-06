@@ -12,7 +12,7 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
 <html lang="fr">
 
 <head>
-    <script src="https://kit.fontawesome.com/0d6d431c4d.js" crossorigin="anonymous"></script>
+    <script src="/https://kit.fontawesome.com/0d6d431c4d.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion Admin</title>
@@ -73,7 +73,7 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
             // Vérifie les informations de connexion
             if ($_POST['username'] === $username AND $password_write === $password) {
                 $_SESSION['admin_logged_in'] = true;
-                echo "<script>window.location.href = 'admin_page.php';</script>";
+                echo "<script src = '/assets/js/connection.js'></script>";
             } else {
                 echo "Identifiants incorrects Veuillez réessayer.";
             }

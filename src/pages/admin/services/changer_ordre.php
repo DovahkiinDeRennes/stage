@@ -18,6 +18,8 @@ if(isset($_GET['service_id'], $_GET['direction'])) {
 
 
     if ($direction === 'gauche') {
+        var_dump($direction);
+        var_dump($service_id);
         // Obtenir l'ID du service qui a l'ordre précédent si le service monte
         $query = ($direction === 'gauche') ? "SELECT id FROM services WHERE ordre = ? AND categories = ? AND id != ?" : "SELECT id FROM services WHERE ordre = ? AND categories = ? AND id != ? ORDER BY ordre DESC";
         $stmt = $db->prepare($query);
@@ -41,11 +43,15 @@ if(isset($_GET['service_id'], $_GET['direction'])) {
     }
 
     if ($direction === 'droite') {
+        var_dump($direction);
+        var_dump($service_id);
         // Obtenir l'ID du service qui a l'ordre suivant si le service descend
         $query = ($direction === 'droite') ? "SELECT id FROM services WHERE ordre = ? AND categories = ? AND id != ?" : "SELECT id FROM services WHERE ordre = ? AND categories = ? AND id != ? ORDER BY ordre ASC";
+
         $stmt = $db->prepare($query);
         $stmt->execute([$ancien_ordre + 1, $categorie_id, $service_id]);
         $service_id_suivant = $stmt->fetchColumn();
+
 if ($service_id_suivant) {
     // Mettre à jour l'ordre des services
     $query = "UPDATE services SET ordre = ? WHERE id = ?";

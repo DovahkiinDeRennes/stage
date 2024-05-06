@@ -20,20 +20,10 @@ foreach ($services as $key => $row) {
         echo "<h2>" . htmlspecialchars($row['libelle']) . "</h2>";
         $currentService = $row['libelle'];
         echo "<div class='categorie'>";
+
     }
 
-    echo "<a href='/info.php?id=" . $row['id'] . "&amp;titre=" . $row['titre'] . "&amp;direction=services'><div class='card'>";
-    echo "<img src='/images/servicesetproduits/" . $row['image_url'] . "' alt='" . $row['alt_text'] . "'>";
-    echo "<h3>" . $row['titre'] . "</h3>";
-
-    $description = $row['description'];
-    if (strlen($description) > 80) {
-        $description = substr($description, 0, 80) . "...";
-    }
-
-    echo "<p>" . $description . "</p>";
-    echo "</div></a>";
-
+    echo "<a href='/info.php?id=" . $row['id'] . "&amp;titre=" . $row['titre'] . "&amp;direction=services'><div>";
     if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
         echo "<div class='enLigne'>";
 
@@ -75,6 +65,20 @@ foreach ($services as $key => $row) {
 
         echo "</div>";
     }
+    echo "<div class='card'>";
+    echo "<img src='/images/servicesetproduits/" . $row['image_url'] . "' alt='" . $row['alt_text'] . "'>";
+    echo "<h3>" . $row['titre'] . "</h3>";
+
+    $description = $row['description'];
+    if (strlen($description) > 80) {
+        $description = substr($description, 0, 80) . "...";
+    }
+
+    echo "<p>" . $description . "</p>";
+    echo "</div></a>";
+
+
+    echo "</div>";
 }
 
 if ($currentService !== null) {

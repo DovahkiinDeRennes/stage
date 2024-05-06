@@ -26,11 +26,11 @@ foreach ($actualites as $row) {
 
     // Ajouter le contenu en fonction du type
     if ($row['image'] !== "non") {
-        echo '<img width="560" height="315" src="/images/actualites/'.$row['image'].'" loading="lazy" alt="' . $row['alt_text'] . '" class="image-actualites">';
+        echo '<img class="imgActu" src="/images/actualites/'.$row['image'].'" loading="lazy" alt="' . $row['alt_text'] . '" class="image-actualites">';
     } elseif ($row['ytb_url'] !== "non") {
         $url = $row['ytb_url'];
         $videoID = getYouTubeVideoID($url);
-        $embedCode = '<iframe class="video-ytb" width="560" height="315" src="https://www.youtube.com/embed/' . $videoID . '" frameborder="0" allowfullscreen></iframe>';
+        $embedCode = '<iframe class="video-ytb"  src="https://www.youtube.com/embed/' . $videoID . '" frameborder="0" allowfullscreen></iframe>';
         echo $embedCode;
     }
 

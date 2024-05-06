@@ -35,4 +35,5 @@ if (isset($_GET['categorie_id'])) {
         echo "<tr><td><a href='/info.php?id=" . $row['id'] . "&amp;titre=" . htmlspecialchars($row['titre']) . "'>" . htmlspecialchars($row['titre']) . "</a></td></tr>";
     }
 }
+
 ?>

@@ -18,7 +18,7 @@ class Produit
         $query = "SELECT produits.*, categorie.libelle AS libelle 
         FROM produits 
         LEFT JOIN categorie ON produits.categories = categorie.id 
-        ORDER BY categorie.libelle ASC";
+        ORDER BY categorie.libelle ASC, produits.ordre ASC";
         $stmt = $this->db->query($query);
 
         if ($stmt) {

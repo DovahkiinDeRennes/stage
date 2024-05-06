@@ -32,32 +32,9 @@ class Mail
         $stmt = $this->db->prepare($query);
         $success = $stmt->execute([$nom, $prenom, $email, $tel, $societe, $fonction, $objet, $message, $conditions]);
 
-        if ($success) {
-            // Insertion réussie, afficher une alerte SweetAlert pour informer l'utilisateur
-            $msg = "Votre message a bien été envoyé, Vous allez être redirigé !";
-            $statut = "success";
+         return $success;
 
-            echo "<script>Swal.fire({
-                title: '$msg', 
-                icon: '$statut', 
-                confirmButtonText: 'Confirmer'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.location.href='index.php';
-                }
-            });
-            </script>";
-        } else {
-            // Gérer les erreurs d'insertion
-            $msg = "Erreur lors de l'insertion : " . $stmt->errorInfo()[2];
-            $statut = "error";
-            echo "<script>Swal.fire({
-                title: '$msg', 
-                icon: '$statut', 
-                confirmButtonText: 'Confirmer'
-            });
-            </script>";
-        }
+
     }
 
     public function update($id, $nom, $prenom, $mail, $tel, $societe, $fonction, $objet, $message)
@@ -65,29 +42,6 @@ class Mail
         $query = "UPDATE contact SET nom = ?, prenom = ?, mail = ?, tel = ?, societe = ?, fonction = ?, `object` = ?, message = ?, date = NOW() WHERE id = ?";
         $stmt = $this->db->prepare($query);
         $success = $stmt->execute([$nom, $prenom, $mail, $tel, $societe, $fonction, $objet, $message, $id]);
-
-        if ($success) {
-            // Mise à jour réussie, afficher une alerte SweetAlert pour informer l'utilisateur
-            $msg = "La mise à jour a été effectuée avec succès !";
-            $statut = "success";
-        } else {
-            // Gérer les erreurs de mise à jour
-            $msg = "Erreur lors de la mise à jour : " . $stmt->errorInfo()[2];
-            $statut = "error";
-        }
-
-        // Afficher l'alerte SweetAlert
-        echo "<script>Swal.fire({
-                title: '$msg', 
-                icon: '$statut', 
-                confirmButtonText: 'Confirmer'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Rediriger vers la page d'accueil après la confirmation
-                    window.location.href = 'index.php';
-                }
-            });
-            </script>";
 
         return $success; // Retourne true si la mise à jour a réussi, sinon false
     }

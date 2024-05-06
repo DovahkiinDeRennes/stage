@@ -22,8 +22,8 @@ include (__DIR__ . '/src/pages/admin/mail/ajouter.php');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/0d6d431c4d.js" crossorigin="anonymous"></script>
-    
-       
+
+
   </head>
   <body>
 
@@ -49,7 +49,7 @@ include (__DIR__ . '/src/pages/admin/mail/ajouter.php');
               <label>Prénom<label class="requis">*</label></label>
               <input type="text" name="prénom" placeholder="Saisissez ici..." value="<?php if(isset($_POST['prénom'])) { echo $_POST['prénom']; } ?>" require/>
               <i class="fas fa-user"></i>
-            </div>   
+            </div>
             <div class="groupe">
             <label>Adresse e-mail<label class="requis">*</label></label>
             <input type="email" name="email"placeholder="Saisissez ici..." value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } ?>" require/>
@@ -72,7 +72,7 @@ include (__DIR__ . '/src/pages/admin/mail/ajouter.php');
       </div>
       <!-- Fin du haut du formulaire -->
       <!-- Début du bas du formulaire -->
-        </div>                 
+        </div>
         <div class="bas">
           <div class="groupe" id="message">
             <label>Objet<label class="requis">*</label></label>
@@ -101,7 +101,7 @@ include (__DIR__ . '/src/pages/admin/mail/ajouter.php');
 
 
       if (isset($msg) && $statut == "success") {
-          echo "<script>Swal.fire({
+          echo "<script nonce='test'>Swal.fire({
           title: '$msg', icon: '$statut', confirmButtonText: 'Confirmer'
         }).then((result) => {
           if (result.isConfirmed) {
@@ -111,7 +111,7 @@ include (__DIR__ . '/src/pages/admin/mail/ajouter.php');
 
       }
       if (isset($msg) && $statut == "/error") {
-          echo "<script>Swal.fire({
+          echo "<script nonce='test2'>Swal.fire({
           title: '$msg', icon: '$statut', confirmButtonText: 'Confirmer',});
       </script>";
 
@@ -128,9 +128,7 @@ include (__DIR__ . '/src/pages/admin/mail/ajouter.php');
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="assets/js/menuburger.js"></script>
-			<script>
-				AOS.init();
-			  </script>
+  <script src="assets/js/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>

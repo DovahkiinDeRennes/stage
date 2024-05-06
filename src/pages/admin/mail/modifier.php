@@ -52,6 +52,8 @@ if(isset($_POST['ok'])) {
             // Si la requête a été effectuée avec succès, redirection
             $msg = "Votre message a bien été envoyé, Vous allez être redirigé !";
             $statut = "success";
+            header('Location: mail.php');
+            exit();
         }else {
         // Sinon, produit non modifié
         $msg = "* Tous les champs doivent être complétés !";

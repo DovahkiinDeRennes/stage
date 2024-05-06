@@ -52,7 +52,7 @@ require_once __DIR__ . '/../src/pages/core/connection.php';
                 if ($update_result) {
                     // Compose the email
                     $subject = "Password Reset";
-                    $message_mail = "Click the following link to reset your password: http://fidelilium.com/admin/reset_password.php?id=$id?token=$token";
+                    $message_mail = "Click the following link to reset your password: https://fidelilium.com/admin/reset_password.php?id=$id?token=$token";
 
                     // Additional headers
                     $headers = "From: fidelilium@gmail.com"; // Your email address
