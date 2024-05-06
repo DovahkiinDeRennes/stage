@@ -62,8 +62,8 @@ require_once __DIR__ . '/../src/pages/core/connection.php';
 
                     if ($mail_sent) {
                         // Redirect or display a success message
-                        echo "<script>alert('Password reset link sent to your email.');</script>";
-                        echo "<script>window.location.href = 'index.php';</script>";
+                        echo "<script nonce=\"{$nonce5}\">alert('Password reset link sent to your email.');</script>";
+                        echo "<script nonce=\"{$nonce6}\">window.location.href = 'index.php';</script>";
                     } else {
                         // Handle email sending failure
                         echo "<script>alert('Error sending email.');</script>";
