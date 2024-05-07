@@ -6,6 +6,7 @@ include (__DIR__ . '/src/pages/admin/mail/ajouter.php');
 
 ?>
 <html lang="fr">
+
 <head>
     <title>Page de contact</title>
     <meta charset="utf-8" />

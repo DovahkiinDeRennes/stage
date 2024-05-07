@@ -1,4 +1,6 @@
 <?php
+
+
 require_once __DIR__ . '/../src/pages/core/connection.php';
 
 if (isset($_GET['token'])) {

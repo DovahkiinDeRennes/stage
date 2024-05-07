@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="assets/css/fontawesome-free-6.1.2-web/css/all.css" />
     <script src="https://kit.fontawesome.com/0d6d431c4d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <script src="/assets/js/confirmDelete.js"></script>
     <title>Services</title>
 </head>
 

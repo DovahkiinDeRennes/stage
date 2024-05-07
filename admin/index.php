@@ -1,4 +1,5 @@
-<?php
+
+
 session_start();
 
 // Vérifie si l'admin est déjà connecté, redirige vers la page d'administration s'il est connecté

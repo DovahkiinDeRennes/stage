@@ -1,4 +1,6 @@
-<?php include(__DIR__ . '/../../admin/navbar.php'); ?>
+<?php include(__DIR__ . '/../../admin/navbar.php');
+
+?>
 
 <!DOCTYPE html>
 <html lang="fr">

@@ -1,3 +1,7 @@
+<?php
+require_once '../../../../csp_config.php';
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
