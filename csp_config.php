@@ -3,13 +3,13 @@
 require_once(__DIR__ . '/chiffrageUrl.php');
 
 // Génération des nonces
-$nonce1 = base64_encode(random_bytes(16));
-$nonce2 = base64_encode(random_bytes(16));
-$nonce3 = base64_encode(random_bytes(16));
-$nonce4 = base64_encode(random_bytes(16));
-$nonce5 = base64_encode(random_bytes(16));
-$nonce6 = base64_encode(random_bytes(16));
-$nonce7 = base64_encode(random_bytes(16));
+$nonce1 = bin2hex(random_bytes(16));
+$nonce2 = bin2hex(random_bytes(16));
+$nonce3 = bin2hex(random_bytes(16));
+$nonce4 = bin2hex(random_bytes(16));
+$nonce5 = bin2hex(random_bytes(16));
+$nonce6 = bin2hex(random_bytes(16));
+$nonce7 = bin2hex(random_bytes(16));
 
 
 
