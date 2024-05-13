@@ -8,7 +8,7 @@ require_once(__DIR__ . '/../csp_config.php');
 
     <div id="mySidenav" class="sidenav">
         <a id="closeBtn" href="#" class="close">×</a>
-        <a href="index.php" data-aos="fade-right" data-aos-duration="1000"><img src="/images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;" alt="Logo de fidelilium"></a>
+        <a href="index.php" data-aos="fade-right" data-aos-duration="1000"><img src="/images/Fifelilium_Logo_Solo_RVB.webp" style="width: 120px;" alt="Logo de fidelilium"></a>
         <ul>
             <li><a href="index.php" id="page-actuelle-menu">Accueil</a></li>
             <li><a href="/actualites.php">Actualités</a></li>
@@ -21,13 +21,13 @@ require_once(__DIR__ . '/../csp_config.php');
     <a href="#" id="openBtn" class="burger-icon">
         <i class="fa-solid fa-bars fa-2xl"></i>
     </a>
-    <a href="index.php" data-aos="fade-right" data-aos-duration="1000"><img src="/images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;" alt="Logo de fidelilium"></a>
+    <a href="index.php" data-aos="fade-right" data-aos-duration="1000"><img src="/images/Fifelilium_Logo_Solo_RVB.webp" style="width: 120px;" alt="Logo de fidelilium"></a>
     
 
 </div>
 <div class="navbar">
     <nav class="nav">
-        <a href="/index.php" data-aos="fade-right" data-aos-duration="1000"><img src="/images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;" alt="Logo de fidelilium"></a>
+        <a href="/index.php" data-aos="fade-right" data-aos-duration="1000"><img src="/images/Fifelilium_Logo_Solo_RVB.webp" style="width: 120px;" alt="Logo de fidelilium"></a>
         <div class="onglets" data-aos="fade-left" data-aos-duration="1000">
 
             <a class="link " href="/index.php">

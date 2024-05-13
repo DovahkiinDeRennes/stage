@@ -46,7 +46,7 @@ $infos = [...$services, ...$produits];
     </div>
     <div class="navigation-manuelle">
         <button class="prev"><img src="/images/fleche-gauche.png" alt="Précédent"></button>
-        <button class="next"><img src="/images/fleche-droite.png" alt="Suivant"></button>
+        <button class="next"><img src="/images/fleche-droite.webp" alt="Suivant"></button>
     </div>
     <div class="carousel-nav">
         <div class="pagination"></div>

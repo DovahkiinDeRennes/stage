@@ -20,7 +20,7 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion Admin</title>
-    <link rel="icon" href="/images/Fidelilium_Logo_Simple.png">
+    <link rel="icon" href="/images/Fidelilium_Logo_Simple.webp">
     <link rel="stylesheet" href="/assets/css/navbar.css" />
     <link rel="stylesheet" href="/assets/css/admin.css" />
     <link rel="stylesheet" href="/assets/css/fontawesome-free-6.1.2-web/css/all.css" />
@@ -32,7 +32,7 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
         <div id="mySidenav" class="sidenav">
             <a id="closeBtn" href="#" class="close">×</a>
             <a href="/admin/index.php" data-aos="fade-right" data-aos-duration="1000"><img
-                        srcset="/images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;"></a>
+                        srcset="/images/Fifelilium_Logo_Solo_RVB.webp" style="width: 120px;"></a>
             <ul>
                 <li><a href="/index.php" id="page-actuelle-menu">Accueil</a></li>
                 <li><a href="/contact.php">Contact</a></li>
@@ -44,11 +44,11 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
             <i class="fa-solid fa-bars fa-2xl"></i>
         </a>
         <a href="index.php" data-aos="fade-right" data-aos-duration="1000"><img
-                    srcset="/images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;"></a>
+                    srcset="/images/Fifelilium_Logo_Solo_RVB.webp" style="width: 120px;"></a>
     </div>
     <div class="navbar">
         <nav>
-            <a href="/admin/index.php" data-aos="fade-right" data-aos-duration="1000"><img srcset="/images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;"></a>
+            <a href="/admin/index.php" data-aos="fade-right" data-aos-duration="1000"><img srcset="/images/Fifelilium_Logo_Solo_RVB.webp" style="width: 120px;"></a>
             <div class="onglets" data-aos="fade-left" data-aos-duration="1000">
                 <a class="link" href="/index.php"><p class="link"  id="page-actuel">Accueil</p></a>
                 <a class="link" href="/contact.php"><p class="link">Contact</p></a>

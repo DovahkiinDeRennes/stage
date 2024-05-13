@@ -10,7 +10,7 @@ require_once(__DIR__ . '/csp_config.php');
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="description" content="Les experts en cyberdéfense et transformation numérique de FIDELILIUM proposent audits, tests d'intrusion, intervention en cas de cyberattaques, conformité, sensibilisation, et solutions numériques sécurisées">
-	<link rel="icon" href="images/Fidelilium_Logo_Simple.png">
+	<link rel="icon" href="images/Fidelilium_Logo_Simple.webp">
 	<link rel="stylesheet" href="assets/css/styles.css" />
     <link rel="stylesheet" href="assets/css/roots.css"/>
     <link rel="stylesheet" href="/assets/css/caroussel.css"/>
@@ -38,7 +38,7 @@ require_once(__DIR__ . '/csp_config.php');
 
 <div class="header" data-aos="zoom-out-up" data-aos-duration="2000">
     <center>
-        <img src="images/Fidelilium_Logo_Sign_FR_RVB.png" alt="Logo de fidelilium" />
+        <img src="images/Fidelilium_Logo_Sign_FR_RVB.webp" alt="Logo de fidelilium" />
         <br />
 
             
@@ -105,7 +105,7 @@ require_once(__DIR__ . '/csp_config.php');
 	
 	<!-- Fin du deuxieme bloc -->
 
-	<center><span class="image fit"><img class="séparation" src="images/fidelilium_line.png" height="5" alt="séparation" /></span></center>
+	<center><span class="image fit"><img class="séparation" src="images/fidelilium_line.webp" height="5" alt="séparation" /></span></center>
 	<!-- Troisieme bloc -->
 	<div class="bloc-3">
 		<div class="groupe-gauche" data-aos="fade-right">
@@ -126,7 +126,7 @@ require_once(__DIR__ . '/csp_config.php');
 		</div>
 	</div>
 	</div>
-	<center><span class="image fit"><img class="séparation" src="images/fidelilium_line.png" alt="séparation" height="5" /></span></center>
+	<center><span class="image fit"><img class="séparation" src="images/fidelilium_line.webp" alt="séparation" height="5" /></span></center>
 	
 	
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

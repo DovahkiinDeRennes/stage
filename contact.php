@@ -10,7 +10,7 @@ require_once(__DIR__ . '/csp_config.php');
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="icon" type="image/x-icon" href="images/favicon.html">
-    <link rel="icon" href="images/Fidelilium_Logo_Simple.png">
+    <link rel="icon" href="images/Fidelilium_Logo_Simple.webp">
     <link rel="stylesheet" href="assets/css/contact.css" />
     <link rel="stylesheet" href="assets/css/navbar.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />

@@ -57,7 +57,7 @@ foreach ($actualites as $row) {
         echo "</div>";
         echo "<br>";
     }
-    echo '<img src="/images/fidelilium_line.png" class="line">';
+    echo '<img src="/images/fidelilium_line.webp" class="line">';
 }
 $db = null;
 ?>

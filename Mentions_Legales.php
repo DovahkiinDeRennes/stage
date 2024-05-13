@@ -11,7 +11,7 @@ require_once(__DIR__ . '/csp_config.php');
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="icon" type="image/x-icon" href="images/favicon.html">
-	<link rel="icon" href="images/Fidelilium_Logo_Simple.png">
+	<link rel="icon" href="images/Fidelilium_Logo_Simple.webp">
 	<link rel="stylesheet" href="assets/css/mentions_legales.css" />
     <link rel="stylesheet" href="assets/css/navbar.css" />
 	<link rel="stylesheet" href="assets/css/styles.css" />
@@ -31,7 +31,7 @@ require_once(__DIR__ . '/csp_config.php');
 		<div id="mySidenav" class="sidenav">
 			<a id="closeBtn" href="#" class="close">×</a>
 			<a href="index.php" data-aos="fade-right" data-aos-duration="1000"><img
-					srcset="images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;" alt="Logo de fidelilium"></a>
+					srcset="images/Fifelilium_Logo_Solo_RVB.webp" style="width: 120px;" alt="Logo de fidelilium"></a>
 			<ul>
 				<li><a href="index.php" id="page-actuelle-menu">Accueil</a></li>
 				<li><a href="actualites.php">Actualités</a></li>
@@ -45,11 +45,11 @@ require_once(__DIR__ . '/csp_config.php');
 			<i class="fa-solid fa-bars fa-2xl"></i>
 		</a>
 		<a href="index.php" data-aos="fade-right" data-aos-duration="1000"><img
-				srcset="images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;" alt="Logo de fidelilium"></a>
+				srcset="images/Fifelilium_Logo_Solo_RVB.webp" style="width: 120px;" alt="Logo de fidelilium"></a>
 	</div>
 	<div class="navbar">
 	<nav>
-		  <a href="index.php" data-aos="fade-right" data-aos-duration="1000"><img srcset="images/Fifelilium_Logo_Solo_RVB.svg" style="width: 120px;" alt="Logo de fidelilium"></a>
+		  <a href="index.php" data-aos="fade-right" data-aos-duration="1000"><img srcset="images/Fifelilium_Logo_Solo_RVB.webp" style="width: 120px;" alt="Logo de fidelilium"></a>
 		  <div class="onglets" data-aos="fade-left" data-aos-duration="1000">
 		  <a class="link" href="index.php"><p class="link" id="page-actuel">Accueil</p></a>
 		  <a class="link" href="actualites.php"><p class="link">Actualités</p></a>

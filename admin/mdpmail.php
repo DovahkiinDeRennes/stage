@@ -11,7 +11,7 @@ require_once __DIR__ . '/../src/pages/core/connection.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion Admin</title>
-    <link rel="icon" href="/images/Fidelilium_Logo_Simple.png">
+    <link rel="icon" href="/images/Fidelilium_Logo_Simple.webp">
     <link rel="stylesheet" href="/assets/css/navbar.css" />
     <link rel="stylesheet" href="/assets/css/admin.css" />
     <link rel="stylesheet" href="/assets/css/fontawesome-free-6.1.2-web/css/all.css" />

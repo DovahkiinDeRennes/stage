@@ -15,7 +15,7 @@ require_once (__DIR__ . '/csp_config.php');
 
 
 
-    <link rel="icon" href="/images/Fidelilium_Logo_Simple.png">
+    <link rel="icon" href="/images/Fidelilium_Logo_Simple.webp">
     <script src="/assets/js/jquery.min.js" defer></script>
     <script src="/assets/js/seeMore.js" defer></script>
     <link rel="stylesheet" href="assets/css/fontawesome-free-6.1.2-web/css/all.css" />

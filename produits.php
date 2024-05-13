@@ -13,7 +13,7 @@ require_once(__DIR__ . '/csp_config.php');
     <link rel="stylesheet" href="assets/css/footer.css" />
     <link rel="stylesheet" href="assets/css/roots.css"/>
 
-    <link rel="icon" href="images/Fidelilium_Logo_Simple.png">
+    <link rel="icon" href="images/Fidelilium_Logo_Simple.webp">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/fontawesome-free-6.1.2-web/css/all.css" />
     <script src="https://kit.fontawesome.com/0d6d431c4d.js" crossorigin="anonymous"></script>
