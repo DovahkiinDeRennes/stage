@@ -1,6 +1,6 @@
 <?php
-require_once '../../../../csp_config.php';
 
+require_once(__DIR__ . '/../../../../csp_config.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr">

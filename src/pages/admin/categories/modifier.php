@@ -3,6 +3,10 @@ include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
 include(__DIR__ . '/../../../classes/Categorie.php');
 
+
+require_once(__DIR__ . '/../../../../csp_config.php');
+
+
 // Récupération de l'ID de la catégorie à modifier
 $id = $_GET['id'] ?? null;
 if (!$id) {

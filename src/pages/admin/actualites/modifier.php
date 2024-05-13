@@ -1,8 +1,10 @@
 <?php
 session_start();
-?>
 
-<?php
+
+require_once(__DIR__ . '/../../../../csp_config.php');
+
+
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
 include(__DIR__ . '/../../../classes/actualite.php');
@@ -30,7 +32,7 @@ if (isset($_POST['ok'])) {
         // Charger la nouvelle image
         $img_name = $_FILES['image']['name'];
         $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
-        $allowed_exs = array("jpg", "jpeg", "png");
+        $allowed_exs = array("jpg", "jpeg", "png", "webp");
 
         if (in_array(strtolower($img_ex), $allowed_exs)) {
             $new_img_name = uniqid("IMG-", true) . '.' . $img_ex;

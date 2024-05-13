@@ -1,5 +1,5 @@
 <?php include(__DIR__ . '/../../admin/navbar.php');
-
+require_once(__DIR__ . '/../../../../csp_config.php');
 ?>
 
 <!DOCTYPE html>

@@ -2,6 +2,8 @@
 require_once __DIR__ . '/../admin/check_login.php';
 require_once __DIR__ . '/../src/pages/core/connection.php';
 
+require_once(__DIR__ . '/../csp_config.php');
+
 ?>
 
 <!DOCTYPE html>

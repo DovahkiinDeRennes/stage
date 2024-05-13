@@ -5,6 +5,10 @@ require_once __DIR__ . '/../../../classes/service.php';
 
 require_once __DIR__ . '/../../../classes/produit.php';
 
+
+require_once(__DIR__ . '/../../../../csp_config.php');
+
+
 $service = new Service($db);
 
 

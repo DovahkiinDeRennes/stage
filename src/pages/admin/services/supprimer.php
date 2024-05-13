@@ -2,6 +2,7 @@
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
 include(__DIR__ . '/../../../classes/service.php');
+require_once(__DIR__ . '/../../../../csp_config.php');
 
 // Valider et filtrer l'ID du service
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);

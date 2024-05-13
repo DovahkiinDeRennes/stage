@@ -3,6 +3,10 @@ include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
 include './../../../classes/Categorie.php';
 
+
+require_once(__DIR__ . '/../../../../csp_config.php');
+
+
 $id = $_GET['id'];
 
 $categorie = new Categorie($db);

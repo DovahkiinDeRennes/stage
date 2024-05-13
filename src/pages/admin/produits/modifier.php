@@ -2,6 +2,7 @@
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../../classes/produit.php');
 include(__DIR__ . '/../../core/connection.php');
+require_once(__DIR__ . '/../../../../csp_config.php');
 
 // On récupère l'ID dans le lien
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
@@ -44,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['ok'])) {
         $img_name = $_FILES['image']['name'];
         $tmp_name = $_FILES['image']['tmp_name'];
         $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
-        $allowed_exs = array("jpg", "jpeg", "png");
+        $allowed_exs = array("jpg", "jpeg", "png", "webp");
 
         if (in_array($img_ex, $allowed_exs)) {
             $new_img_name = uniqid("IMG-", true) . 'produits.' . $img_ex;

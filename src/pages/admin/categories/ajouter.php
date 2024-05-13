@@ -4,6 +4,7 @@ include(__DIR__ . '/../../core/connection.php');
 include './../../../classes/Categorie.php';
 
 
+require_once(__DIR__ . '/../../../../csp_config.php');
 
 
 if (isset($_POST['ok'])) {

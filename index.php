@@ -1,5 +1,10 @@
-<!DOCTYPE HTML>
+<?php
 
+require_once(__DIR__ . '/csp_config.php');
+
+?>
+
+<!DOCTYPE HTML>
 <head>
 	<title>Fidelilium</title>
 	<meta charset="utf-8" />

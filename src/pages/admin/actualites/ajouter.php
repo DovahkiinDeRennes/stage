@@ -3,6 +3,10 @@ include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
 include(__DIR__ . '/../../../classes/actualite.php');
 
+
+require_once(__DIR__ . '/../../../../csp_config.php');
+
+
 if (isset($_POST['ok'])) {
 
     $titre =  $_POST['titre'] ?? '';
@@ -20,7 +24,7 @@ if (isset($_POST['ok'])) {
 
         $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
         $img_ex_lc = strtolower($img_ex);
-        $allowed_exs = array("jpg", "jpeg", "png", "mp4");
+        $allowed_exs = array("jpg", "jpeg", "png", "mp4", "webp");
 
         if (in_array($img_ex_lc, $allowed_exs)) {
             $new_img_name = uniqid("IMG-", true) . 'actualites.' . $img_ex_lc;

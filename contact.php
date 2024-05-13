@@ -1,9 +1,7 @@
 <?php
-
 include (__DIR__ . '/src/pages/core/connection.php');
 include (__DIR__ . '/src/pages/admin/mail/ajouter.php');
-
-
+require_once(__DIR__ . '/csp_config.php');
 ?>
 <html lang="fr">
 
@@ -91,7 +89,7 @@ include (__DIR__ . '/src/pages/admin/mail/ajouter.php');
         <!-- Pied de page -->
         <div class="groupe">
             <input type="checkbox" id="ma_checkbox" name="ma_checkbox">
-            <label for="ma_checkbox" class=" mentions">J'ai lu et accepté les <a  href="Mentions_Legales.html">mentions légales</a></label>
+            <label for="ma_checkbox" class=" mentions">J'ai lu et accepté les <a  href="Mentions_Legales.php">mentions légales</a></label>
             <span class="requis">*</span>
         </div>
 

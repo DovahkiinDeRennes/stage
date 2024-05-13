@@ -15,7 +15,7 @@ changeOrderLinks.forEach(link => {
         // Effectuer une requête GET vers changer_ordre2.php avec les données nécessaires
         const xhr = new XMLHttpRequest();
         xhr.open('GET', `changer_ordre.php?direction=${direction}&service_id=${serviceId}`, true);
-console.log(`changer_ordre.php?direction=${direction}&service_id=${serviceId}`);
+        console.log(`changer_ordre.php?direction=${direction}&service_id=${serviceId}`);
         xhr.onload = () => {
             if (xhr.status === 200) {
                 // La requête a réussi

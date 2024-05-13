@@ -1,4 +1,7 @@
-<?php include './src/pages/core/connection.php'; ?>
+<?php
+include './src/pages/core/connection.php';
+require_once(__DIR__ . '/csp_config.php');
+?>
 <!DOCTYPE html>
 <html lang="fr">
 

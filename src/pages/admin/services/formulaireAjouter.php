@@ -1,5 +1,5 @@
 <?php
-
+require_once(__DIR__ . '/../../../../csp_config.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr">

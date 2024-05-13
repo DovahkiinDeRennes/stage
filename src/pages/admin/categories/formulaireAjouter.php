@@ -1,3 +1,9 @@
+<?php
+
+require_once(__DIR__ . '/../../../../csp_config.php');
+
+?>
+
 <h2>Ajouter une catégorie</h2>
 
 <form method="post">

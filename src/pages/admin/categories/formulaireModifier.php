@@ -1,4 +1,8 @@
+<?php
 
+require_once(__DIR__ . '/../../../../csp_config.php');
+
+?>
 
 <form action="" method="POST" enctype="multipart/form-data">
     <label>Libellé</label><br>

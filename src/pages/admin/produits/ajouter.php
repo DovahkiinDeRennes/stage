@@ -2,7 +2,7 @@
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
 include(__DIR__ . '/../../../classes/produit.php');
-
+require_once(__DIR__ . '/../../../../csp_config.php');
 // Récupération des catégories depuis la base de données
 $query = "SELECT id, libelle FROM categorie";
 $stmt = $db->prepare($query);
@@ -21,7 +21,7 @@ if(isset($_POST['ok'])) {
     $error = $_FILES['image']['error'];
     $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
     $img_ex_lc = strtolower($img_ex);
-    $allowed_exs = array("jpg", "jpeg", "png");
+    $allowed_exs = array("jpg", "jpeg", "png", "webp");
 
     if (in_array($img_ex_lc, $allowed_exs)) {
         $new_img_name = uniqid("IMG-", true) . 'produits.' .$img_ex_lc;

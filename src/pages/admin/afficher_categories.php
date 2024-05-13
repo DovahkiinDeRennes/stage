@@ -1,5 +1,5 @@
 <?php
-
+require_once(__DIR__ . '/../../../csp_config.php');
 include(__DIR__ . '/../core/connection.php');
 include(__DIR__ . '/../../classes/Categorie.php');
 

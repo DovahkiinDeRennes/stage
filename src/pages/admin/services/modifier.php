@@ -1,7 +1,7 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../../classes/service.php');
-
+require_once(__DIR__ . '/../../../../csp_config.php');
 ?>
 <?php
 
@@ -49,7 +49,7 @@ if (isset($_POST['ok'])) {
         $tmp_name = $_FILES['image']['tmp_name'];
         $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
         $img_ex_lc = strtolower($img_ex);
-        $allowed_exs = array("jpg", "jpeg", "png");
+        $allowed_exs = array("jpg", "jpeg", "png", "webp");
 
         // Vérification de l'extension de la nouvelle image
         if (in_array($img_ex_lc, $allowed_exs)) {
@@ -81,7 +81,7 @@ if (isset($_POST['ok'])) {
         $service = new Service($db);
         $result = $service->update($id, $titre, $texte, $new_img_name, $alt, $categories);
         if ($result) {
-            echo "<script>window.location.href = 'services.php';</script>";
+            echo "<script nonce='$nonce7'>window.location.href = 'services.php';</script>";
         } else {
             // Sinon, produit non modifié
             $message = "Produit non modifié";

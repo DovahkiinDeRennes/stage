@@ -1,4 +1,9 @@
 <?php
+
+
+require_once(__DIR__ . '/../csp_config.php');
+
+
 session_start();
 
 // Détruit toutes les données de session, ce qui déconnecte l'administrateur

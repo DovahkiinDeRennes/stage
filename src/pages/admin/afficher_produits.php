@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../core/connection.php';
 require_once __DIR__ . '/../../classes/produit.php';
+require_once(__DIR__ . '/../../../csp_config.php');
 
 $produit = new Produit($db);
 $produits = $produit->getAllProduits();

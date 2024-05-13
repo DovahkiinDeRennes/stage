@@ -1,5 +1,16 @@
-<html>
+<?php
+
+require_once(__DIR__ . '/../../../csp_config.php');
+
+?>
+
+
+<!DOCTYPE html>
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
     <link rel="icon" href="/images/Fidelilium_Logo_Simple.png">
     <script src="/https://kit.fontawesome.com/0d6d431c4d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/css/navbar.css" />

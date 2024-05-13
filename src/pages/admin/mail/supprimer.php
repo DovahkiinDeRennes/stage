@@ -2,6 +2,7 @@
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
 include(__DIR__ . '/../../../classes/Mail.php');
+require_once(__DIR__ . '/../../../../csp_config.php');
 
 $id = $_GET['id'];
 

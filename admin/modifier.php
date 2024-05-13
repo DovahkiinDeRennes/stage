@@ -1,4 +1,9 @@
 <?php
+
+
+require_once(__DIR__ . '/../csp_config.php');
+
+
 session_start();
 ?>
 <!DOCTYPE html>

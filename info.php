@@ -1,5 +1,6 @@
 <?php
 include (__DIR__ . '/src/pages/core/connection.php');
+require_once(__DIR__ . '/csp_config.php');
 
 $id = $_GET['id'] ?? null;
 $produit = $_GET['titre'] ?? null;

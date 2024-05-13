@@ -1,7 +1,11 @@
-<!DOCTYPE html>
-<html>
+<?php
+require_once(__DIR__ . '/csp_config.php');
+?>
 
-<!-- Mirrored from fidelilium.com/Mentions_Legales.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 11 Dec 2023 08:56:52 GMT -->
+<!DOCTYPE html>
+
+
+<!-- Mirrored from fidelilium.com/Mentions_Legales.php by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 11 Dec 2023 08:56:52 GMT -->
 <head>
 	<title>Mentions légales</title>
 	<meta charset="utf-8" />

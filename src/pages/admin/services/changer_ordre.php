@@ -2,6 +2,7 @@
 
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
+require_once(__DIR__ . '/../../../../csp_config.php');
 
 if(isset($_GET['service_id'], $_GET['direction'])) {
 

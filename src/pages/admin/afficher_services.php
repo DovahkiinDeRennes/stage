@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../core/connection.php';
 require_once __DIR__ . '/../../classes/service.php';
+require_once(__DIR__ . '/../../../csp_config.php');
+
 
 $service = new Service($db);
 $services = $service->getAllServices();

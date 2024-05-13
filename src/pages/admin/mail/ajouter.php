@@ -1,7 +1,7 @@
 <?php
 include(__DIR__ . '/../../../classes/Mail.php');
 include(__DIR__ . '/../../core/connection.php');
-
+require_once(__DIR__ . '/../../../../csp_config.php');
 if (isset($_POST['ok'])) {
 
     if (isset($_POST["ma_checkbox"])) {

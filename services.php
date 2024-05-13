@@ -1,4 +1,6 @@
-<?php include './src/pages/core/connection.php';
+<?php
+include './src/pages/core/connection.php';
+require_once(__DIR__ . '/csp_config.php');
 // include 'assets/php/menu-service.php';
  ?>
 <!DOCTYPE html>

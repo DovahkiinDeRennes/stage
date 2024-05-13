@@ -2,6 +2,7 @@
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
 include(__DIR__ . '/../../../classes/service.php');
+require_once(__DIR__ . '/../../../../csp_config.php');
 
 // Récupérer les catégories
 $query = "SELECT id, libelle FROM categorie";
@@ -29,7 +30,7 @@ if(isset($_POST['ok'])) {
     // Vérifier le type de fichier
     $img_name = $_FILES['image']['name'];
     $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
-    $allowed_exs = array("jpg", "jpeg", "png");
+    $allowed_exs = array("jpg", "jpeg", "png", "webp");
 
     if (!in_array(strtolower($img_ex), $allowed_exs)) {
         $message = "Extension de fichier non autorisée. Veuillez télécharger une image au format JPG, JPEG ou PNG.";
