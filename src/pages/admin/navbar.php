@@ -79,6 +79,10 @@ require_once(__DIR__ . '/../../../csp_config.php');
                         <p class="link">Catégories</p>
                        <a class="link" href="/src/pages/admin/categories/categories.php">
                     </a></li>
+                    <li> 
+                        <p class="link">Url Chiffrage</p>
+                       <a class="link" href="/src/pages/admin/urls/url.php">
+                    </a></li>
                     <li>
                     <a class="link" href="/admin/logout.php">
                             <p class="link">Se deconnecter</p>
@@ -114,6 +118,11 @@ require_once(__DIR__ . '/../../../csp_config.php');
                       <a class="link" href="/src/pages/admin/categories/categories.php">
                         <p class="link">Catégories</p>
                     </a>
+                      
+                       
+                       <a class="link" href="/src/pages/admin/urls/url.php">
+          <p class="link">Url Chiffrage</p>
+         </a>
                     <a class="link" href="/admin/logout.php">
                         <p class="link">Se deconnecter</p>
                     </a>

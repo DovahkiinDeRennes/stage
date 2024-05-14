@@ -24,6 +24,20 @@ $url_gstatic =  'https://fonts.gstatic.com';
 $url_ytb = 'https://www.youtube.com';
 $url_cdn = 'https://cdn.jsdelivr.net';
 
+$url_Aos = 'https://unpkg.com/aos@2.3.1/dist/aos.css';
+$url_0d6d431c4d = 'https://kit.fontawesome.com/0d6d431c4d.js';
+
+$encrypted_url10 = encryptURL($url_0d6d431c4d, $secret_key);
+$decrypted_url10 = decryptHash($encrypted_url10, $secret_key);
+
+
+$encrypted_url9 = encryptURL($url_Aos, $secret_key);
+
+$decrypted_url9 = decryptHash($encrypted_url9, $secret_key);
+
+
+
+
 $encrypted_url1 = encryptURL($url_unpkg, $secret_key);
 $encrypted_url2 = encryptURL($url_google, $secret_key);
 $encrypted_url3 = encryptURL($url_cdnjs, $secret_key);
@@ -41,4 +55,6 @@ $decrypted_url5 = decryptHash($encrypted_url5, $secret_key);
 $decrypted_url6 = decryptHash($encrypted_url6, $secret_key);
 $decrypted_url7 = decryptHash($encrypted_url7, $secret_key);
 $decrypted_url8 = decryptHash($encrypted_url8, $secret_key);
+
+
 

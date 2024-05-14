@@ -1,0 +1,38 @@
+<?php
+
+include(__DIR__ . '/../../../../admin/check_login.php');
+include(__DIR__ . '/../../core/connection.php');
+include(__DIR__ . '/../../../classes/url.php');
+require_once(__DIR__ . '/../../../../csp_config.php');
+require_once(__DIR__ . '/../../../../chiffrageUrl.php');
+
+
+if (isset($_POST['ok'])) {
+
+    $urlChiffre = $_POST["url"] ?? '';
+
+
+    $url = new Url($db);
+
+
+    $verifUrl = $url->verifUrl($urlChiffre, $secret_key);
+
+
+
+    if ($verifUrl) {
+
+        echo "<p>URL déjà enregistrée.</p>";
+    } else {
+        // Chiffrer l'URL
+        $encrypted_url = encryptURL($urlChiffre, $secret_key);
+
+        // Insérer l'URL chiffrée dans la base de données
+        $url->insert($encrypted_url);
+
+        // Afficher un message de succès ou effectuer d'autres actions après l'insertion
+        echo "<p>URL insérée avec succès.</p>";
+    }
+}
+
+// Inclure le formulaire pour ajouter une nouvelle URL
+include(__DIR__ . '/formulaireAjouter.php');

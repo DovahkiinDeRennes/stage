@@ -17,7 +17,7 @@ require_once(__DIR__ . '/csp_config.php');
 	<link rel="stylesheet" href="assets/css/header.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
 	<link rel="stylesheet" href="assets/css/caroussel-actu.css" />
-	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/fontawesome-free-6.1.2-web/css/all.css" />
     <script src="https://kit.fontawesome.com/0d6d431c4d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/styles.css" />
@@ -30,7 +30,7 @@ require_once(__DIR__ . '/csp_config.php');
 		<link rel="stylesheet" href="assets/css/noscript.html" />
 	</noscript>
 
-	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 </head>
 
 <body>
