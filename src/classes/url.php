@@ -35,19 +35,35 @@ class url
 
 
 
+    public function selectUrlById($id, $secret_key)
+    {
+        $query = "SELECT url FROM url WHERE id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($result && isset($result['url'])) {
+            $decrypted_url = decryptHash($result['url'], $secret_key);
+            if ($decrypted_url !== false) {
+                // Retourner l'URL décryptée si réussie
+                return $decrypted_url;
+            }
+        }
+
+        // Retourner false si l'URL n'a pas été trouvée ou si le décryptage a échoué
+        return false;
+    }
 
 
-
-    public function insert($url)
+    public function insert($url, $urlsafe)
     {
         if (isset($url) && !empty($url)) {
-            $query = "INSERT INTO url (url) VALUES (?)";
+            $query = "INSERT INTO url (url, urlsafe) VALUES (?,?)";
             $stmt = $this->db->prepare($query);
-            $success = $stmt->execute([$url]);
+            $success = $stmt->execute([$url,$urlsafe]);
 
             if ($success) {
-                header('Location: url.php');
-                exit;
+                return true;
             }
         }
     }

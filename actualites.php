@@ -19,7 +19,21 @@ require_once (__DIR__ . '/csp_config.php');
     <script src="/assets/js/jquery.min.js" defer></script>
     <script src="/assets/js/seeMore.js" defer></script>
     <link rel="stylesheet" href="assets/css/fontawesome-free-6.1.2-web/css/all.css" />
-	<script src="https://kit.fontawesome.com/0d6d431c4d.js" crossorigin="anonymous"></script>
+
+    <?php
+
+    require_once(__DIR__ . '/src/classes/url.php');
+
+
+    $url = new Url($db);
+
+
+    $urlAosJs = $url->selectUrlById(2, $secret_key);
+
+    ?>
+
+
+	<script src="<?php echo $urlAosJs; ?>" crossorigin="anonymous"></script>
 
     <title>Actualités</title>
 </head>

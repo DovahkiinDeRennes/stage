@@ -17,12 +17,10 @@ require_once(__DIR__ . '/csp_config.php');
 	<link rel="stylesheet" href="assets/css/header.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
 	<link rel="stylesheet" href="assets/css/caroussel-actu.css" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/fontawesome-free-6.1.2-web/css/all.css" />
-    <script src="https://kit.fontawesome.com/0d6d431c4d.js" crossorigin="anonymous"></script>
+
+
     <link rel="stylesheet" href="assets/css/styles.css" />
-
-
+    <link rel="stylesheet" href="assets/css/fontawesome-free-6.1.2-web/css/all.css" />
 
 
 	<link rel="stylesheet" href="assets/css/fontawesome-free-6.1.2-web/css/all.css" />
@@ -35,7 +33,23 @@ require_once(__DIR__ . '/csp_config.php');
 
 <body>
 <?php require_once 'partials/header.php' ?>
+<?php
 
+$urlAosCss = $url->selectUrlById(1, $secret_key);
+$urlAosJs = $url->selectUrlById(2, $secret_key);
+$urlFontAwesomeJs = $url->selectUrlById(3, $secret_key);
+$urlCyberGouvFormation = $url->selectUrlById(4, $secret_key);
+$urlCyberGouv = $url->selectUrlById(5, $secret_key);
+
+$urlGouvCharteCyber = $url->selectUrlById(6, $secret_key);
+$urlLinkedin = $url->selectUrlById(7, $secret_key);
+
+
+echo '<link href="' . $urlAosCss . '" rel="stylesheet">';
+echo '<script src="' . $urlAosJs . '" ></script>';
+echo '<script src="' . $urlFontAwesomeJs . '" crossorigin="anonymous"></script>';
+
+?>
 <div class="header" data-aos="zoom-out-up" data-aos-duration="2000">
     <center>
         <img src="images/Fidelilium_Logo_Sign_FR_RVB.webp" alt="Logo de fidelilium" />
@@ -96,7 +110,11 @@ require_once(__DIR__ . '/csp_config.php');
 		<h2 data-aos="fade-right">Équipage</h2>
 		<div class="division ">
 			<p class="text-essi " data-aos="fade-right">Fidelilium est une société fondée par deux détenteurs du titre d'expert en sécurité des systèmes d'information de l'ANSSI (Agence Nationale de Sécurité des Systèmes d'Information). Ils cumulent à eux deux plus de 40 ans d’expérience dans la défense des systèmes d’information. Forts d’un riche réseau professionnel, ils ont à cœur de mettre à la disposition de leurs clients, les services d’experts reconnus du milieu de la cybersécurité et du numérique.</p>
-			<a href="https://cyber.gouv.fr/formation-essi-expert-en-securite-des-systemes-dinformation" target="_blank">
+
+
+
+
+            <a href="<?php echo $urlCyberGouvFormation; ?>" target="_blank">
 				<img class="img-essi" src="images/logoEssi.png" alt="logo Essi"></a>
 		</div>
 
@@ -109,16 +127,16 @@ require_once(__DIR__ . '/csp_config.php');
 	<!-- Troisieme bloc -->
 	<div class="bloc-3">
 		<div class="groupe-gauche" data-aos="fade-right">
-			<a href="https://cybermalveillance.gouv.fr">
+			<a href="<?php echo $urlCyberGouv; ?>" target="_blank">
 				<img src="images/Bloc_ReferenceSurLaPlateformeCybermalveillance_RVB.jpg" loading="lazy" alt="Logo cybermalveillance.gouv.fr" class="image-cybermalveillance">
 			</a>
 		</div>
 		<div class="cybermalveillance">
 		<div class="groupe-droite" data-aos="fade-up">
-			<div class="paragraphe"><a href="https://Cybermalveillance.gouv.fr">
+			<div class="paragraphe"><a href="<?php echo $urlCyberGouv; ?>" target="_blank">
 					</a>
                 <p>
-                    <a href="https://cybermalveillance.gouv.fr"><span>Cybermalveillance.gouv.fr </span></a>est le dispositif national d'assistance aux victimes d'actes de cybermalveillance,
+                    <a href="<?php echo $urlCyberGouv; ?>" target="_blank"><span>Cybermalveillance.gouv.fr </span></a>est le dispositif national d'assistance aux victimes d'actes de cybermalveillance,
 				de sensibilisation des publics aux risques numériques et d'observation de la menace en France.
 				Ses publics sont les particuliers, les entreprises et les collectivités territoriales.
                 </p>
@@ -129,7 +147,7 @@ require_once(__DIR__ . '/csp_config.php');
 	<center><span class="image fit"><img class="séparation" src="images/fidelilium_line.webp" alt="séparation" height="5" /></span></center>
 	
 	
-	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 	<script src="assets/js/menuburger.js"></script>
 	<script src="assets/js/aos.js"></script>
 

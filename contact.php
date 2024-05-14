@@ -2,6 +2,19 @@
 include (__DIR__ . '/src/pages/core/connection.php');
 include (__DIR__ . '/src/pages/admin/mail/ajouter.php');
 require_once(__DIR__ . '/csp_config.php');
+
+
+require_once(__DIR__ . '/src/classes/url.php');
+
+$url = new Url($db);
+
+
+$urlAosJs = $url->selectUrlById(2, $secret_key);
+$urlFontAwesomeJs = $url->selectUrlById(3, $secret_key);
+$urlAosCss = $url->selectUrlById(1, $secret_key);
+$urlCdnjsCloud = $url->selectUrlById(8, $secret_key);
+$urlCdnJsdelivr = $url->selectUrlById(9, $secret_key);
+
 ?>
 <html lang="fr">
 
@@ -17,10 +30,10 @@ require_once(__DIR__ . '/csp_config.php');
     <link rel="stylesheet" href="assets/css/header.css" />
     <link rel="stylesheet" href="assets/css/fontawesome-free-6.1.2-web/css/all.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.html" /></noscript>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://kit.fontawesome.com/0d6d431c4d.js" crossorigin="anonymous"></script>
+    <link href="<?php echo $urlAosCss; ?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo $urlCdnjsCloud; ?>"/>
+    <script src="<?php echo $urlCdnJsdelivr; ?>"></script>
+    <script src="<?php echo $urlFontAwesomeJs; ?>" crossorigin="anonymous"></script>
 
 
 </head>
@@ -126,9 +139,9 @@ require_once(__DIR__ . '/csp_config.php');
 <!-- Fin du formulaire -->
 <?php require_once 'partials/footer.php' ?>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="<?php echo $urlAosJs; ?>"></script>
 <script src="assets/js/menuburger.js"></script>
 <script src="assets/js/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 </html>

@@ -2,6 +2,17 @@
 include './src/pages/core/connection.php';
 require_once(__DIR__ . '/csp_config.php');
 // include 'assets/php/menu-service.php';
+
+
+require_once(__DIR__ . '/src/classes/url.php');
+$url = new Url($db);
+
+
+$urlAosJs = $url->selectUrlById(2, $secret_key);
+$urlFontAwesomeJs = $url->selectUrlById(3, $secret_key);
+$urlAosCss = $url->selectUrlById(1, $secret_key);
+
+
  ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -14,9 +25,9 @@ require_once(__DIR__ . '/csp_config.php');
     <link rel="stylesheet" href="assets/css/footer.css" />
     <link rel="stylesheet" href="assets/css/servicesproduits.css" />
     <link rel="icon" href="images/Fidelilium_Logo_Simple.webp">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="<?php echo $urlAosCss; ?>" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/fontawesome-free-6.1.2-web/css/all.css" />
-    <script src="https://kit.fontawesome.com/0d6d431c4d.js" crossorigin="anonymous"></script>
+    <script src="<?php echo $urlFontAwesomeJs; ?>" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/styles.css" />
     <script src="/assets/js/confirmDelete.js"></script>
     <title>Services</title>
@@ -38,7 +49,7 @@ require_once(__DIR__ . '/csp_config.php');
         </section >
 
         <?php require_once 'partials/footer.php' ?>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="<?php echo $urlAosJs; ?>"></script>
     <script src="assets/js/menuburger.js"></script>
 
         <script src="assets/js/aos.js"></script>
