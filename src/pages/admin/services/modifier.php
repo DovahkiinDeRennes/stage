@@ -63,7 +63,7 @@ if (isset($_POST['ok'])) {
                 $service = new Service($db);
                 $result = $service->update($id, $titre, $texte, $new_img_name, $alt, $categories);
                 if ($result) {
-                    echo "<script>window.location.href = 'services.php';</script>";
+                    echo "<script nonce='$nonce7'>window.location.href = 'services.php';</script>";
                 } else {
                     // Sinon, produit non modifié
                     $message = "Produit non modifié";

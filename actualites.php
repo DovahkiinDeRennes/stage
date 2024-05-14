@@ -27,9 +27,9 @@ require_once (__DIR__ . '/csp_config.php');
 <?php require_once 'partials/header.php' ?>
 
 <section data-aos="fade-up" data-aos-duration="2000" class="main-services margB65">
-<div class="sous-titre">
+    <!-- <div class="sous-titre">-->
     <h1>Actualités</h1>
-</div>
+    <!--</div>-->
     <main>
 
         <center>

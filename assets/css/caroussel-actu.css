@@ -1,4 +1,9 @@
 /* Variables */
+
+h1{
+    text-align: center;
+}
+
 :root {
     --menu-width: 350px;
     --scene-width: 1000px;
@@ -110,7 +115,7 @@ p{
       opacity: 0.5;
       height: 50px;
       text-align: justify;
-      line-height: 50px;
+      /*line-height: 50px;*/
       cursor: pointer;
       margin-left:1em;
     }
