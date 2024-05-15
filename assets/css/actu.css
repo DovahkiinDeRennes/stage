@@ -1,0 +1,54 @@
+.container-actualites {
+    display: flex;
+background-color: #648a7d;
+}
+
+.card {
+    width: 350px; /* Largeur de votre carte */
+    height: 450px; /* Hauteur de votre carte */
+    background-color: rgba(255, 255, 255, 0.75); /* Couleur de fond */
+    border: 5px solid rgba(100, 138, 125, 0.36); /* Bordure */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 20px; /* Espace interne */
+    box-sizing: border-box; /* Inclure la bordure dans les dimensions */
+    margin-right: 45px; /* Marge entre les cartes (à ajuster selon vos besoins) */
+    margin-bottom: 30px;
+
+}
+
+.flex
+{
+    display: flex;
+    flex-direction: row;
+
+    .video-ytb {
+        display: flex;
+      justify-content:center ;
+
+            width: 100PX;
+            height: 100PX;
+        flex-grow: 1;
+
+    }
+}
+.description {
+    height: 250px;
+    width: 250px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+
+}
+
+img {
+    max-width: 100%;
+    height: 100px;
+    width: 100px;
+    flex-grow: 1;
+}
+.image-actu
+{
+    display: flex;
+
+}
+
