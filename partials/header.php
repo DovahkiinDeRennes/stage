@@ -1,9 +1,7 @@
 ﻿<?php
 
 require_once(__DIR__ . '/../csp_config.php');
-require_once(__DIR__ . '/../src/classes/url.php');
 
-$url = new Url($db);
 ?>
 
 <div class="menuburger">

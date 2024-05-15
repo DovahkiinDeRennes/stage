@@ -4,16 +4,10 @@ include (__DIR__ . '/src/pages/admin/mail/ajouter.php');
 require_once(__DIR__ . '/csp_config.php');
 
 
-require_once(__DIR__ . '/src/classes/url.php');
-
-$url = new Url($db);
 
 
-$urlAosJs = $url->selectUrlById(2, $secret_key);
-$urlFontAwesomeJs = $url->selectUrlById(3, $secret_key);
-$urlAosCss = $url->selectUrlById(1, $secret_key);
-$urlCdnjsCloud = $url->selectUrlById(8, $secret_key);
-$urlCdnJsdelivr = $url->selectUrlById(9, $secret_key);
+
+
 
 ?>
 <html lang="fr">

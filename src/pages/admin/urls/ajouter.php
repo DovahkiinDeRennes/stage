@@ -1,7 +1,7 @@
 <?php
 
 
-include(__DIR__ . '/../../../classes/url.php');
+
 require_once(__DIR__ . '/../../../../csp_config.php');
 require_once(__DIR__ . '/../../../../chiffrageUrl.php');
 
@@ -12,7 +12,7 @@ if (isset($_POST['ok'])) {
 
     $urlSafe = $_POST["url"] ?? '';
 
-    $url = new Url($db);
+
 
 
     $verifUrl = $url->verifUrl($urlChiffre, $secret_key);

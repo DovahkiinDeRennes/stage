@@ -22,13 +22,8 @@ require_once (__DIR__ . '/csp_config.php');
 
     <?php
 
-    require_once(__DIR__ . '/src/classes/url.php');
 
 
-    $url = new Url($db);
-
-
-    $urlAosJs = $url->selectUrlById(2, $secret_key);
 
     ?>
 

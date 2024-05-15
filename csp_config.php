@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__ . '/chiffrageUrl.php');
+require_once(__DIR__ . '/src/classes/url.php');
 
 // Génération des nonces
 $nonce1 = bin2hex(random_bytes(16));
@@ -12,22 +13,46 @@ $nonce6 = bin2hex(random_bytes(16));
 $nonce7 = bin2hex(random_bytes(16));
 
 
+$url = new Url($db);
+$secret_key = 'test';
+
+
+
+
+$urlAosCss = $url->selectUrlById(1, $secret_key);
+$urlAosJs = $url->selectUrlById(2, $secret_key);
+$urlFontAwesomeJs = $url->selectUrlById(3, $secret_key);
+$urlCyberGouvFormation = $url->selectUrlById(4, $secret_key);
+$urlCyberGouv = $url->selectUrlById(5, $secret_key);
+$urlGouvCharteCyber = $url->selectUrlById(6, $secret_key);
+$urlLinkedin = $url->selectUrlById(7, $secret_key);
+$urlCdnjsCloud = $url->selectUrlById(8, $secret_key);
+$urlCdnJsdelivr = $url->selectUrlById(9, $secret_key);
+$url_unpkg = $url->selectUrlById(10, $secret_key);
+$url_google = $url->selectUrlById(11, $secret_key);
+$url_cdnjs = $url->selectUrlById(12, $secret_key);
+$url_kaFonts = $url->selectUrlById(13, $secret_key);
+$url_kitFonts = $url->selectUrlById(14, $secret_key);
+$url_gstatic = $url->selectUrlById(15, $secret_key);
+$url_ytb = $url->selectUrlById(16, $secret_key);
+$url_cdn = $url->selectUrlById(17, $secret_key);
+
+
 
 
 
 // Définir la directive CSP avec les nonces
-$csp_directive = "default-src 'self' $decrypted_url1 ; ";
-$csp_directive .= "script-src 'self' $decrypted_url1 $decrypted_url5 $decrypted_url8 'nonce-" . $nonce1 . "' 'nonce-" . $nonce2 . "' 'nonce-" . $nonce3 . "' 'nonce-" . $nonce4 . "' 'nonce-" . $nonce5 . "' 'nonce-" . $nonce6 . "' 'nonce-" . $nonce7 . "' ; ";
-$csp_directive .= "style-src 'self' 'unsafe-inline' $decrypted_url1 $decrypted_url2 $decrypted_url3; ";
-$csp_directive .= "connect-src 'self' $decrypted_url4 $decrypted_url5; ";
-$csp_directive .= "font-src 'self' $decrypted_url6 $decrypted_url3 $decrypted_url4 $decrypted_url5; ";
-$csp_directive .= "frame-src 'self' $decrypted_url7;";
+$csp_directive = "default-src 'self' $url_unpkg; ";
+$csp_directive .= "script-src 'self' $url_unpkg $url_kitFonts $url_cdn 'nonce-" . $nonce1 . "' 'nonce-" . $nonce2 . "' 'nonce-" . $nonce3 . "' 'nonce-" . $nonce4 . "' 'nonce-" . $nonce5 . "' 'nonce-" . $nonce6 . "' 'nonce-" . $nonce7 . "' ; ";
+$csp_directive .= "style-src 'self' 'unsafe-inline' $url_unpkg $url_google $url_cdnjs; ";
+$csp_directive .= "connect-src 'self' $url_kaFonts $url_kitFonts; ";
+$csp_directive .= "font-src 'self' $url_gstatic $url_cdnjs $url_kaFonts $url_kitFonts; ";
+$csp_directive .= "frame-src 'self' $url_ytb;";
 $csp_directive .= "base-uri 'self';";
 
 // Ajouter la directive CSP à l'en-tête HTTP
 header("Content-Security-Policy: " . $csp_directive);
 
 ?>
-
 
 

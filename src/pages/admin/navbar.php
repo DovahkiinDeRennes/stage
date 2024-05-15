@@ -12,7 +12,7 @@ require_once(__DIR__ . '/../../../csp_config.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navbar</title>
     <link rel="icon" href="/images/Fidelilium_Logo_Simple.webp">
-    <script src="/https://kit.fontawesome.com/0d6d431c4d.js" crossorigin="anonymous"></script>
+    <script src="<?php echo $urlFontAwesomeJs; ?>" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/css/navbar.css" />
 </head>
 <body>

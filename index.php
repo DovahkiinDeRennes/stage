@@ -35,14 +35,7 @@ require_once(__DIR__ . '/csp_config.php');
 <?php require_once 'partials/header.php' ?>
 <?php
 
-$urlAosCss = $url->selectUrlById(1, $secret_key);
-$urlAosJs = $url->selectUrlById(2, $secret_key);
-$urlFontAwesomeJs = $url->selectUrlById(3, $secret_key);
-$urlCyberGouvFormation = $url->selectUrlById(4, $secret_key);
-$urlCyberGouv = $url->selectUrlById(5, $secret_key);
 
-$urlGouvCharteCyber = $url->selectUrlById(6, $secret_key);
-$urlLinkedin = $url->selectUrlById(7, $secret_key);
 
 
 echo '<link href="' . $urlAosCss . '" rel="stylesheet">';

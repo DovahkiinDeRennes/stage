@@ -7,7 +7,7 @@ require_once __DIR__ . '/../src/pages/core/connection.php';
 ?>
 
 <head>
-    <script src="https://kit.fontawesome.com/0d6d431c4d.js" crossorigin="anonymous"></script>
+    <script src="<?php echo $urlFontAwesomeJs; ?>" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion Admin</title>
