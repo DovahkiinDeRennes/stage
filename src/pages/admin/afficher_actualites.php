@@ -23,14 +23,17 @@ $actualites = $actualite->getAllActualites();
 
 $i = 0; // Compteur pour suivre le nombre de cartes sur la ligne actuelle
 
-foreach ($actualites as $row) {
-    // Si le nombre de cartes sur la ligne actuelle est égal à 0, commencez une nouvelle ligne
-    if ($i % 3 === 0) {
-        echo '<div class="row">'; // Commencer une nouvelle ligne
-    }
+// Ouvrir la première ligne avant de commencer la boucle
+echo '<div class="row">';
 
+foreach ($actualites as $row) {
     // Ajouter une classe spéciale à la carte si le titre est '3'
     $cardClass = ($row['titre'] == '3') ? 'card-3' : 'card';
+
+    // Si le nombre de cartes sur la ligne actuelle est égal à 0, commencez une nouvelle ligne
+    if ($i % 3 === 0) {
+        echo '<div class="flex">'; // Appliquer flex pour afficher les cartes horizontalement
+    }
 
     // Affichage de la carte avec la classe appropriée
     echo '<div class="' . $cardClass . '">';
@@ -49,8 +52,14 @@ foreach ($actualites as $row) {
 
     echo '<div class="description">';
     echo '<h3>' . $row['titre'] . '</h3>';
-    echo '<p class="text-content">' . nl2br(htmlspecialchars($row['texte'])) . '</p>';
-    echo '<p class="date">' . $row['date'] . '</p>'; // Assurez-vous que $row['date'] contient la date dans le format que vous souhaitez afficher
+
+    echo '<p id = "texte" class="p-block-3 text-content">' . nl2br(htmlspecialchars($row['texte'])) . '</p>';
+
+
+
+    echo '<div class="readmore-btn">Lire plus</div>';
+
+
     echo '</div>'; // fin de description
 
     // Afficher les actions administratives si l'utilisateur est connecté en tant qu'admin
@@ -67,13 +76,16 @@ foreach ($actualites as $row) {
     // Incrémenter le compteur
     $i++;
 
-    // Si le nombre de cartes sur la ligne actuelle est égal à 0, fermez la ligne
+    // Si le nombre de cartes sur la ligne actuelle est égal à 3, fermez la ligne
     if ($i % 3 === 0) {
         echo '</div>'; // Fin de la ligne
     }
 }
 
-// Si le nombre total de cartes n'est pas un multiple de 3, fermez la dernière ligne
+// Fermer la dernière ligne si le nombre total d'actualités n'est pas un multiple de 3
 if ($i % 3 !== 0) {
-    echo '</div>'; // Fin de la ligne
+    echo '</div>'; // Fermer la dernière ligne
 }
+
+?>
+

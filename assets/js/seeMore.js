@@ -3,7 +3,7 @@ $(document).ready(function() {
     function truncateText() {
         $(".text-content").each(function() {
             var html = $(this).html().split(" ");
-            var truncatedHtml = html.slice(0, 100).join(" ") + '<span class="dots">...</span><span class="full-text"> ' + html.slice(100).join(" ") + '</span>'; // Ajout d'un espace après les points de suspension
+            var truncatedHtml = html.slice(0, 50).join(" ") + '<span class="dots">...</span><span class="full-text"> ' + html.slice(50).join(" ") + '</span>'; // Ajout d'un espace après les points de suspension
             $(this).html(truncatedHtml);
             $(this).find('.full-text').hide(); // Cacher le contenu complet
         });

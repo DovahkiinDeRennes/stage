@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="assets/css/footer.css" />
 
     <link rel="icon" href="images/Fidelilium_Logo_Simple.webp">
-
-
+    <script src="/assets/js/jquery.min.js" defer></script>
+    <script src="/assets/js/seeMore.js" defer></script>
     <title>Actualités</title>
 
 </head>
@@ -19,18 +19,20 @@
 
 <?php
 session_start();
-include(__DIR__ . '/src/pages/core/connection.php');
 
+include(__DIR__ . '/src/pages/core/connection.php');
+include(__DIR__ . '/src/pages/admin/navbar.php');
 ?>
 <center>
-
+<div>
 <div class="flex">
 <?php
 include (__DIR__ . '/src/pages/admin/afficher_actualites.php'); ?>
 
 </div>
-</center>
 </div>
+</center>
+
 <?php require_once 'partials/footer.php' ?>
 
 <script src="assets/js/menuburger.js"></script>
