@@ -1,0 +1,34 @@
+.red{
+    color: red;
+    font-weight: bold;
+font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start
+}
+
+form{
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start
+}
+
+.centrage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.taille{
+    height: auto;
+    width: 100%;
+
+}
+.coteAcote{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 300%;
+    gap: 20px;
+}

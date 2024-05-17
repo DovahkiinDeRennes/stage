@@ -161,3 +161,9 @@ iframe {
   }
 
   }
+
+.centre{
+
+  display: flex;
+  justify-content: center
+}

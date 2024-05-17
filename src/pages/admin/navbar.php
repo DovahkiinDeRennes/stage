@@ -118,11 +118,12 @@ require_once(__DIR__ . '/../../../csp_config.php');
                       <a class="link" href="/src/pages/admin/categories/categories.php">
                         <p class="link">Catégories</p>
                     </a>
-                      
-                       
                        <a class="link" href="/src/pages/admin/urls/url.php">
-          <p class="link">Url Chiffrage</p>
-         </a>
+                        <p class="link">Url Chiffrage</p>
+                     </a>
+                     <a class="link" href="/src/pages/admin/urls/mdp/mdpUrl.php">
+                        <p class="link">MDP Url Chiffrage</p>
+                     </a>
                     <a class="link" href="/admin/logout.php">
                         <p class="link">Se deconnecter</p>
                     </a>
