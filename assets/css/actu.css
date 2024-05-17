@@ -1,18 +1,19 @@
 .container-actualites {
     display: flex;
 align-items: center;
-}
+    padding: 20px 25px;}
 
 .card {
     width: 450px; /* Largeur de votre carte */
     height: 600px; /* Hauteur de votre carte */
-
-    border-radius: 5px; /* Coins arrondis */
+position: relative;
+border-radius: 5px; /* Coins arrondis */
 background-color: rgba(184, 184, 184, 0.39);
     box-sizing: border-box; /* Inclure la bordure dans les dimensions */
     margin-right: 60px; /* Marge entre les cartes (à ajuster selon vos besoins) */
-    margin-bottom: 30px;
-    box-shadow: 0 0 30px 0 rgba(0,0,0,.15);
+    margin-bottom: 40px;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.30);
+    overflow: hidden;
 }
 
 .flex
@@ -39,19 +40,35 @@ background-color: rgba(184, 184, 184, 0.39);
 
 }
 .description {
-    height: 350px;
-    width: 500px;
+    max-height: 100%; /* Ensures the text doesn't overflow the card */
+    overflow-y: auto; /* Adds scrollbar if text is too long */
+    padding-right: 10px;
 
 
 }
+
 .readmore-btn{
     display:block;
     color:#b34b32;
     cursor:pointer;
     margin-top:15px;
 
-}
 
+}
+.seeMore {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #007BFF;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: none;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
 img {
 
     aspect-ratio: 16/9;
