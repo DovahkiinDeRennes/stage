@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . '/chiffrageUrl.php');
+
 require_once(__DIR__ . '/src/classes/url.php');
 
 // Génération des nonces
@@ -13,11 +13,29 @@ $nonce6 = bin2hex(random_bytes(16));
 $nonce7 = bin2hex(random_bytes(16));
 
 
+
 $url = new Url($db);
-$secret_key = 'test';
+
+$query = "SELECT mdp FROM mdpurl";
+$stmt = $db->query($query);
+
+$mdps = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if (!empty($mdps)) {
+    // Récupérer le premier mot de passe
+    $first_mdp = $mdps[0]['mdp'];
+
+    // Utiliser ce premier mot de passe
+    $secret_key = $first_mdp;
+} else {
+    echo 'Mot de passe introuvable.';
+}
 
 
-
+if (!isset($secret_key)) {
+    $secret_key = 's3cr3t_k3y';
+    echo 'Mot de passe introuvable.';
+}
 
 $urlAosCss = $url->selectUrlById(1, $secret_key);
 $urlAosJs = $url->selectUrlById(2, $secret_key);

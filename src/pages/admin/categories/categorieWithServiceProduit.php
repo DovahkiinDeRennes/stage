@@ -4,11 +4,11 @@ include(__DIR__ . '/../../core/connection.php');
 require_once __DIR__ . '/../../../classes/service.php';
 
 require_once __DIR__ . '/../../../classes/produit.php';
-
+include(__DIR__ . '/../../../../admin/check_login.php');
 
 require_once(__DIR__ . '/../../../../csp_config.php');
 
-
+include(__DIR__ . '/../../admin/navbar.php');
 $service = new Service($db);
 
 

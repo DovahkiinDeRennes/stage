@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/../../chiffrageUrl.php');
+
 include(__DIR__ . '/../../src/pages/core/connection.php');
 
 class url
@@ -21,7 +21,7 @@ class url
         $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Déchiffrer chaque URL
+
         foreach ($results as $row) {
             $decrypted_url = decryptHash($row['url'], $secret_key);
             if ($decrypted_url === $url) {
@@ -68,4 +68,17 @@ class url
             }
         }
     }
+}
+
+function encryptURL($url, $key)
+{
+    $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+    return openssl_encrypt($url, 'aes-256-cbc', $key, 0, $iv) . '::' . bin2hex($iv);
+}
+
+function decryptHash($hash, $key)
+{
+    list($encrypted_data, $iv) = explode('::', $hash, 2);
+    $iv = hex2bin($iv);
+    return openssl_decrypt($encrypted_data, 'aes-256-cbc', $key, 0, $iv);
 }
