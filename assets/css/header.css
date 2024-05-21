@@ -27,7 +27,6 @@ div.header img{
 
 /* Barre de navigation */
 .navbar {
-
   position: relative;
 }
 
@@ -256,8 +255,5 @@ div.header img{
 
 
 
-.navHeader {
-  margin: 30px;
-  text-align: justify;
-}
+
   

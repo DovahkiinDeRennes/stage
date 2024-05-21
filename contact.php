@@ -22,6 +22,7 @@ require_once(__DIR__ . '/csp_config.php');
     <link rel="stylesheet" href="assets/css/navbar.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
     <link rel="stylesheet" href="assets/css/header.css" />
+    <link rel="stylesheet" href="assets/css/caroussel-actu.css" />
     <link rel="stylesheet" href="assets/css/fontawesome-free-6.1.2-web/css/all.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.html" /></noscript>
     <link href="<?php echo $urlAosCss; ?>" rel="stylesheet">

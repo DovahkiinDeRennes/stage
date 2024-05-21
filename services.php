@@ -20,11 +20,12 @@ require_once(__DIR__ . '/csp_config.php');
     <link rel="stylesheet" href="assets/css/roots.css"/>
     <link rel="stylesheet" href="assets/css/footer.css" />
     <link rel="stylesheet" href="assets/css/servicesproduits.css" />
+    <link rel="stylesheet" href="assets/css/caroussel-actu.css" />
     <link rel="icon" href="images/Fidelilium_Logo_Simple.webp">
     <link href="<?php echo $urlAosCss; ?>" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/fontawesome-free-6.1.2-web/css/all.css" />
     <script src="<?php echo $urlFontAwesomeJs; ?>" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="assets/css/styles.css" />
+
     <script src="/assets/js/confirmDelete.js"></script>
     <title>Services</title>
 </head>

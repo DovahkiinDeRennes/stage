@@ -41,7 +41,7 @@ foreach ($actualites as $row) {
     // Affichage de l'image ou de la vidéo en fonction du contenu
     echo '<div class="image-actu">';
     if ($row['image'] !== "non") {
-        echo '<img src="/images/actualites/' . $row['image'] . '" alt="' . $row['alt_text'] . '" class="image-actualites">';
+        echo '<img  src="/images/actualites/' . $row['image'] . '" alt="' . $row['alt_text'] . '" />';
     } elseif ($row['ytb_url'] !== "non") {
         $url = $row['ytb_url'];
         $videoID = getYouTubeVideoID($url);
