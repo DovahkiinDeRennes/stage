@@ -4,7 +4,7 @@ align-items: center;
     padding: 20px 25px;}
 
 .card {
-    width: 450px; /* Largeur de votre carte */
+    width: 400px; /* Largeur de votre carte */
     height: auto; /* Hauteur de votre carte */
     position: relative;
     border-radius: 5px; /* Coins arrondis */
@@ -22,7 +22,7 @@ align-items: center;
 {
     display: flex;
     justify-content: center;
-    gap: 60px;
+    gap: 100px;
 }
 .row {
     flex-direction: row;
@@ -44,7 +44,7 @@ align-items: center;
 }
 .description {
     max-height: 100%; /* Ensures the text doesn't overflow the card */
-    overflow-y: auto; /* Adds scrollbar if text is too long */
+
     padding-right: 10px;
 
 
@@ -75,12 +75,12 @@ align-items: center;
 
 .image-actu iframe {
     width: 100%;
-    height: 100%;
+    height: 285px;
     object-fit: cover; /* l'image couvre toute la zone sans se déformer */
     display: block; /* élimine les espaces blancs au bas de l'image */
 }
 .image-actu {
-    width: 450px; /* largeur fixe pour le conteneur */
+    width: 400px; /* largeur fixe pour le conteneur */
     height: 300px; /* hauteur fixe pour le conteneur */
     overflow: hidden; /* masquer les parties débordantes de l'image */
     position: relative;
@@ -88,7 +88,7 @@ align-items: center;
 
 .image-actu img {
     width: 100%;
-    height: 100%;
+    height: 285px;
 
     display: block; /* élimine les espaces blancs au bas de l'image */
 
@@ -130,6 +130,8 @@ align-items: center;
     {
         display: flex;
        flex-direction: column;
+        gap: 30px;
+        margin-bottom: 30px;
 
     }
     .container-actualites {
@@ -143,11 +145,11 @@ align-items: center;
         overflow: hidden;
         border-radius: 0;
     }
-    .video-ytb {
+    .image-actu iframe {
         width: 95%; /* Vidéo prend toute la largeur */
     }
     .image-actu img {
-        width: 85%;
+        width: 95%;
 
     }
     .description {
