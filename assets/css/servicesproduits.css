@@ -112,10 +112,11 @@ section{
 
 @media screen and (max-width: 480px) {
     .card{
-        height: 500px;
+        height: auto;
+
     }
     .card img{
-        width: 300px;
+        width: 315px;
         height: 300px;
     }
 
