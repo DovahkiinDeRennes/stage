@@ -1,22 +1,8 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../../classes/service.php');
-
+require_once(__DIR__ . '/../../../../csp_config.php');
 ?>
-
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier</title>
-    <link rel="stylesheet" href="/assets/css/navbar.css">
-    <link rel="stylesheet" href="/assets/css/admin.css" />
-</head>
-
-<body>
 <?php
 
 include(__DIR__ . '/../../core/connection.php');
@@ -25,31 +11,25 @@ include(__DIR__ . '/../../core/connection.php');
 // On récupère l'ID dans le lien
 $id = $_GET['id'];
 // Requête pour afficher les infos d'un produit
-$req = mysqli_query($db, "SELECT * FROM services WHERE id = $id");
-$row = mysqli_fetch_assoc($req);
+$stmt = $db->prepare("SELECT * FROM services WHERE id = ?");
+$stmt->execute([$id]);
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 $query = "SELECT id, libelle FROM categorie";
-$result = mysqli_query($db, $query);
+$stmt = $db->query($query);
+$categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-if ($result && mysqli_num_rows($result) > 0) {
-    $categories = array();
-    while ($rowCat = mysqli_fetch_assoc($result)) {
-        $categories[] = array(
-            'id' => $rowCat['id'],
-            'libelle' => $rowCat['libelle']
-        );
-    }
-} else {
-    echo "Erreur de requête : " . mysqli_error($db);
+if (!$categories) {
+    echo "Erreur de requête : " . $db->errorInfo()[2];
+    exit; // Arrêter l'exécution du script en cas d'erreur
 }
-
 
 // Vérifier que le bouton Modifier a bien été cliqué
 if (isset($_POST['ok'])) {
-    $titre = isset($_POST['titre']) ? $_POST['titre'] : '';
-    $texte = isset($_POST['texte']) ? $_POST['texte'] : '';
-    $alt = isset($_POST['alt_text']) ? $_POST['alt_text'] : '';
-    $categories = isset($_POST['categories']) ? $_POST['categories'] : '';
+    $titre = $_POST['titre'] ?? '';
+    $texte = $_POST['texte'] ?? '';
+    $alt = $_POST['alt_text'] ?? '';
+    $categories = $_POST['categories'] ?? '';
 
     // Récupération du nom de l'image actuelle
     $image_url = $row['image_url'];
@@ -69,7 +49,7 @@ if (isset($_POST['ok'])) {
         $tmp_name = $_FILES['image']['tmp_name'];
         $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
         $img_ex_lc = strtolower($img_ex);
-        $allowed_exs = array("jpg", "jpeg", "png");
+        $allowed_exs = array("jpg", "jpeg", "png", "webp");
 
         // Vérification de l'extension de la nouvelle image
         if (in_array($img_ex_lc, $allowed_exs)) {
@@ -81,7 +61,14 @@ if (isset($_POST['ok'])) {
             if (move_uploaded_file($tmp_name, $img_upload_path)) {
                 // Mise à jour des données dans la base de données avec le nouveau nom de l'image
                 $service = new Service($db);
-                $service->update($id, $titre, $texte, $new_img_name, $alt, $categories);
+                $result = $service->update($id, $titre, $texte, $new_img_name, $alt, $categories);
+                if ($result) {
+                    echo "<script nonce='$nonce7'>window.location.href = 'services.php';</script>";
+                } else {
+                    // Sinon, produit non modifié
+                    $message = "Produit non modifié";
+                }
+
             } else {
                 echo "Erreur lors du téléchargement de l'image.";
             }
@@ -92,12 +79,15 @@ if (isset($_POST['ok'])) {
         // Si aucune nouvelle image n'a été envoyée, conservez le nom de l'image actuelle
         $new_img_name = $image_url;
         $service = new Service($db);
-        $service->update($id, $titre, $texte, $new_img_name, $alt, $categories);
+        $result = $service->update($id, $titre, $texte, $new_img_name, $alt, $categories);
+        if ($result) {
+            echo "<script nonce='$nonce7'>window.location.href = 'services.php';</script>";
+        } else {
+            // Sinon, produit non modifié
+            $message = "Produit non modifié";
+        }
     }
 
-    // Redirection vers la page des services après la mise à jour
-    header("Location: services.php");
-    exit();
 }
 ?>
 <?php include(__DIR__ . '/../../admin/navbar.php'); ?>

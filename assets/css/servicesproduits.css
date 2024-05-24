@@ -26,17 +26,26 @@ a {
 
 h1, h2 {
     margin-bottom: 2vh;
-    font-weight: 400;
+
     text-align: center;
+    font-weight: bold;
 }
 
 h1 {
     font-size: xxx-large;
+
 }
 
 h2 {
     font-size: xx-large;
     padding: 50px;
+
+}
+
+h3{
+    font-weight: bold;
+    text-align: center;
+
 }
 
 section{
@@ -65,7 +74,7 @@ section{
 
 .card {
     border-radius: 10px;
-    border: 2px solid #b1c8bf;
+    box-sizing: border-box;
     background: #d9d9d9;
     box-shadow: 0px 10px 6px 0px rgba(0, 0, 0, 0.25);
     width: 300px;
@@ -73,12 +82,13 @@ section{
     display: flex;
     flex-direction: column;
     min-height: 300px;
-    padding: 10px;
+
     color: black;
     height: 500px;
 }
 
 .card img {
+    height: 280px;
     width: 100%; 
     border-radius: 10px 10px 0 0;
 }
@@ -92,6 +102,7 @@ section{
 
 
 
+
 /* @media screen and (max-width: 480px) { */
     /* .card { */
         /* width: calc(80% - 20px); Réduire la largeur des cartes sur les petits écrans */
@@ -101,10 +112,11 @@ section{
 
 @media screen and (max-width: 480px) {
     .card{
-        height: 500px;
+        height: auto;
+
     }
     .card img{
-        width: 300px;
+        width: 315px;
         height: 300px;
     }
 
@@ -156,7 +168,12 @@ section{
     display: flex;
     justify-content: center;
     text-align: center;
-    align-items: center
+    align-items: center;
+    z-index: 1;
+    position: relative;
+    margin-top: 85px;
 }
+
+
 
 

@@ -1,35 +1,48 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
-include './../../../classes/Categorie.php';
+include(__DIR__ . '/../../../classes/Categorie.php');
 
+
+require_once(__DIR__ . '/../../../../csp_config.php');
+
+
+// Récupération de l'ID de la catégorie à modifier
+$id = $_GET['id'] ?? null;
+if (!$id) {
+    // Gérer le cas où l'ID n'est pas fourni
+    echo "ID de catégorie manquant";
+    exit();
+}
 
 // Récupération des informations de la catégorie à modifier
-$id = mysqli_real_escape_string($db, $_GET['id']);
-$req = mysqli_query($db, "SELECT * FROM categorie WHERE id = $id");
-$row = mysqli_fetch_assoc($req);
+$stmt = $db->prepare("SELECT * FROM categorie WHERE id = ?");
+$stmt->execute([$id]);
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (isset($_POST['ok'])) {
-    $id = $_GET['id'];
-    $libelle = $_POST['libelle'];
+    $libelle = $_POST['libelle'] ?? null;
 
-    // Créez une instance de la classe Categorie
+    if (!$libelle) {
+        // Gérer le cas où le libellé n'est pas fourni
+        echo "Libellé manquant";
+        exit();
+    }
+
+    // Créer une instance de la classe Categorie
     $categorie = new Categorie($db);
 
-    // Appelez la méthode update() pour mettre à jour la catégorie
-    $result = $categorie->update($db, $id, $libelle);
+    // Appeler la méthode update() pour mettre à jour le libellé de la catégorie
+    $result = $categorie->update($id, $libelle);
 
     if ($result) {
         // Redirection après la mise à jour
-        header("Location:categories.php");
+        header("Location: categories.php");
         exit();
     } else {
         // En cas d'erreur lors de la mise à jour
-        $message = "CATEGORIE non modifié";
+        $message = "Catégorie non modifiée";
     }
 }
 
 include(__DIR__ . '/formulaireModifier.php');
-?>
-
-

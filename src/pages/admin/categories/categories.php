@@ -1,6 +1,11 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
+
+
+require_once(__DIR__ . '/../../../../csp_config.php');
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -10,14 +15,16 @@ include(__DIR__ . '/../../core/connection.php');
     <title>Categories</title>
     <link rel="stylesheet" href="/assets/css/navbar.css" />
     <link rel="stylesheet" href="/assets/css/admin.css" />
+    <link rel="stylesheet" href="/assets/css/categorie.css" />
     <link rel="stylesheet" href="/assets/css/fontawesome-free-6.1.2-web/css/all.css" />
     <script src="/assets/js/confirmDelete.js"></script>
 </head>
 <body>
 <?php include(__DIR__ . '/../../admin/navbar.php'); ?>
-
+<center>
 <h1> categories</h1>
 <a href="ajouter.php"><input type="button" value="Ajouter une categorie"></a>
+</center>
 <?php include(__DIR__ . '/../../admin/afficher_categories.php'); ?>
 </body>
 </html>

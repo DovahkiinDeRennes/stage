@@ -1,6 +1,9 @@
 <?php
-include(__DIR__ . '/../admin/check_login.php');
-include(__DIR__ . '/../src/pages/core/connection.php');
+require_once __DIR__ . '/../admin/check_login.php';
+require_once __DIR__ . '/../src/pages/core/connection.php';
+
+require_once(__DIR__ . '/../csp_config.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -14,14 +17,16 @@ include(__DIR__ . '/../src/pages/core/connection.php');
     <link rel="stylesheet" href="/assets/css/fontawesome-free-6.1.2-web/css/all.css" />
 </head>
 <body>
-    <?php include(__DIR__ . '/../src/pages/admin/navbar.php');
-            $req = mysqli_query($db, "SELECT * FROM compte");
-            $row = mysqli_fetch_assoc($req) ?>
-    <center>
+<?php include(__DIR__ . '/../src/pages/admin/navbar.php');
+
+$query = $db->query("SELECT * FROM compte");
+$row = $query->fetch(PDO::FETCH_ASSOC);
+?>
+<center>
     <h2>Bienvenue sur la page d'administration</h2>
     <p>Contenu protégé réservé à l'administrateur.</p>
     <a href="logout.php">Déconnexion</a>
     <?php echo "<a href='modifier.php?id=" . $row['id'] . "' >Modifier les informations admin" ?>
-    </center>
+</center>
 </body>
 </html>

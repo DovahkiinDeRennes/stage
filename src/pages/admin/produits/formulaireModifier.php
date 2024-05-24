@@ -1,3 +1,6 @@
+<?php
+require_once(__DIR__ . '/../../../../csp_config.php');
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -44,6 +47,7 @@
             <select name="categories">
                 <?php
                 // Afficher les catégories dans la liste déroulante
+
                 foreach ($categories as $categorie) {
                     echo "<option value=\"" . $categorie['id'] . "\">" . $categorie['libelle'] . "</option>";
                 }

@@ -1,4 +1,8 @@
-﻿<header>
+﻿<?php
+require_once(__DIR__ . '/../csp_config.php');
+?>
+
+<header>
     <div class="menuburger">
         <div id="mySidenav" class="sidenav">
             <a id="closeBtn" href="#" class="close">×</a>

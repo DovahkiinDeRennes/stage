@@ -1,4 +1,17 @@
-<?php include './src/pages/core/connection.php'; ?>
+<?php
+include './src/pages/core/connection.php';
+require_once(__DIR__ . '/csp_config.php');
+
+
+
+
+
+
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -9,11 +22,11 @@
     <link rel="stylesheet" href="assets/css/servicesproduits.css">
     <link rel="stylesheet" href="assets/css/footer.css" />
     <link rel="stylesheet" href="assets/css/roots.css"/>
-
-    <link rel="icon" href="images/Fidelilium_Logo_Simple.png">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/caroussel-actu.css" />
+    <link rel="icon" href="images/Fidelilium_Logo_Simple.webp">
+    <link href="<?php echo $urlAosCss; ?>" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/fontawesome-free-6.1.2-web/css/all.css" />
-    <script src="https://kit.fontawesome.com/0d6d431c4d.js" crossorigin="anonymous"></script>
+    <script src="<?php echo $urlFontAwesomeJs; ?>" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/styles.css" />
     <title>Produits</title>
 </head>
@@ -36,11 +49,9 @@
 
         <?php require_once 'partials/footer.php' ?>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="<?php echo $urlAosJs; ?>"></script>
     <script src="assets/js/menuburger.js"></script>
-    <script>
-        AOS.init();
-    </script>
+<script src="assets/js/aos.js"></script>
 </body>
 
 </html>

@@ -1,30 +1,1 @@
-﻿<!-- Footer -->
-<footer>
-
-
-    <!-- <a class="lien-linkedin" href="https://fr.linkedin.com/company/fidelilium?trk=public_profile_topcard-current-company" target="_blank">
-            <p><img class="btn-linkedin" src="images\bouton_linkedin.png" alt="">
-        </a></p> -->
-    <div class="left-footer">
-        <div class="charte-cyber">
-
-
-            <p class="charte">Nous avons signé la <a href="https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/chartecyber"> CharteCyber.</a></p>
-            <a href="https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/chartecyber">
-                <img src="/images/arch230621_Logo_CharteCyber_Organisation_0.png" width="50" alt="Logo de la charte cyber" /></a>
-        </div>
-    </div>
-    <div class="middle-footer">
-    <a href="https://www.linkedin.com/company/91654659/feed/posts/" target="_blank"><img class="lien-img-linkedin" src="/images/logo-linkedin.png" alt="bouton-linkedin"></a>
-
-       
-
-    </div>
-
-    <div class="right-footer">
-        <div class="fidelilium-mentions">
-            <p>&copy; 2023 - 2024 FIDELILIUM <br class="footer-tel"><a href="Mentions_Legales.html">Mentions légales</a></p>
-        </div>
-    </div>
-</footer>
-
+﻿<!-- Footer --><?phprequire_once(__DIR__ . '/../csp_config.php');?><footer>    <!-- <a class="lien-linkedin" href="https://fr.linkedin.com/company/fidelilium?trk=public_profile_topcard-current-company" target="_blank">            <p><img class="btn-linkedin" src="images\bouton_linkedin.png" alt="">        </a></p> -->    <div class="left-footer">        <div class="charte-cyber">            <p class="charte">Nous avons signé la <a href="<?php echo $urlGouvCharteCyber; ?>" target="_blank"> CharteCyber.</a></p>            <a href="<?php echo $urlGouvCharteCyber; ?>" target="_blank">                <img src="/images/arch230621_Logo_CharteCyber_Organisation_0.png" width="50" alt="Logo de la charte cyber" /></a>        </div>    </div>    <div class="middle-footer">    <a href="<?php echo $urlLinkedin; ?>" target="_blank"><img class="lien-img-linkedin" src="/images/logo-linkedin.png" alt="bouton-linkedin"></a>           </div>    <div class="right-footer">        <div class="fidelilium-mentions">            <p>&copy; 2023 - 2024 FIDELILIUM <br class="footer-tel"><a href="/Mentions_Legales.php">Mentions légales</a></p>        </div>    </div></footer>

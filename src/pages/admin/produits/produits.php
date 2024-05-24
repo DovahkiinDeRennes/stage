@@ -1,6 +1,7 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
+require_once(__DIR__ . '/../../../../csp_config.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -12,6 +13,7 @@ include(__DIR__ . '/../../core/connection.php');
     <link rel="stylesheet" href="/assets/css/navbar.css" /> 
     <link rel="stylesheet" href="/assets/css/admin.css" /> 
     <link rel="stylesheet" href="/assets/css/fontawesome-free-6.1.2-web/css/all.css" />
+    <script src="/assets/js/autoload2.js"></script>
     <script src="/assets/js/confirmDelete.js"></script>
 </head>
 <body>
