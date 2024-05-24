@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const carousel = document.querySelector('.carousel');
     const carouselItems = Array.from(document.querySelectorAll('.carousel-item'));
-    const itemsPerPageDesktop = 3; // Nombre d'éléments par page sur ordinateur
+    const itemsPerPageDesktop = 4; // Nombre d'éléments par page sur ordinateur
     const itemsPerPageMobile = 1;  // Nombre d'éléments par page sur mobile
     let currentIndex = 0;
     let autoScrollInterval;

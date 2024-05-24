@@ -10,7 +10,7 @@
 .carousel {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+
     transition: transform 0.5s ease;
 
 }
@@ -26,7 +26,7 @@
     background: #d9d9d9;
     box-shadow: 0px 10px 6px 0px rgba(0, 0, 0, 0.25);
     width: 315px;
-    margin: 10px auto;
+margin : 15px auto;
     display: flex;
     flex-direction: column;
     min-height: 300px;
