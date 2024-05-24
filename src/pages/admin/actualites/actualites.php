@@ -10,10 +10,12 @@ require_once(__DIR__ . '/../../../../csp_config.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulaire PHP</title>
-    <link rel="stylesheet" href="/assets/css/actualites.css" />
+    <link rel="stylesheet" href="/assets/css/actu.css" />
     <link rel="stylesheet" href="/assets/css/navbar.css" /> 
     <link rel="stylesheet" href="/assets/css/admin.css" /> 
     <link rel="stylesheet" href="/assets/css/fontawesome-free-6.1.2-web/css/all.css" />
+    <script src="/assets/js/jquery.min.js" defer></script>
+    <script src="/assets/js/seeMore.js" defer></script>
     <script src="/assets/js/confirmDelete.js"></script>
 </head>
 <body>

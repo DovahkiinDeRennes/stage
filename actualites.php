@@ -47,7 +47,7 @@ include (__DIR__ . '/src/pages/admin/afficher_actualites.php'); ?>
 <?php require_once 'partials/footer.php' ?>
 
 <script src="assets/js/menuburger.js"></script>
-<script src="assets/js/boutonafficherplus.js"></script>
+
 <script src="<?php echo $urlAosJs; ?>"></script>
 <script src="assets/js/aos.js"></script>
 <script src="assets/js/actualite.js"></script>

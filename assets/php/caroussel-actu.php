@@ -9,6 +9,17 @@ if ($stmt) {
     $actualites = array_reverse($actualites);
 } else {
     echo "Erreur de requête: " . $db->errorInfo()[2];
+    exit;
+}
+
+function getYouTubeVideoID($url) {
+    $videoID = "";
+    $queryString = parse_url($url, PHP_URL_QUERY);
+    parse_str($queryString, $params);
+    if (isset($params['v'])) {
+        $videoID = $params['v'];
+    }
+    return $videoID;
 }
 
 $stmt->closeCursor();
@@ -16,39 +27,40 @@ $db = null;
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basic Carousel</title>
-    <link rel="stylesheet" href="/assets/css/caroussel-actu.css">
+    <link rel="stylesheet" href="/assets/css/newCaroussel-actu.css">
     <link rel="stylesheet" href="/assets/css/roots.css">
 </head>
 <body>
-<div class="carousel-wrapper">
-    <div id="scene">
-        <div id="left-zone">
-            <ul class="list">
-                <?php foreach ($actualites as $actu) { ?>
-                    <li class="item">
-
-                        <input type="radio" id="radio<?= $actu['id'] ?>" name="basic_carousel" value="<?= $actu['id'] ?>" checked>
-                        <label for="radio<?= $actu['id'] ?>" class="label"><?= date('d/m', strtotime($actu['date'])) ?>:&nbsp;&nbsp;&nbsp;<?= $actu['titre'] ?></label>
-
-                        <div class="content content<?= $actu['id'] ?>">
-
-                            <span class="picto"></span>
-                            <h1><?= $actu['titre'] ?></h1>
-                            <p><?= strlen($actu['texte']) > 350 ? substr($actu['texte'], 0, 350) . '...' : $actu['texte'] ?></p>
-
-                            <a href="/actualites.php?scroll=200#<?= $actu['id'] ?>" class="lien-actualite"><button class="button-actu">Lire la suite sur la page des actualités</button></a>
-                        </div>
-                    </li>
-                <?php } ?>
-            </ul>
-        </div>
-        <div id="middle-border"></div>
-        <div id="right-zone"></div>
+<div class="container">
+    <div class="flex">
+        <?php if (!empty($actualites)): ?>
+            <?php foreach ($actualites as $actu): ?>
+                <div class="bloc"  data-aos="fade-right" data-aos-duration="1000">
+                    <div class="imageBackground">
+                        <?php
+                        if ($actu['image'] === "non") {
+                            $videoID = getYouTubeVideoID($actu['ytb_url']);
+                            echo '<iframe class="video-ytb" src="https://www.youtube.com/embed/' . $videoID . '" frameborder="0" allowfullscreen></iframe>';
+                        } elseif ($actu['ytb_url'] === "non") {
+                            echo '<img src="/images/actualites/' . $actu['image'] . '" loading="lazy" alt="' . $actu['alt_text'] . '" class="image-actualites">';
+                        }
+                        ?>
+                    </div>
+                    <h3 class="titreS"><?= htmlspecialchars($actu['titre'], ENT_QUOTES, 'UTF-8') ?></h3>
+                    <p><?= date('d/m', strtotime($actu['date'])) ?>:&nbsp;&nbsp;&nbsp;<?= strlen($actu['texte']) > 200 ? substr($actu['texte'], 0, 200) . '...' : $actu['texte'] ?></p>
+    <div>
+        <a href="/actualites.php?scroll=200#<?= $actu['id'] ?>" class="lien-actualite">Lire la suite sur la page des actualités</a>
+    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>Aucune actualité disponible.</p>
+        <?php endif; ?>
     </div>
 </div>
 </body>
