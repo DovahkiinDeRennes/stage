@@ -12,8 +12,6 @@ $nonce5 = bin2hex(random_bytes(16));
 $nonce6 = bin2hex(random_bytes(16));
 $nonce7 = bin2hex(random_bytes(16));
 
-
-
 $url = new Url($db);
 
 $query = "SELECT mdp FROM mdpurl";

@@ -1,6 +1,6 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
-include(__DIR__ . '/../../../classes/service.php');
+include(__DIR__ . '/../../../services/ServiceService.php');
 require_once(__DIR__ . '/../../../../csp_config.php');
 ?>
 <?php
@@ -78,7 +78,7 @@ if (isset($_POST['ok'])) {
     } else {
         // Si aucune nouvelle image n'a été envoyée, conservez le nom de l'image actuelle
         $new_img_name = $image_url;
-        $service = new Service($db);
+        $service = new ServiceService($db);
         $result = $service->update($id, $titre, $texte, $new_img_name, $alt, $categories);
         if ($result) {
             echo "<script nonce='$nonce7'>window.location.href = 'services.php';</script>";

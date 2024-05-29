@@ -24,7 +24,6 @@ if (isset($_GET['categorie_id'])) {
     $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $nombreElement = count($services);
-
     echo "Catégorie sélectionnée (Services) : " . $nombreElement;
     // ...
 
@@ -34,7 +33,9 @@ if (isset($_GET['categorie_id'])) {
 
     // Affiche les services correspondant à la catégorie sélectionnée
     foreach ($services as  $row) {
-        echo "<br><tr><td><a href='/info.php?id=" . $row['id'] . "&amp;titre=" . htmlspecialchars($row['titre']) . "'>" . htmlspecialchars($row['titre']) . "</a></td></tr><br>";
+        echo "<br><tr><td><a href='/info.php?id="
+            . $row['id'] . "&amp;titre=" . htmlspecialchars($row['titre'])
+            . "'>" . htmlspecialchars($row['titre']) . "</a></td></tr><br>";
     }
 } else {
     // Si aucun paramètre 'categorie_id' n'est défini dans l'URL, affiche tous les services

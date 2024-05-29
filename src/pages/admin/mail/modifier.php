@@ -1,5 +1,5 @@
 <?php
-include(__DIR__ . '/../../../classes/Mail.php');
+include(__DIR__ . '/../../../services/MailService.php');
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
 require_once(__DIR__ . '/../../../../csp_config.php');
@@ -43,7 +43,7 @@ if(isset($_POST['ok'])) {
 
 
             // Requête de modification
-            $mail = new Mail($db);
+            $mail = new MailService($db);
             $mail->update($id, $nom, $prenom, $email, $telephone, $societe, $fonction, $objet, $message);
 
             $to = 'fidelilium@gmail.com';

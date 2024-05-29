@@ -1,5 +1,5 @@
 <?php
-include(__DIR__ . '/../../../classes/Mail.php');
+include(__DIR__ . '/../../../services/MailService.php');
 include(__DIR__ . '/../../core/connection.php');
 require_once(__DIR__ . '/../../../../csp_config.php');
 if (isset($_POST['ok'])) {
@@ -25,7 +25,7 @@ if (isset($_POST['ok'])) {
                 $message = htmlspecialchars($_POST["message"]) ?? '';
 
                 // Utilisation de requêtes préparées pour éviter les injections SQL
-                $mail = new Mail($db);
+                $mail = new MailService($db);
                 $mail->insert($nom, $prenom, $email, $telephone, $societe, $fonction, $objet, $message, $conditions);
 
                 $to = 'fidelilium@gmail.com';

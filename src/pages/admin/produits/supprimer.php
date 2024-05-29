@@ -1,7 +1,7 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
-include(__DIR__ . '/../../../classes/produit.php');
+include(__DIR__ . '/../../../services/ProduitService.php');
 require_once(__DIR__ . '/../../../../csp_config.php');
 
 // Valider et filtrer l'ID du produit
@@ -32,7 +32,7 @@ if (!file_exists($image_path)) {
 }
 
 if (unlink($image_path)) {
-    $produit = new produit($db);
+    $produit = new ProduitService($db);
     if ($produit->delete($id)) {
         header("Location: produits.php");
         exit;

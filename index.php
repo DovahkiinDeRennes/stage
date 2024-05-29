@@ -40,6 +40,7 @@ require_once(__DIR__ . '/csp_config.php');
 
 echo '<link href="' . $urlAosCss . '" rel="stylesheet">';
 echo '<script src="' . $urlAosJs . '" ></script>';
+
 echo '<script src="' . $urlFontAwesomeJs . '" crossorigin="anonymous"></script>';
 
 ?>

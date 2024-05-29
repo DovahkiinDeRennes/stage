@@ -27,10 +27,10 @@ class Actualite
 
     public function insert($titre, $texte, $alt, $new_img_name, $ytb_url)
     {
-        $query = "INSERT INTO actualite (titre, texte, image, alt_text, date, ytb_url) VALUES (?, ?, ?, ?, NOW(), ?)";
+        $query = "INSERT INTO actualite (titre, texte, image, alt_text, date, ytb_url) 
+        VALUES (?, ?, ?, ?, NOW(), ?)";
         $stmt = $this->db->prepare($query);
         $success = $stmt->execute([$titre, $texte, $new_img_name, $alt, $ytb_url]);
-
         if ($success) {
             header('Location: actualites.php');
             exit;
@@ -41,7 +41,8 @@ class Actualite
 
     public function update($id, $titre, $texte, $alt, $new_img_name, $ytb_url)
     {
-        $query = "UPDATE actualite SET titre = ?, texte = ?, image = ?, alt_text = ?, ytb_url = ? WHERE id = ?";
+        $query = "UPDATE actualite 
+        SET titre = ?, texte = ?, image = ?, alt_text = ?, ytb_url = ? WHERE id = ?";
         $stmt = $this->db->prepare($query);
         $success = $stmt->execute([$titre, $texte, $new_img_name, $alt, $ytb_url, $id]);
 

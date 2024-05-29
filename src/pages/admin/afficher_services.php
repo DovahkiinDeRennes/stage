@@ -1,11 +1,11 @@
 <?php
 
 require_once __DIR__ . '/../core/connection.php';
-require_once __DIR__ . '/../../classes/service.php';
+include(__DIR__ . '/../../services/ServiceService.php');
 require_once(__DIR__ . '/../../../csp_config.php');
 
 
-$service = new Service($db);
+$service = new ServiceService($db);
 $services = $service->getAllServices();
 $currentService = null;
 

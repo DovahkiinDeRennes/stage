@@ -26,6 +26,7 @@ if ($id && $produit && $table) {
             <link rel='stylesheet' href='assets/css/info.css'>
             <link rel='stylesheet' href='assets/css/footer.css'/>
             <link rel='stylesheet' href='assets/css/styles.css'>
+            <script src='assets/js/retourPagePre.js'></script>
         </head>
         <body>
         <?php include (__DIR__ . '/src/pages/admin/navbar.php');
@@ -61,7 +62,9 @@ if ($id && $produit && $table) {
                 // Bouton à la fin de la card
                 ?>
                 <a href='contact.php' class='button'>Nous Contacter</a>
-                <a href='javascript:void(0);' onclick='history.back();' class='button'>Retour à la page précédente</a>
+                <div id="lienRetour">
+
+                </div>
                 <?php
                 ?>
             </div>

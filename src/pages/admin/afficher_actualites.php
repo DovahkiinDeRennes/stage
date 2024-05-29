@@ -2,8 +2,7 @@
 
 require_once(__DIR__ . '/../../../csp_config.php');
 include(__DIR__ . '/../core/connection.php');
-include(__DIR__ . '/../../classes/actualite.php');
-
+include(__DIR__ . '/../../services/ActualiteService.php');
 // Déclaration de la fonction getYouTubeVideoID()
 function getYouTubeVideoID($url) {
     $videoID = "";
@@ -16,7 +15,7 @@ function getYouTubeVideoID($url) {
 }
 
 // Instanciation de la classe d'actualite
-$actualite = new Actualite($db);
+$actualite = new ActualiteService($db);
 
 // Récupérer toutes les actualités
 $actualites = $actualite->getAllActualites();

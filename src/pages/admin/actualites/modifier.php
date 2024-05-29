@@ -7,7 +7,7 @@ require_once(__DIR__ . '/../../../../csp_config.php');
 
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
-include(__DIR__ . '/../../../classes/actualite.php');
+include(__DIR__ . '/../../../services/ActualiteService.php');
 
 $id = $_GET['id'];
 // Requête pour afficher les infos d'un produit
@@ -64,8 +64,8 @@ if (isset($_POST['ok'])) {
     }
 
     // Effectuer la mise à jour
-    $stmt = $db->prepare("UPDATE actualite SET titre = ?, texte = ?, image = ?, alt_text = ?, ytb_url = ? WHERE id = ?");
-    $success = $stmt->execute([$titre, $texte, $new_img_name, $alt, $ytb_url, $id]);
+    $actualiteService = new ActualiteService($db);
+    $success = $actualiteService->update($id, $titre, $texte, $alt, $new_img_name, $ytb_url);
 
     if ($success) {
         // Si la requête a été effectuée avec succès, redirection
@@ -73,7 +73,7 @@ if (isset($_POST['ok'])) {
         exit();
     } else {
         // Sinon, produit non modifié
-        $message = "Produit non modifié";
+        $message = "Actualité non modifié";
     }
 }
 

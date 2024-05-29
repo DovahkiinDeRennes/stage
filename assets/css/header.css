@@ -255,5 +255,23 @@ div.header img{
 
 
 
+@media screen and (min-width: 650px) and (max-width: 1450px) {
 
-  
+  .btn-navbar{
+    top: 115px ;
+  }
+}
+
+@media screen and (min-width: 532px) and (max-width: 650px) {
+
+  .btn-navbar{
+    top: 190px ;
+  }
+}
+
+@media screen and (min-width: 524px) and (max-width: 532px) {
+
+  .btn-navbar{
+    top: 290px ;
+  }
+}

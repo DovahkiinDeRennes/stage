@@ -1,7 +1,7 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
-include(__DIR__ . '/../../../classes/actualite.php');
+include(__DIR__ . '/../../../services/ActualiteService.php');
 
 
 require_once(__DIR__ . '/../../../../csp_config.php');
@@ -34,7 +34,7 @@ if (isset($_POST['ok'])) {
         }
     }
 
-    $actualite = new actualite($db);
+    $actualite = new ActualiteService($db);
     $actualite->insert($titre, $texte, $alt, $new_img_name, $ytb_url);
 
     // Insert into Database

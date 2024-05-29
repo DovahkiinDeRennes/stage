@@ -1,7 +1,7 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
-include(__DIR__ . '/../../../classes/Categorie.php');
+include(__DIR__ . '/../../../services/CategorieService.php');
 
 
 require_once(__DIR__ . '/../../../../csp_config.php');
@@ -30,7 +30,7 @@ if (isset($_POST['ok'])) {
     }
 
     // Créer une instance de la classe Categorie
-    $categorie = new Categorie($db);
+    $categorie = new CategorieService($db);
 
     // Appeler la méthode update() pour mettre à jour le libellé de la catégorie
     $result = $categorie->update($id, $libelle);

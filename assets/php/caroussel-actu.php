@@ -40,7 +40,9 @@ $db = null;
     <div class="flex">
         <?php if (!empty($actualites)): ?>
             <?php foreach ($actualites as $actu): ?>
-                <div class="bloc"  data-aos="fade-right" data-aos-duration="1000">
+
+                <div class="bloc" data-aos="fade-right" data-aos-duration="1000">
+                    
                     <div class="imageBackground">
                         <?php
                         if ($actu['image'] === "non") {
@@ -52,10 +54,16 @@ $db = null;
                         ?>
                     </div>
                     <h3 class="titreS"><?= htmlspecialchars($actu['titre'], ENT_QUOTES, 'UTF-8') ?></h3>
-                    <p><?= date('d/m', strtotime($actu['date'])) ?>:&nbsp;&nbsp;&nbsp;<?= strlen($actu['texte']) > 200 ? substr($actu['texte'], 0, 200) . '...' : $actu['texte'] ?></p>
-    <div>
-        <a href="/actualites.php?scroll=200#<?= $actu['id'] ?>" class="lien-actualite">Lire la suite sur la page des actualités</a>
-    </div>
+
+                    <p class="p"><?= date('d/m', strtotime($actu['date'])) ?>:&nbsp;&nbsp;&nbsp;
+
+                        <?= strlen($actu['texte']) > 200 ? substr($actu['texte'], 0, 200) . '...' : $actu['texte'] ?>
+
+                    </p>
+
+                    <div class="enBas">
+                        <a href="/actualites.php?scroll=200#<?= $actu['id'] ?>" class="lien-actualite">Lire la suite sur la page des actualités</a>
+                    </div>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>

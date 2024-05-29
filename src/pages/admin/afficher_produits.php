@@ -1,10 +1,10 @@
 <?php
 
 require_once __DIR__ . '/../core/connection.php';
-require_once __DIR__ . '/../../classes/produit.php';
+include(__DIR__ . '/../../services/ProduitService.php');
 require_once(__DIR__ . '/../../../csp_config.php');
 
-$produit = new Produit($db);
+$produit = new ProduitService($db);
 $produits = $produit->getAllProduits();
 $currentCategory = null;
 
