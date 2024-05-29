@@ -1,10 +1,10 @@
 <?php
 include_once(__DIR__ . '/../../../../admin/check_login.php');
 include_once(__DIR__ . '/../../core/connection.php');
-include(__DIR__ . '/../../../services/MailService.php');
+include_once(__DIR__ . '/../../../classes/Mail.php');
 require_once(__DIR__ . '/../../../../csp_config.php');
 
-$mail = new MailService($db);
+$mail = new Mail($db);
 $mails = $mail->getAllMails();
 
 ?>

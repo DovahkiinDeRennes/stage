@@ -1,6 +1,6 @@
 <?php
 include(__DIR__ . '/../pages/core/connection.php');
-include(__DIR__ . '/../classes/produit.php');
+require_once(__DIR__ . '/../classes/produit.php');
 class ProduitService {
     private $produit;
 

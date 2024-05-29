@@ -1,7 +1,7 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
-include(__DIR__ . '/../../../services/ProduitService.php');
+include(__DIR__ . '/../../../classes/produit.php');
 require_once(__DIR__ . '/../../../../csp_config.php');
 // Récupération des catégories depuis la base de données
 $query = "SELECT id, libelle FROM categorie";
@@ -28,7 +28,7 @@ if(isset($_POST['ok'])) {
         $img_upload_path = __DIR__ . '/../../../../images/servicesetproduits/' . $new_img_name;
         if (move_uploaded_file($tmp_name, $img_upload_path)) {
 
-            $produit = new ProduitService($db);
+            $produit = new produit($db);
             $produit->insert($titre, $texte, $new_img_name, $alt, $categories);
 
             // Redirection après l'ajout

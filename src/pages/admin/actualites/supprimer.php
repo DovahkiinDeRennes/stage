@@ -1,7 +1,7 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
-include(__DIR__ . '/../../../services/ActualiteService.php');
+include(__DIR__ . '/../../../classes/actualite.php');
 
 
 require_once(__DIR__ . '/../../../../csp_config.php');
@@ -24,8 +24,8 @@ if ($row) {
         echo "L'image n'existe pas ou a déjà été supprimée.";
     }
         // Supprimer l'actualité de la base de données
-    $actualiteService = new ActualiteService($db);
-        if ($actualiteService->delete($id)) {
+        $actualite = new actualite($db);
+        if ($actualite->delete($id)) {
             header("Location: actualites.php");
             exit(); // Arrêter l'exécution du script après la redirection
         } else {

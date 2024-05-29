@@ -1,10 +1,10 @@
 <?php
 require_once(__DIR__ . '/../../../csp_config.php');
 include(__DIR__ . '/../core/connection.php');
-include(__DIR__ . '/../../services/CategorieService.php');
+include(__DIR__ . '/../../classes/Categorie.php');
 
 // Créer une instance de la classe Categorie avec l'objet de connexion à la base de données
-$categorie = new CategorieService($db);
+$categorie = new Categorie($db);
 
 // Récupérer toutes les catégories
 $categories = $categorie->getAllCategories();

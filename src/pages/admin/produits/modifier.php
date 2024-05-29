@@ -1,6 +1,6 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
-include(__DIR__ . '/../../../services/ProduitService.php');
+include(__DIR__ . '/../../../classes/produit.php');
 include(__DIR__ . '/../../core/connection.php');
 require_once(__DIR__ . '/../../../../csp_config.php');
 
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['ok'])) {
     }
 
     // Mettre à jour le produit dans la base de données
-    $produit = new ProduitService($db);
+    $produit = new Produit($db);
     $result = $produit->update($id, $titre, $texte, $new_img_name, $alt, $categories);
 
     if ($result) {

@@ -1,7 +1,7 @@
 <?php
 
 include(__DIR__ . '/../pages/core/connection.php');
-include(__DIR__ . '/../classes/Actualite.php');
+require_once(__DIR__ . '/../classes/Actualite.php');
 
 
 class ActualiteService

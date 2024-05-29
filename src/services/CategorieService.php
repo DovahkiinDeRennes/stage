@@ -1,6 +1,6 @@
 <?php
 include(__DIR__ . '/../pages/core/connection.php');
-include(__DIR__ . '/../classes/categorie.php');
+require_once(__DIR__ . '/../classes/categorie.php');
 class CategorieService
 {
     private $categorie;

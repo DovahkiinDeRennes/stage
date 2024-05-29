@@ -1,7 +1,7 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
-include(__DIR__ . '/../../../services/ServiceService.php');
+include(__DIR__ . '/../../../classes/service.php');
 require_once(__DIR__ . '/../../../../csp_config.php');
 
 // Valider et filtrer l'ID du service
@@ -33,7 +33,7 @@ if (!file_exists($image_path)) {
 }
 
 if (unlink($image_path)) {
-    $service = new ServiceService($db);
+    $service = new Service($db);
     if ($service->delete($id)) {
         header("Location: services.php");
         exit;

@@ -1,7 +1,7 @@
 <?php
 
 include(__DIR__ . '/../pages/core/connection.php');
-include(__DIR__ . '/../classes/service.php');
+require_once(__DIR__ . '/../classes/service.php');
 
 class ServiceService {
     private $service;

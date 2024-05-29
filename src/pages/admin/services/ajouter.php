@@ -1,7 +1,7 @@
 <?php
 include(__DIR__ . '/../../../../admin/check_login.php');
 include(__DIR__ . '/../../core/connection.php');
-include(__DIR__ . '/../../../services/ServiceService.php');
+include(__DIR__ . '/../../../classes/service.php');
 require_once(__DIR__ . '/../../../../csp_config.php');
 
 // Récupérer les catégories
@@ -49,7 +49,7 @@ if(isset($_POST['ok'])) {
     }
 
     // Insérer le service dans la base de données
-    $service = new ServiceService($db);
+    $service = new service($db);
     $success = $service->insert($titre, $texte, $new_img_name, $alt, $categories_id);
 
     if ($success) {
