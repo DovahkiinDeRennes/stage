@@ -34,10 +34,10 @@ if (!$categories) {
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['ok'])) {
     // Récupérer les données du formulaire
-    $titre = $_POST['titre'] ?? '';
-    $texte = $_POST['texte'] ?? '';
-    $alt = $_POST['alt_text'] ?? '';
-    $categories = $_POST['categories'] ?? '';
+    $titre = htmlspecialchars($_POST['titre'] ?? '', ENT_QUOTES, 'UTF-8');
+    $texte = htmlspecialchars($_POST['texte'] ?? '', ENT_QUOTES, 'UTF-8');
+    $alt = htmlspecialchars($_POST['alt_text'] ?? '', ENT_QUOTES, 'UTF-8');
+    $categories = filter_var($_POST['categories'] ?? '', FILTER_VALIDATE_INT);
 
     // Traitement de l'image
     $new_img_name = $row['image_url']; // Par défaut, conservez le nom de l'image actuelle

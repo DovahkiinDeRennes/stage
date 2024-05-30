@@ -15,10 +15,11 @@ if (!$categories) {
 
 if(isset($_POST['ok'])) {
     // Valider et filtrer les données d'entrée
-    $titre =  $_POST['titre'] ?? '';
-    $texte =$_POST['texte'] ?? '';
-    $alt =  $_POST['alt_text'] ?? '';
-    $categories_id =  $_POST['categories'] ?? '';
+
+    $titre = htmlspecialchars($_POST['titre'] ?? '', ENT_QUOTES, 'UTF-8');
+    $texte = htmlspecialchars($_POST['texte'] ?? '', ENT_QUOTES, 'UTF-8');
+    $alt = htmlspecialchars($_POST['alt_text'] ?? '', ENT_QUOTES, 'UTF-8');
+    $categories_id = filter_var($_POST['categories'] ?? '', FILTER_VALIDATE_INT);
 
     // Vérifier si tous les champs sont remplis
     if (empty($titre) || empty($texte) || empty($alt) || empty($categories_id)) {

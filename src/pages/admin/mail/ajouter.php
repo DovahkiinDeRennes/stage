@@ -16,13 +16,18 @@ if (isset($_POST['ok'])) {
                 $statut = "error";
             }
 
-                $nom = $_POST['nom'] ?? '';
-                $prenom = $_POST["prénom"] ?? '';
-                $telephone = $_POST["téléphone"] ?? '';
-                $societe = $_POST["société"] ?? '';
-                $fonction = $_POST["fonction"] ?? '';
-                $objet = $_POST["objet"] ?? '';
-                $message = htmlspecialchars($_POST["message"]) ?? '';
+            $nom = htmlspecialchars($_POST['nom'] ?? '', ENT_QUOTES, 'UTF-8');
+            $prenom = htmlspecialchars($_POST['prénom'] ?? '', ENT_QUOTES, 'UTF-8');
+            $telephone = htmlspecialchars($_POST['téléphone'] ?? '', ENT_QUOTES, 'UTF-8');
+            $societe = htmlspecialchars($_POST['société'] ?? '', ENT_QUOTES, 'UTF-8');
+            $fonction = htmlspecialchars($_POST['fonction'] ?? '', ENT_QUOTES, 'UTF-8');
+            $objet = htmlspecialchars($_POST['objet'] ?? '', ENT_QUOTES, 'UTF-8');
+            $message = htmlspecialchars($_POST['message'] ?? '', ENT_QUOTES, 'UTF-8');
+
+
+
+
+
 
                 // Utilisation de requêtes préparées pour éviter les injections SQL
                 $mail = new Mail($db);

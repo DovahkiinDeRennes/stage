@@ -21,7 +21,7 @@ if (isset($_POST['ok'])) {
     if($count > 0){
         echo "Mot de passe existant.";
     } else {
-        $mdp = $_POST["mdp"] ?? '';
+        $mdp = htmlspecialchars($_POST['mdp'] ?? '', ENT_QUOTES, 'UTF-8');
 
         $stmt = $db->query("SELECT mdp FROM mdpurl WHERE id = 1");
         $old_secret_key = $stmt->fetchColumn();
@@ -61,9 +61,9 @@ if (isset($_POST['ok'])) {
 
 if (isset($_POST['modifier'])) {
 
-    $ancienmdp = $_POST["ancienmdp"] ?? '';
-    $mdp = $_POST["newmdp"] ?? '';
-    $confirmmdp = $_POST["confmdp"] ?? '';
+    $ancienmdp = htmlspecialchars($_POST['ancienmdp'] ?? '', ENT_QUOTES, 'UTF-8');
+    $mdp = htmlspecialchars($_POST['newmdp'] ?? '', ENT_QUOTES, 'UTF-8');
+    $confirmmdp = htmlspecialchars($_POST['confmdp'] ?? '', ENT_QUOTES, 'UTF-8');
 
     $stmt = $db->query("SELECT mdp FROM mdpurl WHERE id = 1");
     $mdpactuel = $stmt->fetchColumn();

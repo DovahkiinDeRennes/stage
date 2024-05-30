@@ -10,10 +10,12 @@ $stmt->execute();
 $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if(isset($_POST['ok'])) {
-    $titre =  $_POST['titre'] ?? '';
-    $texte =$_POST['texte'] ?? '';
-    $alt =  $_POST['alt_text'] ?? '';
-    $categories =  $_POST['categories'] ?? '';
+
+
+    $titre = htmlspecialchars($_POST['titre'] ?? '', ENT_QUOTES, 'UTF-8');
+    $texte = htmlspecialchars($_POST['texte'] ?? '', ENT_QUOTES, 'UTF-8');
+    $alt = htmlspecialchars($_POST['alt_text'] ?? '', ENT_QUOTES, 'UTF-8');
+    $categories = filter_var($_POST['categories'] ?? '', FILTER_VALIDATE_INT);
 
     $img_name = $_FILES['image']['name'];
     $img_size = $_FILES['image']['size'];

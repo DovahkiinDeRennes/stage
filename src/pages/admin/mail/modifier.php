@@ -28,15 +28,13 @@ if(isset($_POST['ok'])) {
             $msg = "Adresse e-mail non valide";
             $statut = "error";
         }
-            $nom = $_POST['nom'] ?? '';
-            $prenom = $_POST['prenom'] ?? '';
-            $telephone = $_POST['telephone'] ?? '';
-            $societe = $_POST['societe'] ?? '';
-            $fonction = $_POST['fonction'] ?? '';
-            $objet = $_POST['objet'] ?? '';
-
-
-            $message = htmlspecialchars($_POST['message']) ?? '';
+        $nom = htmlspecialchars($_POST['nom'] ?? '', ENT_QUOTES, 'UTF-8');
+        $prenom = htmlspecialchars($_POST['prénom'] ?? '', ENT_QUOTES, 'UTF-8');
+        $telephone = htmlspecialchars($_POST['téléphone'] ?? '', ENT_QUOTES, 'UTF-8');
+        $societe = htmlspecialchars($_POST['société'] ?? '', ENT_QUOTES, 'UTF-8');
+        $fonction = htmlspecialchars($_POST['fonction'] ?? '', ENT_QUOTES, 'UTF-8');
+        $objet = htmlspecialchars($_POST['objet'] ?? '', ENT_QUOTES, 'UTF-8');
+        $message = htmlspecialchars($_POST['message'] ?? '', ENT_QUOTES, 'UTF-8');
 
 
 

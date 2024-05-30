@@ -21,7 +21,7 @@ $stmt->execute([$id]);
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (isset($_POST['ok'])) {
-    $libelle = $_POST['libelle'] ?? null;
+    $libelle = htmlspecialchars($_POST['libelle'] ?? '', ENT_QUOTES, 'UTF-8');
 
     if (!$libelle) {
         // Gérer le cas où le libellé n'est pas fourni

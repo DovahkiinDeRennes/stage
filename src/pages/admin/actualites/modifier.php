@@ -17,9 +17,9 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Vérifier que le bouton Modifier a bien été cliqué
 if (isset($_POST['ok'])) {
-    $titre =  $_POST['titre'] ?? '';
-    $texte =  $_POST['texte'] ?? '';
-    $alt =  $_POST['alt_text'] ??'';
+    $titre = htmlspecialchars($_POST['titre'] ?? '', ENT_QUOTES, 'UTF-8');
+    $texte = htmlspecialchars($_POST['texte'] ?? '', ENT_QUOTES, 'UTF-8');
+    $alt = htmlspecialchars($_POST['alt_text'] ?? '', ENT_QUOTES, 'UTF-8');
 
     // Vérifier si un fichier a été uploadé
     if ($_FILES['image']['error'] == 0) {

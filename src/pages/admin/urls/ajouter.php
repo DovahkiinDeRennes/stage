@@ -8,9 +8,8 @@ require_once(__DIR__ . '/../../../../csp_config.php');
 
 if (isset($_POST['ok'])) {
 
-    $urlChiffre = $_POST["url"] ?? '';
-
-    $urlSafe = $_POST["url"] ?? '';
+    $urlChiffre = htmlspecialchars($_POST['url'] ?? '', ENT_QUOTES, 'UTF-8');
+    $urlSafe = htmlspecialchars($_POST['url'] ?? '', ENT_QUOTES, 'UTF-8');
 
 
 

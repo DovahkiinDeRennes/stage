@@ -26,10 +26,10 @@ if (!$categories) {
 
 // Vérifier que le bouton Modifier a bien été cliqué
 if (isset($_POST['ok'])) {
-    $titre = $_POST['titre'] ?? '';
-    $texte = $_POST['texte'] ?? '';
-    $alt = $_POST['alt_text'] ?? '';
-    $categories = $_POST['categories'] ?? '';
+    $titre = htmlspecialchars($_POST['titre'] ?? '', ENT_QUOTES, 'UTF-8');
+    $texte = htmlspecialchars($_POST['texte'] ?? '', ENT_QUOTES, 'UTF-8');
+    $alt = htmlspecialchars($_POST['alt_text'] ?? '', ENT_QUOTES, 'UTF-8');
+    $categories = filter_var($_POST['categories'] ?? '', FILTER_VALIDATE_INT);
 
     // Récupération du nom de l'image actuelle
     $image_url = $row['image_url'];
