@@ -10,7 +10,7 @@ if(isset($_GET['service_id'], $_GET['direction'])) {
     $direction = htmlspecialchars($_GET['direction']);
 
     // Obtenir la catégorie et l'ordre actuel du service
-    $query = "SELECT categories, ordre FROM services WHERE id = ?";
+    $query = "SELECT categories, ordre FROM repository WHERE id = ?";
     $stmt = $db->prepare($query);
     $stmt->execute([$service_id]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -22,19 +22,19 @@ if(isset($_GET['service_id'], $_GET['direction'])) {
         var_dump($direction);
         var_dump($service_id);
         // Obtenir l'ID du service qui a l'ordre précédent si le service monte
-        $query = ($direction === 'gauche') ? "SELECT id FROM services WHERE ordre = ? AND categories = ? AND id != ?" : "SELECT id FROM services WHERE ordre = ? AND categories = ? AND id != ? ORDER BY ordre DESC";
+        $query = ($direction === 'gauche') ? "SELECT id FROM repository WHERE ordre = ? AND categories = ? AND id != ?" : "SELECT id FROM repository WHERE ordre = ? AND categories = ? AND id != ? ORDER BY ordre DESC";
         $stmt = $db->prepare($query);
         $stmt->execute([$ancien_ordre - 1, $categorie_id, $service_id]);
         $service_id_precedent = $stmt->fetchColumn();
 
         if ($service_id_precedent) {
-            // Mettre à jour l'ordre des services
-            $query = "UPDATE services SET ordre = ? WHERE id = ?";
+            // Mettre à jour l'ordre des repository
+            $query = "UPDATE repository SET ordre = ? WHERE id = ?";
             $stmt = $db->prepare($query);
             $stmt->execute([$ancien_ordre, $service_id_precedent]);
 
             // Mettre à jour l'ordre du service déplacé
-            $query = "UPDATE services SET ordre = ? WHERE id = ?";
+            $query = "UPDATE repository SET ordre = ? WHERE id = ?";
             $stmt = $db->prepare($query);
             $stmt->execute([$ancien_ordre - 1, $service_id]);
         }
@@ -47,20 +47,20 @@ if(isset($_GET['service_id'], $_GET['direction'])) {
         var_dump($direction);
         var_dump($service_id);
         // Obtenir l'ID du service qui a l'ordre suivant si le service descend
-        $query = ($direction === 'droite') ? "SELECT id FROM services WHERE ordre = ? AND categories = ? AND id != ?" : "SELECT id FROM services WHERE ordre = ? AND categories = ? AND id != ? ORDER BY ordre ASC";
+        $query = ($direction === 'droite') ? "SELECT id FROM repository WHERE ordre = ? AND categories = ? AND id != ?" : "SELECT id FROM repository WHERE ordre = ? AND categories = ? AND id != ? ORDER BY ordre ASC";
 
         $stmt = $db->prepare($query);
         $stmt->execute([$ancien_ordre + 1, $categorie_id, $service_id]);
         $service_id_suivant = $stmt->fetchColumn();
 
 if ($service_id_suivant) {
-    // Mettre à jour l'ordre des services
-    $query = "UPDATE services SET ordre = ? WHERE id = ?";
+    // Mettre à jour l'ordre des repository
+    $query = "UPDATE repository SET ordre = ? WHERE id = ?";
     $stmt = $db->prepare($query);
     $stmt->execute([$ancien_ordre, $service_id_suivant]);
 
     // Mettre à jour l'ordre du service déplacé
-    $query = "UPDATE services SET ordre = ? WHERE id = ?";
+    $query = "UPDATE repository SET ordre = ? WHERE id = ?";
     $stmt = $db->prepare($query);
     $stmt->execute([$ancien_ordre + 1, $service_id]);
 }

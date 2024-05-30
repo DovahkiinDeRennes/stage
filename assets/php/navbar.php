@@ -16,7 +16,7 @@
             <ul>
                 <li><a href="index.php" id="page-actuelle-menu">Accueil</a></li>
                 <li><a href="actualites.php">Actualités</a></li>
-                <li><a href="services.php">Services</a></li>
+                <li><a href="repository.php">Services</a></li>
                 <li><a href="produits.php">Produits</a></li>
                 <li><a href="contact.php">Contact</a></li>
             </ul>
@@ -34,7 +34,7 @@
           <div class="onglets" data-aos="fade-left" data-aos-duration="1000">
           <a class="link" href="index.php"><p class="link"  id="page-actuel">Accueil</p></a>
           <a class="link" href="actualites.php"><p class="link">Actualités</p></a>
-          <a class="link" href="services.php"><p class="link">Services</p></a>
+          <a class="link" href="repository.php"><p class="link">Services</p></a>
           <a class="link" href="produits.php"><p class="link">Produits</p></a>
           <a class="link" href="contact.php"><p class="link">Contact</p></a>
         </div>
@@ -54,7 +54,7 @@
                     <li><a class="link" href="/admin/mail/mail.php">
                             <p class="link">Mails</p>
                         </a></li>
-                    <li><a class="link" href="/admin/services/services.php">
+                    <li><a class="link" href="/admin/repository/repository.php">
                             <p class="link">Services</p>
                         </a></li>
                     <li><a class="link" href="/admin/produits/produits.php">
@@ -85,7 +85,7 @@
                     <a class="link" href="/admin/mail/mail.php">
                         <p class="link">Mails</p>
                     </a>
-                    <a class="link" href="/admin/services/services.php">
+                    <a class="link" href="/admin/repository/repository.php">
                         <p class="link">Services</p>
                     </a>
                     <a class="link" href="/admin/produits/produits.php">

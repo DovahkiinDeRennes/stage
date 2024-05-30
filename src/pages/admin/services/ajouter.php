@@ -30,6 +30,7 @@ if(isset($_POST['ok'])) {
     // Vérifier le type de fichier
     $img_name = $_FILES['image']['name'];
     $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+
     $allowed_exs = array("jpg", "jpeg", "png", "webp");
 
     if (!in_array(strtolower($img_ex), $allowed_exs)) {
@@ -39,7 +40,8 @@ if(isset($_POST['ok'])) {
     }
 
     // Déplacer le fichier téléchargé
-    $new_img_name = uniqid("IMG-", true) . 'services.' .$img_ex;
+
+    $new_img_name = uniqid("IMG-", true) . 'repository.' .$img_ex;
     $img_upload_path = __DIR__ . '/../../../../images/servicesetproduits/' . $new_img_name;
 
     if (!move_uploaded_file($_FILES['image']['tmp_name'], $img_upload_path)) {
@@ -53,7 +55,7 @@ if(isset($_POST['ok'])) {
     $success = $service->insert($titre, $texte, $new_img_name, $alt, $categories_id);
 
     if ($success) {
-        header("Location: services.php?success=Service ajouté avec succès.");
+        header("Location: repository.php?success=Service ajouté avec succès.");
         exit;
     } else {
         $message = "Erreur lors de l'ajout du service.";

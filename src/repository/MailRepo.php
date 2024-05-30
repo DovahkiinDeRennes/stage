@@ -1,7 +1,7 @@
 <?php
 include(__DIR__ . '/../pages/core/connection.php');
 require_once(__DIR__ . '/../classes/mail.php');
-class MailService {
+class MailRepo {
     private $mail;
 
     public function __construct($db) {

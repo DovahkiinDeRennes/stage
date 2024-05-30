@@ -1,7 +1,7 @@
 <?php
 include(__DIR__ . '/../pages/core/connection.php');
 require_once(__DIR__ . '/../classes/categorie.php');
-class CategorieService
+class CategorieRepo
 {
     private $categorie;
 

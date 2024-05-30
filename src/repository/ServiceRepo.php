@@ -3,7 +3,7 @@
 include(__DIR__ . '/../pages/core/connection.php');
 require_once(__DIR__ . '/../classes/service.php');
 
-class ServiceService {
+class ServiceRepo {
     private $service;
 
     public function __construct(PDO $db) {

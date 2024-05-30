@@ -1,5 +1,5 @@
 <?php
-$query = "SELECT * FROM services ORDER BY categorie ASC";
+$query = "SELECT * FROM repository ORDER BY categorie ASC";
 $result = $db->query($query);
 
 $currentCategory = null;
@@ -19,7 +19,7 @@ while ($row = $result->fetch_assoc()) {
         echo "<div class='categorie'>";
     }
 
-    echo "<a href='/info.php?id=" . $row['id'] . "&amp;titre=" . $row['titre'] . "&amp;direction=services'><div class='card'>";
+    echo "<a href='/info.php?id=" . $row['id'] . "&amp;titre=" . $row['titre'] . "&amp;direction=repository'><div class='card'>";
     echo "<img src='/images/servicesetproduits/" . $row['image_url'] . "' alt='" . $row['alt_text'] . "'>";
     echo "<h3>" . $row['titre'] . "</h3>";
 

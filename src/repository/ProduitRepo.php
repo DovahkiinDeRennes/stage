@@ -1,7 +1,7 @@
 <?php
 include(__DIR__ . '/../pages/core/connection.php');
 require_once(__DIR__ . '/../classes/produit.php');
-class ProduitService {
+class ProduitRepo {
     private $produit;
 
     public function __construct(PDO $db) {

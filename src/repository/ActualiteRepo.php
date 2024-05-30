@@ -4,7 +4,7 @@ include(__DIR__ . '/../pages/core/connection.php');
 require_once(__DIR__ . '/../classes/Actualite.php');
 
 
-class ActualiteService
+class ActualiteRepo
 {
     private $actualite;
 

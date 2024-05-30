@@ -4,10 +4,10 @@ include('src/pages/core/connection.php');
 
 // Obtenez les produits avec la clé 'type'
 $produits = getProduitsWithType($db);
-// Obtenez les services avec la clé 'type'
+// Obtenez les repository avec la clé 'type'
 $services = getServicesWithType($db);
 
-// Combinez les produits et les services dans un tableau unique
+// Combinez les produits et les repository dans un tableau unique
 $infos = [...$services, ...$produits];
 
 
@@ -27,7 +27,7 @@ $infos = [...$services, ...$produits];
     <div class="carousel">
         <?php foreach ($infos as $info) : ?>
             <?php
-            $direction = ($info['type'] === 'produits') ? 'produits' : 'services';
+            $direction = ($info['type'] === 'produits') ? 'produits' : 'repository';
             ?>
             <div class="carousel-item">
                 <a href='/info.php?id=<?= $info['id'] ?>&amp;titre=<?= urlencode($info['titre']) ?>&direction=<?= $direction ?>'>

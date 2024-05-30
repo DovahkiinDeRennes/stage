@@ -14,7 +14,7 @@ if (!$id) {
 }
 
 // Requête pour récupérer les informations du service
-$query = "SELECT * FROM services WHERE id = ?";
+$query = "SELECT * FROM repository WHERE id = ?";
 $stmt = $db->prepare($query);
 $stmt->execute([$id]);
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -35,7 +35,7 @@ if (!file_exists($image_path)) {
 if (unlink($image_path)) {
     $service = new Service($db);
     if ($service->delete($id)) {
-        header("Location: services.php");
+        header("Location: repository.php");
         exit;
     } else {
         echo "Erreur lors de la suppression du service.";
