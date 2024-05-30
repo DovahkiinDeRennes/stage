@@ -15,10 +15,10 @@ class Service
     {
         $services = array();
 
-        $query = "SELECT repository.*, categorie.libelle AS libelle 
-        FROM repository 
-        LEFT JOIN categorie ON repository.categories = categorie.id 
-        ORDER BY categorie.ordre ASC, repository.ordre ASC";
+        $query = "SELECT services.*, categorie.libelle AS libelle 
+        FROM services 
+        LEFT JOIN categorie ON services.categories = categorie.id 
+        ORDER BY categorie.ordre ASC, services.ordre ASC";
         $stmt = $this->db->query($query);
 
         if ($stmt) {
@@ -30,15 +30,15 @@ class Service
 
     public function insert($titre, $texte, $new_img_name, $alt, $categories)
     {
-        // Récupérer le nombre total de repository pour la catégorie donnée
-        $query = "SELECT COUNT(*) AS total FROM repository WHERE categories = ?";
+        // Récupérer le nombre total de services pour la catégorie donnée
+        $query = "SELECT COUNT(*) AS total FROM services WHERE categories = ?";
         $stmt = $this->db->prepare($query);
         $stmt->execute([$categories]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $ordre = $row['total'] + 1; // Ajouter 1 pour déterminer l'ordre du nouveau service
 
         // Insérer le nouveau service avec l'ordre déterminé
-        $query = "INSERT INTO repository (titre, description, image_url, alt_text, date, categories, ordre) VALUES (?, ?, ?, ?, NOW(), ?, ?)";
+        $query = "INSERT INTO services (titre, description, image_url, alt_text, date, categories, ordre) VALUES (?, ?, ?, ?, NOW(), ?, ?)";
         $stmt = $this->db->prepare($query);
         $success = $stmt->execute([$titre, $texte, $new_img_name, $alt, $categories, $ordre]);
 
@@ -48,7 +48,7 @@ class Service
 
     public function update($id, $titre, $texte, $new_img_name, $alt, $categories)
     {
-        $query = "UPDATE repository SET titre = ?, description = ?, image_url = ?, alt_text = ?, categories = ? WHERE id = ?";
+        $query = "UPDATE services SET titre = ?, description = ?, image_url = ?, alt_text = ?, categories = ? WHERE id = ?";
         $stmt = $this->db->prepare($query);
         $success = $stmt->execute([$titre, $texte, $new_img_name, $alt, $categories, $id]);
 
@@ -58,7 +58,7 @@ class Service
     public function delete($id)
     {
         // Utilisation d'une requête préparée pour la suppression
-        $query = "DELETE FROM repository WHERE id = ?";
+        $query = "DELETE FROM services WHERE id = ?";
         $stmt = $this->db->prepare($query);
 
         if ($stmt) {

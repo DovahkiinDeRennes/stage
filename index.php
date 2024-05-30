@@ -93,7 +93,7 @@ echo '<script src="' . $urlFontAwesomeJs . '" crossorigin="anonymous"></script>'
 </main>
 
 	<div class="caroussel-actualites">
-	<h2>Nos dernières actualités : </h2>
+	<h2 data-aos="fade-up">Nos dernières actualités : </h2>
 	<?php include_once('assets/php/caroussel-actu.php') ?>
 	</div>
 
@@ -109,7 +109,7 @@ echo '<script src="' . $urlFontAwesomeJs . '" crossorigin="anonymous"></script>'
 
 
             <a href="<?php echo $urlCyberGouvFormation; ?>" target="_blank">
-				<img class="img-essi" src="images/logoEssi.png" alt="logo Essi"></a>
+				<img data-aos="fade-up" class="img-essi" src="images/logoEssi.png" alt="logo Essi"></a>
 		</div>
 
 
@@ -129,7 +129,7 @@ echo '<script src="' . $urlFontAwesomeJs . '" crossorigin="anonymous"></script>'
 		<div class="groupe-droite" data-aos="fade-up">
 			<div class="paragraphe"><a href="<?php echo $urlCyberGouv; ?>" target="_blank">
 					</a>
-                <p>
+                <p class="text-essi ">
                     <a href="<?php echo $urlCyberGouv; ?>" target="_blank"><span>Cybermalveillance.gouv.fr </span></a>est le dispositif national d'assistance aux victimes d'actes de cybermalveillance,
 				de sensibilisation des publics aux risques numériques et d'observation de la menace en France.
 				Ses publics sont les particuliers, les entreprises et les collectivités territoriales.
@@ -138,7 +138,7 @@ echo '<script src="' . $urlFontAwesomeJs . '" crossorigin="anonymous"></script>'
 		</div>
 	</div>
 	</div>
-	<center><span class="image fit"><img class="séparation" src="images/fidelilium_line.webp" alt="séparation" height="5" /></span></center>
+	<center><span class="image fit" ><img  class="séparation" src="images/fidelilium_line.webp" alt="séparation" height="5" /></span></center>
 	
 	
 

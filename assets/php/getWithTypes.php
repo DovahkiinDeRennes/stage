@@ -10,7 +10,7 @@ function getProduitsWithType($db)
 
 function getServicesWithType($db)
 {
-    $query = "SELECT *, 'repository' AS type FROM repository ORDER BY ordre ASC";
+    $query = "SELECT *, 'services' AS type FROM services ORDER BY ordre ASC";
     $stmt = $db->query($query);
     $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $services;

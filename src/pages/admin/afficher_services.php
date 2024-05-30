@@ -25,7 +25,7 @@ foreach ($services as $key => $row) {
 
     }
 
-    echo "<a href='/info.php?id=" . $row['id'] . "&amp;titre=" . $row['titre'] . "&amp;direction=repository'><div>";
+    echo "<a href='/info.php?id=" . $row['id'] . "&amp;titre=" . $row['titre'] . "&amp;direction=services'><div>";
     if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
         echo "<div class='enLigne'>";
 
@@ -52,7 +52,7 @@ foreach ($services as $key => $row) {
             // Afficher uniquement le bouton de gauche
             echo "<div><a href='#' class='change-order-link' data-direction='gauche' data-service-id='$serviceId'>&#9664;</a></div>";
         }
-        // Pour les repository autres que le premier et le dernier de leur catégorie
+        // Pour les services autres que le premier et le dernier de leur catégorie
         else {
             // Afficher les deux boutons
             echo "<div><a href='#' class='change-order-link' data-direction='gauche' data-service-id='$serviceId'>&#9664;</a>";

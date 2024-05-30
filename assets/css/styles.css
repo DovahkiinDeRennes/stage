@@ -90,7 +90,7 @@ div.bloc-2 {
 }
 .text-essi{
     flex: 5/6;
-
+    text-align: justify;
 }
 
 .img-essi{

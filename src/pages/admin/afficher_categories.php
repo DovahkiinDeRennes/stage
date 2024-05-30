@@ -34,8 +34,8 @@ foreach ($categories as $row) {
     if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
         echo "<td><a class='adminDelete' href='supprimer.php?id=" . $row['id'] . "'><input type='button' value='Supprimer une catégorie'></a></td>";
         echo "<td><a href='modifier.php?id=" . $row['id'] . "'><input type='button'value='modifier une categorie'></a></td>";
-        // Ajouter le lien pour afficher les repository et produits associés
-        echo "<td><a href='categorieWithServiceProduit.php?categorie_id=" . $row['id'] . "'>Voir la liste de tous les repository et produits associés</a></td>";
+        // Ajouter le lien pour afficher les services et produits associés
+        echo "<td><a href='categorieWithServiceProduit.php?categorie_id=" . $row['id'] . "'>Voir la liste de tous les services et produits associés</a></td>";
     }
 }
 

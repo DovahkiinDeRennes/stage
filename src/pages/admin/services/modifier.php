@@ -11,7 +11,7 @@ include(__DIR__ . '/../../core/connection.php');
 // On récupère l'ID dans le lien
 $id = $_GET['id'];
 // Requête pour afficher les infos d'un produit
-$stmt = $db->prepare("SELECT * FROM repository WHERE id = ?");
+$stmt = $db->prepare("SELECT * FROM services WHERE id = ?");
 $stmt->execute([$id]);
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -54,7 +54,7 @@ if (isset($_POST['ok'])) {
         // Vérification de l'extension de la nouvelle image
         if (in_array($img_ex_lc, $allowed_exs)) {
             // Génération d'un nom unique pour la nouvelle image
-            $new_img_name = uniqid("IMG-", true) . 'repository.' . $img_ex_lc;
+            $new_img_name = uniqid("IMG-", true) . 'services.' . $img_ex_lc;
             $img_upload_path = __DIR__ . '/../../../../images/servicesetproduits/' . $new_img_name;
 
             // Déplacement de la nouvelle image vers le dossier d'images
@@ -63,7 +63,7 @@ if (isset($_POST['ok'])) {
                 $service = new Service($db);
                 $result = $service->update($id, $titre, $texte, $new_img_name, $alt, $categories);
                 if ($result) {
-                    echo "<script nonce='$nonce7'>window.location.href = 'repository.php';</script>";
+                    echo "<script nonce='$nonce7'>window.location.href = 'services.php';</script>";
                 } else {
                     // Sinon, produit non modifié
                     $message = "Produit non modifié";
@@ -81,7 +81,7 @@ if (isset($_POST['ok'])) {
         $service = new Service($db);
         $result = $service->update($id, $titre, $texte, $new_img_name, $alt, $categories);
         if ($result) {
-            echo "<script nonce='$nonce7'>window.location.href = 'repository.php';</script>";
+            echo "<script nonce='$nonce7'>window.location.href = 'services.php';</script>";
         } else {
             // Sinon, produit non modifié
             $message = "Produit non modifié";

@@ -27,7 +27,7 @@ require_once(__DIR__ . '/../../../csp_config.php');
             <ul>
                 <li><a href="/index.php" id="page-actuelle-menu">Accueil</a></li>
                 <li><a href="/actualites.php">Actualités</a></li>
-                <li><a href="/repository.php">Services</a></li>
+                <li><a href="/services.php">Services</a></li>
                 <li><a href="/produits.php">Produits</a></li>
                 <li><a href="/contact.php">Contact</a></li>
             </ul>
@@ -45,7 +45,7 @@ require_once(__DIR__ . '/../../../csp_config.php');
           <div class="onglets" data-aos="fade-left" data-aos-duration="1000">
           <a class="link" href="/index.php"><p class="link"  id="page-actuel">Accueil</p></a>
           <a class="link" href="/actualites.php"><p class="link">Actualités</p></a>
-          <a class="link" href="/repository.php"><p class="link">Services</p></a>
+          <a class="link" href="/services.php"><p class="link">Services</p></a>
           <a class="link" href="/produits.php"><p class="link">Produits</p></a>
           <a class="link" href="/contact.php"><p class="link">Contact</p></a>
           
@@ -66,7 +66,7 @@ require_once(__DIR__ . '/../../../csp_config.php');
                     <li><a class="link" href="/src/pages/admin/mail/mail.php">
                             <p class="link">Mails</p>
                         </a></li>
-                    <li><a class="link" href="/src/pages/admin/repository/repository.php">
+                    <li><a class="link" href="/src/pages/admin/services/services.php">
                             <p class="link">Services</p>
                         </a></li>
                     <li><a class="link" href="/src/pages/admin/produits/produits.php">
@@ -106,7 +106,7 @@ require_once(__DIR__ . '/../../../csp_config.php');
                     <a class="link" href="/src/pages/admin/mail/mail.php">
                         <p class="link">Mails</p>
                     </a>
-                    <a class="link" href="/src/pages/admin/repository/repository.php">
+                    <a class="link" href="/src/pages/admin/services/services.php">
                         <p class="link">Services</p>
                     </a>
                     <a class="link" href="/src/pages/admin/produits/produits.php">

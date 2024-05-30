@@ -17,7 +17,7 @@ $service = new Service($db);
 if (isset($_GET['categorie_id'])) {
     $categorie_id = htmlspecialchars($_GET['categorie_id']);
 
-    $query = "SELECT * FROM repository WHERE categories = :categorie_id";
+    $query = "SELECT * FROM services WHERE categories = :categorie_id";
     $stmt = $db->prepare($query);
     $stmt->bindParam(':categorie_id', $categorie_id, PDO::PARAM_INT);
     $stmt->execute();
@@ -28,23 +28,23 @@ if (isset($_GET['categorie_id'])) {
     // ...
 
 
-    // Récupère les repository pour la catégorie spécifiée
+    // Récupère les services pour la catégorie spécifiée
 
 
-    // Affiche les repository correspondant à la catégorie sélectionnée
+    // Affiche les services correspondant à la catégorie sélectionnée
     foreach ($services as  $row) {
         echo "<br><tr><td><a href='/info.php?id="
             . $row['id'] . "&amp;titre=" . htmlspecialchars($row['titre'])
             . "'>" . htmlspecialchars($row['titre']) . "</a></td></tr><br>";
     }
 } else {
-    // Si aucun paramètre 'categorie_id' n'est défini dans l'URL, affiche tous les repository
-    $query = "SELECT * FROM repository";
+    // Si aucun paramètre 'categorie_id' n'est défini dans l'URL, affiche tous les services
+    $query = "SELECT * FROM services";
     $stmt = $db->prepare($query);
     $stmt->execute();
     $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Affiche tous les repository
+    // Affiche tous les services
     foreach ($services as  $row) {
         echo "<tr><td><a href='/info.php?id=" . $row['id'] . "&amp;titre=" . htmlspecialchars($row['titre']) . "'>" . htmlspecialchars($row['titre']) . "</a></td></tr>";
     }
@@ -67,21 +67,21 @@ if (isset($_GET['categorie_id'])) {
     // ...
 
 
-    // Récupère les repository pour la catégorie spécifiée
+    // Récupère les services pour la catégorie spécifiée
 
 
-    // Affiche les repository correspondant à la catégorie sélectionnée
+    // Affiche les services correspondant à la catégorie sélectionnée
     foreach ($produits as  $row) {
         echo "<br><tr><td><a href='/info.php?id=" . $row['id'] . "&amp;titre=" . htmlspecialchars($row['titre']) . "'>" . htmlspecialchars($row['titre']) . "</a></td></tr><br>";
     }
 } else {
-    // Si aucun paramètre 'categorie_id' n'est défini dans l'URL, affiche tous les repository
+    // Si aucun paramètre 'categorie_id' n'est défini dans l'URL, affiche tous les services
     $query = "SELECT * FROM produits";
     $stmt = $db->prepare($query);
     $stmt->execute();
     $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Affiche tous les repository
+    // Affiche tous les services
     foreach ($produits as  $row) {
         echo "<tr><td><a href='/info.php?id=" . $row['id'] . "&amp;titre=" . htmlspecialchars($row['titre']) . "'>" . htmlspecialchars($row['titre']) . "</a></td></tr>";
     }
