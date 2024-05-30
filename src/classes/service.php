@@ -48,9 +48,15 @@ class Service
 
     public function update($id, $titre, $texte, $new_img_name, $alt, $categories)
     {
-        $query = "UPDATE services SET titre = ?, description = ?, image_url = ?, alt_text = ?, categories = ? WHERE id = ?";
+        $query = "SELECT COUNT(*) AS total FROM services WHERE categories = ?";
         $stmt = $this->db->prepare($query);
-        $success = $stmt->execute([$titre, $texte, $new_img_name, $alt, $categories, $id]);
+        $stmt->execute([$categories]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $ordre = $row['total'] + 1;
+
+        $query = "UPDATE services SET titre = ?, description = ?, image_url = ?, alt_text = ?, categories = ?, ordre = ? WHERE id = ?";
+        $stmt = $this->db->prepare($query);
+        $success = $stmt->execute([$titre, $texte, $new_img_name, $alt, $categories, $ordre, $id]);
 
         return $success;
     }

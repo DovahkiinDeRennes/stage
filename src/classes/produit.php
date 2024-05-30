@@ -53,9 +53,15 @@ class Produit
 
     public function update($id, $titre, $texte, $new_img_name, $alt, $categories): bool
     {
-        $query = "UPDATE produits SET titre = ?, description = ?, image_url = ?, alt_text = ?, categories = ? WHERE id = ?";
+        $query = "SELECT COUNT(*) AS total FROM produits WHERE categories = ?";
         $stmt = $this->db->prepare($query);
-        $success = $stmt->execute([$titre, $texte, $new_img_name, $alt, $categories, $id]);
+        $stmt->execute([$categories]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $ordre = $row['total'] + 1;
+
+        $query = "UPDATE produits SET titre = ?, description = ?, image_url = ?, alt_text = ?, categories = ?, ordre = ? WHERE id = ?";
+        $stmt = $this->db->prepare($query);
+        $success = $stmt->execute([$titre, $texte, $new_img_name, $alt, $categories, $ordre, $id]);
 
         return $success;
     }

@@ -20,7 +20,6 @@ if(isset($_POST['ok'])) {
     $alt =  $_POST['alt_text'] ?? '';
     $categories_id =  $_POST['categories'] ?? '';
 
-
     // Vérifier si tous les champs sont remplis
     if (empty($titre) || empty($texte) || empty($alt) || empty($categories_id)) {
         $message = "Tous les champs doivent être remplis.";

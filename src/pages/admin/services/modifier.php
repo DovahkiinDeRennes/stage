@@ -78,6 +78,7 @@ if (isset($_POST['ok'])) {
     } else {
         // Si aucune nouvelle image n'a été envoyée, conservez le nom de l'image actuelle
         $new_img_name = $image_url;
+
         $service = new Service($db);
         $result = $service->update($id, $titre, $texte, $new_img_name, $alt, $categories);
         if ($result) {

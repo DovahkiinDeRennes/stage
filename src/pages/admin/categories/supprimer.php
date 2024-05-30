@@ -11,14 +11,14 @@ $id = $_GET['id'];
 
 $categorie = new Categorie($db);
 
-// Vérification si la catégorie est utilisée par des repository
-$query_check_services = "SELECT COUNT(*) as count FROM repository WHERE categories = ?";
+// Vérification si la catégorie est utilisée par des services
+$query_check_services = "SELECT COUNT(*) as count FROM services WHERE categories = ?";
 $stmt_check_services = $db->prepare($query_check_services);
 $stmt_check_services->execute([$id]);
 $row_check_services = $stmt_check_services->fetch(PDO::FETCH_ASSOC);
 
 if ($row_check_services['count'] > 0) {
-    echo "Impossible de supprimer la catégorie car elle est utilisée par des repository. Vous devez d'abord supprimer tous les repository associés à cette catégorie avant de pouvoir la supprimer.<br>";
+    echo "Impossible de supprimer la catégorie car elle est utilisée par des services. Vous devez d'abord supprimer tous les services associés à cette catégorie avant de pouvoir la supprimer.<br>";
     echo "<a href='categories.php'>Retour</a>";
 } else {
     $result = $categorie->delete($id);
