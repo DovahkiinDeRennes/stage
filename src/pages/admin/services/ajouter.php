@@ -22,6 +22,7 @@ if(isset($_POST['ok'])) {
     $categories_id = filter_var($_POST['categories'] ?? '', FILTER_VALIDATE_INT);
 
     // Vérifier si tous les champs sont remplis
+
     if (empty($titre) || empty($texte) || empty($alt) || empty($categories_id)) {
         $message = "Tous les champs doivent être remplis.";
         header("Location: ajouter.php?error=$message");

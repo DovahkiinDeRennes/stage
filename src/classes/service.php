@@ -46,46 +46,94 @@ class Service
 
     }
 
-    public function update($id, $titre, $texte, $new_img_name, $alt, $categories)
+    public function update($id, $titre, $texte, $new_img_name, $alt, $new_category): bool
     {
-        $query = "SELECT COUNT(*) AS total FROM services WHERE categories = ?";
+        // Obtenir l'ancienne catégorie et l'ordre du service
+        $query = "SELECT categories, ordre FROM services WHERE id = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->execute([$categories]);
+        $stmt->execute([$id]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        $ordre = $row['total'] + 1;
+        $old_category = $row['categories'];
 
-        $query = "UPDATE services SET titre = ?, description = ?, image_url = ?, alt_text = ?, categories = ?, ordre = ? WHERE id = ?";
-        $stmt = $this->db->prepare($query);
-        $success = $stmt->execute([$titre, $texte, $new_img_name, $alt, $categories, $ordre, $id]);
+        // Vérifier si la catégorie a changé
+        if ($old_category !== $new_category) {
+            // Mettre à jour le service avec la nouvelle catégorie
+            $query = "UPDATE services SET titre = ?, description = ?, image_url = ?, alt_text = ?, categories = ? WHERE id = ?";
+            $stmt = $this->db->prepare($query);
+            $success = $stmt->execute([$titre, $texte, $new_img_name, $alt, $new_category, $id]);
+
+            // Réinitialiser les ordres dans l'ancienne catégorie
+            $this->verifOrdre($old_category);
+            $this->verifOrdre($new_category);
+        } else {
+            // Si la catégorie n'a pas changé, simplement mettre à jour le service
+            $query = "UPDATE services SET titre = ?, description = ?, image_url = ?, alt_text = ? WHERE id = ?";
+            $stmt = $this->db->prepare($query);
+            $success = $stmt->execute([$titre, $texte, $new_img_name, $alt, $id]);
+        }
 
         return $success;
     }
 
     public function delete($id)
     {
-        // Utilisation d'une requête préparée pour la suppression
-        $query = "DELETE FROM services WHERE id = ?";
+        // Récupérer la catégorie du service à supprimer
+        $query = "SELECT categories FROM services WHERE id = ?";
         $stmt = $this->db->prepare($query);
+        $stmt->execute([$id]);
+        $service = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($stmt) {
-            // Liaison du paramètre ID
-            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+        if ($service) {
+            $category = $service['categories'];
 
-            // Exécution de la requête
-            $result = $stmt->execute();
+            // Utilisation d'une requête préparée pour la suppression
+            $query = "DELETE FROM services WHERE id = ?";
+            $stmt = $this->db->prepare($query);
 
-            if ($result) {
-                // La suppression a réussi
-                return true;
+            if ($stmt) {
+                // Liaison du paramètre ID
+                $stmt->bindParam(1, $id, PDO::PARAM_INT);
+
+                // Exécution de la requête
+                $result = $stmt->execute();
+
+                if ($result) {
+                    // La suppression a réussi, maintenant réorganiser les ordres pour la catégorie spécifique
+                    $this->verifOrdre($category);
+                    return true;
+                } else {
+                    // Gestion des erreurs en cas d'échec de la suppression
+                    return false;
+                }
             } else {
-                // Gestion des erreurs en cas d'échec de la suppression
-                // Vous pouvez utiliser $stmt->errorInfo() pour obtenir des informations sur l'erreur
+                // Gestion des erreurs en cas d'échec de la préparation de la requête
                 return false;
             }
         } else {
-            // Gestion des erreurs en cas d'échec de la préparation de la requête
-            // Vous pouvez utiliser $this->db->errorInfo() pour obtenir des informations sur l'erreur
+            // Service non trouvé
             return false;
         }
     }
+
+
+
+    private function verifOrdre($category)
+    {
+        $query = "SELECT id FROM services WHERE categories = ? ORDER BY ordre";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$category]);
+        $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $ordre = 1;
+        foreach ($services as $service) {
+
+            $updateQuery = "UPDATE services SET ordre = ? WHERE id = ?";
+            $updateStmt = $this->db->prepare($updateQuery);
+            $updateStmt->execute([$ordre, $service['id']]);
+            $ordre++;
+        }
+    }
+
+
+
 }

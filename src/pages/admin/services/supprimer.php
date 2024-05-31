@@ -25,6 +25,7 @@ if (!$row) {
 }
 
 $image_url = $row['image_url'];
+
 $image_path = __DIR__ . '/../../../../images/servicesetproduits/' . $image_url;
 
 if (!file_exists($image_path)) {
@@ -38,7 +39,7 @@ if (unlink($image_path)) {
         header("Location: services.php");
         exit;
     } else {
-        echo "Erreur lors de la suppression du service.";
+        echo "Aucun Service à été supprimé.";
         exit;
     }
 } else {

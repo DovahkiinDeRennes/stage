@@ -51,48 +51,98 @@ class Produit
         }
     }
 
-    public function update($id, $titre, $texte, $new_img_name, $alt, $categories): bool
+    public function update($id, $titre, $texte, $new_img_name, $alt, $new_category): bool
     {
-        $query = "SELECT COUNT(*) AS total FROM produits WHERE categories = ?";
+        // Obtenir l'ancienne catégorie et l'ordre du produit
+        $query = "SELECT categories, ordre FROM produits WHERE id = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->execute([$categories]);
+        $stmt->execute([$id]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        $ordre = $row['total'] + 1;
+        $old_category = $row['categories'];
 
-        $query = "UPDATE produits SET titre = ?, description = ?, image_url = ?, alt_text = ?, categories = ?, ordre = ? WHERE id = ?";
-        $stmt = $this->db->prepare($query);
-        $success = $stmt->execute([$titre, $texte, $new_img_name, $alt, $categories, $ordre, $id]);
+        // Vérifier si la catégorie a changé
+        if ($old_category !== $new_category) {
+            // Mettre à jour le produit avec la nouvelle catégorie
+            $query = "UPDATE produits SET titre = ?, description = ?, image_url = ?, alt_text = ?, categories = ? WHERE id = ?";
+            $stmt = $this->db->prepare($query);
+            $success = $stmt->execute([$titre, $texte, $new_img_name, $alt, $new_category, $id]);
+
+            // Réinitialiser les ordres dans l'ancienne catégorie
+            $this->verifOrdre($old_category);
+            $this->verifOrdre($new_category);
+        } else {
+            // Si la catégorie n'a pas changé, simplement mettre à jour le produit
+            $query = "UPDATE produits SET titre = ?, description = ?, image_url = ?, alt_text = ? WHERE id = ?";
+            $stmt = $this->db->prepare($query);
+            $success = $stmt->execute([$titre, $texte, $new_img_name, $alt, $id]);
+        }
 
         return $success;
     }
 
     public function delete($id): bool
     {
-        // Utilisation d'une requête préparée pour la suppression
-        $query = "DELETE FROM produits WHERE id = ?";
+        // Récupérer la catégorie du produit à supprimer
+        $query = "SELECT categories FROM produits WHERE id = ?";
         $stmt = $this->db->prepare($query);
+        $stmt->execute([$id]);
+        $produit = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($stmt) {
-            // Liaison du paramètre ID
-            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+        if ($produit) {
+            $category = $produit['categories'];
 
-            // Exécution de la requête
-            $result = $stmt->execute();
+            // Utilisation d'une requête préparée pour la suppression
+            $query = "DELETE FROM produits WHERE id = ?";
+            $stmt = $this->db->prepare($query);
 
-            if ($result) {
-                // La suppression a réussi
-                return true;
+            if ($stmt) {
+                // Liaison du paramètre ID
+                $stmt->bindParam(1, $id, PDO::PARAM_INT);
+
+                // Exécution de la requête
+                $result = $stmt->execute();
+
+                if ($result) {
+                    // La suppression a réussi, maintenant réorganiser les ordres pour la catégorie spécifique
+                    $this->verifOrdre($category);
+                    return true;
+                } else {
+                    // Gestion des erreurs en cas d'échec de la suppression
+                    return false;
+                }
             } else {
-                // Gestion des erreurs en cas d'échec de la suppression
-                // Vous pouvez utiliser $stmt->errorInfo() pour obtenir des informations sur l'erreur
+                // Gestion des erreurs en cas d'échec de la préparation de la requête
                 return false;
             }
         } else {
-            // Gestion des erreurs en cas d'échec de la préparation de la requête
-            // Vous pouvez utiliser $this->db->errorInfo() pour obtenir des informations sur l'erreur
+            // Produit non trouvé
             return false;
         }
     }
+    private function verifOrdre($category)
+    {
+        // Récupérer tous les produits de la catégorie triés par ordre
+        $query = "SELECT id FROM produits WHERE categories = ? ORDER BY ordre";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$category]);
+        $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Réinitialiser l'ordre pour la catégorie spécifique
+        $ordre = 1;
+        foreach ($produits as $produit) {
+            // Mettre à jour l'ordre du produit
+            $updateQuery = "UPDATE produits SET ordre = ? WHERE id = ?";
+            $updateStmt = $this->db->prepare($updateQuery);
+            $updateStmt->execute([$ordre, $produit['id']]);
+            $ordre++;
+        }
+    }
+
+
+
+
 }
+
+
 
 ?>

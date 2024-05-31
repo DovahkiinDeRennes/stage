@@ -35,6 +35,7 @@ if (isset($_POST['ok'])) {
     $image_url = $row['image_url'];
 
     // Vérification si une nouvelle image a été envoyée
+
     if ($_FILES['image']['error'] == 0) {
         // Suppression de l'image actuelle
         $image_path = __DIR__ . '/../../../../images/servicesetproduits/' . $image_url;
