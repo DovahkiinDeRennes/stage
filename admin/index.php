@@ -72,10 +72,12 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
             $stmt->execute();
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             $username = $row['utilisateur'];
+
             $password = $row['mdp'];
-            $password_write = sha1($_POST['password']);
+            $password_write = hash('sha256', $_POST['password']);
             // Vérifie les informations de connexion
             if ($_POST['username'] === $username AND $password_write === $password) {
+
                 $_SESSION['admin_logged_in'] = true;
                 echo "<script src = '/assets/js/connection.js'></script>";
             } else {

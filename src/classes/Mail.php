@@ -28,7 +28,9 @@ class Mail
     public function insert($nom, $prenom, $email, $tel, $societe, $fonction, $objet, $message, $conditions)
     {
 
-        $query = "INSERT INTO contact (nom, prenom, mail, tel, societe, fonction, object, message, conditions, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+        $query = "INSERT INTO contact (nom, prenom, mail, tel, societe, 
+                     fonction, object, message, conditions, date) 
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
         $stmt = $this->db->prepare($query);
         $success = $stmt->execute([$nom, $prenom, $email, $tel, $societe, $fonction, $objet, $message, $conditions]);
 

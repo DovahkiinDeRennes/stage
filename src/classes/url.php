@@ -15,12 +15,10 @@ class url
 
     public function verifUrl($url, $secret_key) {
 
-
         $query = "SELECT * FROM url";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 
         foreach ($results as $row) {
             $decrypted_url = decryptHash($row['url'], $secret_key);
@@ -28,7 +26,6 @@ class url
                 return true;
             }
         }
-
         return false;
     }
 
@@ -43,7 +40,9 @@ class url
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($result && isset($result['url'])) {
+
             $decrypted_url = decryptHash($result['url'], $secret_key);
+
             if ($decrypted_url !== false) {
                 // Retourner l'URL décryptée si réussie
                 return $decrypted_url;

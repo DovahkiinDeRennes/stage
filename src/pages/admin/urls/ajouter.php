@@ -23,10 +23,8 @@ if (isset($_POST['ok'])) {
     } else {
         // Chiffrer l'URL
         $encrypted_url = encryptURL($urlChiffre, $secret_key);
-
         // Insérer l'URL chiffrée dans la base de données
         $url->insert($encrypted_url,$urlSafe);
-
         // Afficher un message de succès ou effectuer d'autres actions après l'insertion
         echo "<p>URL insérée avec succès.</p>";
     }
